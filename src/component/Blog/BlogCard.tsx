@@ -8,14 +8,16 @@ const BlogCard = () => {
         alt="blogImage"
         width={400}
         height={400}
-        className="w-[370px] h-[370px] rounded-2xl"
+        className="lg:w-[370px] w-full h-[370px] rounded-2xl "
       />
-      <div className="bg-[#6839c0] w-[320px] h-[83px] rounded-2xl pt-4 translate-x-7 -translate-y-[100px]">
+      <div className="bg-[#6839c0] lg:w-[320px] h-[83px] rounded-2xl pt-4 lg:translate-x-7 -translate-y-[100px]">
         <div className="flex justify-around">
           <h1>5/9/2023</h1>
           <h1>comment (0)</h1>
         </div>
-        <p className="text-2xl font-bold text-center">Top 10 Ui Ux Designers</p>
+        <p className="lg:text-2xl text-xl font-bold text-center">
+          Top 10 Ui Ux Designers
+        </p>
       </div>
       <div className="absolute top-3 left-3 bg-[#915cf4] rounded-2xl p-1">
         <h1>TUTORIAL</h1>

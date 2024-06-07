@@ -3,7 +3,7 @@ import MegicButton from "../ui/MegicButton";
 
 const ContactForm = () => {
   return (
-    <div className=" mx-auto p-8 bg-[#140d21] rounded-lg h-[750px] w-full text-white">
+    <div className=" mx-auto p-8  bg-[#0e1726] border border-zinc-400 rounded-lg h-[790px] lg:h-[750px] w-full text-white">
       <h1 className="text-5xl font-bold text-purple-500 mb-2 tracking-wider">
         Let&apos;s work <span className="text-[#d9c7fc]">together!</span>
       </h1>

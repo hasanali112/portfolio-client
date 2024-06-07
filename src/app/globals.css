@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  scroll-behavior: smooth;
+  transition: all 3s;
+  transition-timing-function: ease-in;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

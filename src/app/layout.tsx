@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./providers";
 import Navbar from "@/component/shared/Navbar";
 import Footer from "@/component/shared/Footer";
+import Head from "next/head";
 
 const inter = Urbanist({ subsets: ["latin"] });
 

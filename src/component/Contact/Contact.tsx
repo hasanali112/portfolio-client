@@ -2,13 +2,16 @@ import ContactForm from "./ContactForm";
 
 const Contact = () => {
   return (
-    <div id="contact" className="bg-[#050709] pt-36 pb-20">
+    <div
+      id="contact"
+      className="bg-[#060818] pt-36 pb-20 transition-transform duration-1000 ease-in-out"
+    >
       <div className="w-full max-w-[1220px] mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="flex-1">
             <ContactForm />
           </div>
-          <div className="flex-1 flex flex-col mt-48 gap-12">
+          <div className="flex-1 flex flex-col lg:mt-48 gap-12">
             <div className="flex items-center gap-4">
               <span className="bg-[#7041cf] w-12 h-12 flex justify-center items-center rounded-full">
                 <svg

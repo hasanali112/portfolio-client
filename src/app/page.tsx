@@ -8,9 +8,9 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div>
-      <div className="relative bg-[#000319]  flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-        <div className="max-w-7xl w-full">
+    <div className="overflow-x-hidden">
+      <div className="relative bg-[#000319]  flex justify-center items-center flex-col overflow-hidden mx-auto  px-5">
+        <div className="max-w-7xl lg:w-full">
           <Hero />
         </div>
       </div>
