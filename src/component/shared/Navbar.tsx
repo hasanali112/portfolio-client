@@ -1,10 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   return (
-    <nav className="bg-[#1b1f3d] lg:w-[45%] w-[85%] mx-auto fixed top-0 left-0 right-0 z-50 rounded-full border border-zinc-500 hidden lg:block">
-      <div className="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center items-center h-16">
+    <nav className="bg-[#1b1f3d] lg:w-[80%] w-[85%] max-w-[1220px] mx-auto fixed top-0 left-0 right-0 z-50 rounded-3xl border border-zinc-500 hidden lg:block">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-7">
+        <div className="flex gap-96 items-center h-16">
+          <Link href="/">
+            <Image src={logo} alt="logo" width={50} height={50} />
+          </Link>
           <div>
             <div className="flex  justify-around items-center lg:space-x-4">
               <Link

@@ -7,8 +7,8 @@ type TProp = {
 const BorderMegicButton = ({ title }: TProp) => {
   const downloadPDF = () => {
     const link = document.createElement("a");
-    link.href = "/Hasan Resume.pdf";
-    link.download = "Hasan Resume.pdf";
+    link.href = "/MD Hasan Ali Khan_MERN Stack Developer.pdf";
+    link.download = "MD Hasan Ali Khan_MERN Stack Developer.pdf";
     link.dispatchEvent(new MouseEvent("click"));
   };
 

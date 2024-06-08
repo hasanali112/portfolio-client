@@ -1,11 +1,12 @@
-import HeroCard from "./HeroCard/HeroCard";
+import Link from "next/link";
 import BorderMegicButton from "./ui/BorderMegicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { Facebook, Github, LinkedinIcon } from "lucide-react";
 
 const Hero = () => {
   return (
-    <div className="lg:pb-20 pb-16 pt-16 lg:pt-36 lg:h-screen">
+    <div className="lg:pb-20 pb-16 pt-16 lg:pt-36 ">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -33,8 +34,37 @@ const Hero = () => {
           <p className="text-center">
             With a strong foundation in both front-end and back-end development
           </p>
-          <div className="lg:w-[60%] w-full mx-auto pl-[25%] lg:pl-32 pt-6">
+          <div className="lg:w-[60%] w-full mx-auto flex flex-col lg:flex-row items-center gap-3  pt-6">
             <BorderMegicButton title="Resume" />
+            <ul className="flex gap-3 ">
+              <Link
+                href="https://www.linkedin.com/in/md-hasan-ali-khan/"
+                target="_blank"
+                className="group"
+              >
+                <li className="border border-purple-700 rounded-full flex items-center justify-center w-[40px] h-[40px] group-hover:bg-purple-500  duration-[3s] ease-in-out">
+                  <LinkedinIcon className="w-5 fill-purple-700 text-purple-700 group-hover:text-white group-hover:fill-white" />
+                </li>
+              </Link>
+              <Link
+                href="https://github.com/hasanali112"
+                target="_blank"
+                className="group"
+              >
+                <li className="border border-purple-700 rounded-full flex items-center justify-center w-[40px] h-[40px] group-hover:bg-purple-500  duration-[3s] ease-in-out">
+                  <Github className="w-5 fill-purple-700 text-purple-700 group-hover:text-white group-hover:fill-white" />
+                </li>
+              </Link>
+              <Link
+                href="https://www.facebook.com/mdhasan.alikhan.794"
+                target="_blank"
+                className="group"
+              >
+                <li className="border border-purple-700 rounded-full flex items-center justify-center w-[40px] h-[40px] group-hover:bg-purple-500  duration-[3s] ease-in-out">
+                  <Facebook className="w-5 fill-purple-700 text-purple-700 group-hover:text-white group-hover:fill-white" />
+                </li>
+              </Link>
+            </ul>
           </div>
         </div>
         <div>{/* <HeroCard /> */}</div>
