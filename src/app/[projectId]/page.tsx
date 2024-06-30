@@ -21,7 +21,7 @@ const DynamicProjectDetail = async ({ params }: TDynamic) => {
     useTechnology,
   } = getSingleProjectDeatil.data;
   return (
-    <div className="bg-[#000319]   pt-36 pb-20">
+    <div className="bg-gradient-to-r from-[#0f0715] via-[#0f0715] to-[#291746]  text-white pt-36 pb-20">
       <div className="w-full max-w-[1220px] mx-auto ">
         <div>
           <h1 className="text-4xl font-bold  ml-[10%] pt-4 pb-16">
@@ -44,7 +44,7 @@ const DynamicProjectDetail = async ({ params }: TDynamic) => {
               </span>
             </Link>
           </h1>
-          <div className="bg-gradient-to-r from-[#804ceb] lg:ml-[13%] ml-[7%] mt-7 flex items-center justify-center  rounded-full to-[#2e175c] w-[230px] h-[50px]">
+          <div className="bg-gradient-to-r from-[#804ceb] lg:ml-[13%] ml-[7%] mt-7 flex items-center justify-center text-white rounded-full to-[#2e175c] w-[230px] h-[50px]">
             <Link href={liveLink} target="_blank">
               <h1 className="inline-flex items-center gap-3 ">
                 <span className="text-2xl">Live preview </span>

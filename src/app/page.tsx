@@ -8,16 +8,12 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="overflow-x-hidden">
-      <div className="relative bg-[#000319]  flex justify-center items-center flex-col overflow-hidden mx-auto  px-5">
-        <div className="max-w-7xl lg:w-full">
-          <Hero />
-        </div>
-      </div>
-      <About />
+    <div className="overflow-x-hidden bg-black">
+      <Hero />
       <Skill />
       <Project />
       <Blogs />
+      <About />
       <Contact />
     </div>
   );

@@ -1,9 +1,8 @@
 import React from "react";
-import MegicButton from "../ui/MegicButton";
 
 const ContactForm = () => {
   return (
-    <div className=" mx-auto p-8  bg-[#0e1726] border border-zinc-400 rounded-lg h-[790px] lg:h-[750px] w-full text-white">
+    <div className=" mx-auto p-8  bg-gradient-to-r from-[#2a1650] to-[#522ba0]  border border-zinc-400 rounded-lg h-[790px] lg:h-[750px] w-full text-white">
       <h1 className="text-5xl font-bold text-purple-500 mb-2 tracking-wider">
         Let&apos;s work <span className="text-[#d9c7fc]">together!</span>
       </h1>
@@ -51,7 +50,6 @@ const ContactForm = () => {
             className="w-full  p-2 bg-[#050709] border border-[#6c6a6d] rounded-md focus:outline-none"
           ></textarea>
         </div>
-        <MegicButton title="Send Message" className="w-full" />
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const DynamicBlogDetail = async ({ params }: TDynamic) => {
   const singleBlogById = await singleBlog(params.blogId);
   const { _id, title, image, description } = singleBlogById.data;
   return (
-    <div className="bg-[#000319]   pt-36 pb-20">
+    <div className="bg-[#000319] text-white  pt-36 pb-20">
       <div className="w-full max-w-[1220px] mx-auto ">
         <div>
           <h1 className="text-4xl font-bold  ml-[10%] pt-4 pb-16">{title}</h1>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1b1f3d] text-white py-6">
+    <footer className="bg-gradient-to-r from-[#241232] via-[#0f0715] to-[#291746] text-white py-6 shadow-sm shadow-[#7242d1]">
       <div className="container mx-auto text-center">
         <div className="flex justify-center mb-4"></div>
         <ul className="flex justify-center space-x-2 lg:space-x-6 mb-4">

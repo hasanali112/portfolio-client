@@ -1,73 +1,86 @@
+import Image from "next/image";
+import Container from "./ui/Container";
+import about from "@/assets/about.png";
+import { Button } from "@nextui-org/react";
+import {
+  ArrowDownToLine,
+  FacebookIcon,
+  GithubIcon,
+  Linkedin,
+} from "lucide-react";
 import Link from "next/link";
-import BorderMegicButton from "./ui/BorderMegicButton";
-import { Spotlight } from "./ui/Spotlight";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import { Facebook, Github, LinkedinIcon } from "lucide-react";
+import HeroForMobile from "./Home/HeroForMobile";
 
 const Hero = () => {
   return (
-    <div className="lg:pb-20 pb-16 pt-16 lg:pt-36 ">
-      <div>
-        <Spotlight
-          className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
-          fill="white"
-        />
-        <Spotlight
-          className="top-10 left-full  lg:h-[80vh] lg:w-[50vw]"
-          fill="purple"
-        />
-        <Spotlight
-          className="top-28 lg:left-80 lg:h-[80vh] lg:w-[50vw]"
-          fill="blue"
-        />
-      </div>
-      <div className="h-screen w-full dark:bg-black-100 bg-white  dark:bg-grid-white/[0.05] bg-grid-black/[0.2] absolute top-0 left-0 flex items-center justify-center">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      </div>
-      <div className="flex  relative mt-10  z-10">
-        <div className="lg:w-[60%] w-[100%] mx-auto space-y-1 lg:space-y-3  flex flex-col items-center justify-center">
-          <h1 className="tracking-widest text-2xl">Hey, I am Hasan</h1>
-          <TextGenerateEffect
-            className="text-center  text-[25px] md:text-3xl lg:text-5xl"
-            words=" I specialize in creating dynamic  web applications "
-          />
-          <p className="text-center">
-            With a strong foundation in both front-end and back-end development
-          </p>
-          <div className="lg:w-[60%] w-full mx-auto flex flex-col lg:flex-row items-center gap-3  pt-6">
-            <BorderMegicButton title="Resume" />
-            <ul className="flex gap-3 ">
-              <Link
-                href="https://www.linkedin.com/in/md-hasan-ali-khan/"
-                target="_blank"
-                className="group"
-              >
-                <li className="border border-purple-700 rounded-full flex items-center justify-center w-[40px] h-[40px] group-hover:bg-purple-500  duration-[3s] ease-in-out">
-                  <LinkedinIcon className="w-5 fill-purple-700 text-purple-700 group-hover:text-white group-hover:fill-white" />
-                </li>
-              </Link>
-              <Link
-                href="https://github.com/hasanali112"
-                target="_blank"
-                className="group"
-              >
-                <li className="border border-purple-700 rounded-full flex items-center justify-center w-[40px] h-[40px] group-hover:bg-purple-500  duration-[3s] ease-in-out">
-                  <Github className="w-5 fill-purple-700 text-purple-700 group-hover:text-white group-hover:fill-white" />
-                </li>
-              </Link>
-              <Link
-                href="https://www.facebook.com/mdhasan.alikhan.794"
-                target="_blank"
-                className="group"
-              >
-                <li className="border border-purple-700 rounded-full flex items-center justify-center w-[40px] h-[40px] group-hover:bg-purple-500  duration-[3s] ease-in-out">
-                  <Facebook className="w-5 fill-purple-700 text-purple-700 group-hover:text-white group-hover:fill-white" />
-                </li>
-              </Link>
-            </ul>
+    <div>
+      <div className="bg-gradient-to-r from-[#0f0715] via-[#0f0715] to-[#291746] hidden lg:block pb-16">
+        <Container>
+          <div className="text-white grid grid-cols-12 gap-5 items-center justify-center pt-20">
+            <div className="col-span-7">
+              <h1 className="text-3xl font-bold mb-3">Hey, I am Hasan</h1>
+              <h1 className="text-6xl font-bold mb-6 tracking-wider">
+                <span className="text-purple-700">Web</span>
+                <span className="text-[#aa82fa]"> Devel</span>
+                <span className="text-[#decffd]">oper</span>
+              </h1>
+              <p className="max-w-[37ch] tracking-wider text-lg">
+                I specialize in creating dynamic web applications, with a robust
+                foundation in both front-end and back-end development
+              </p>
+              <div className="mt-10 flex gap-10 items-center">
+                <Button
+                  variant="bordered"
+                  className="rounded-full w-[35%] h-[60px] border border-purple-700 text-purple-700 hover:bg-purple-500 hover:text-white"
+                >
+                  Download Resume{" "}
+                  <span>
+                    <ArrowDownToLine />
+                  </span>
+                </Button>
+                <div className="flex gap-5">
+                  <Link
+                    href="https://www.facebook.com/mdhasan.alikhan.794"
+                    target="_blank"
+                  >
+                    <div className="border border-purple-700 rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-purple-500 hover:text-white">
+                      <FacebookIcon />
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="https://www.linkedin.com/in/md-hasan-ali-khan/"
+                    target="_blank"
+                  >
+                    <div className="border border-purple-700 rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-purple-500 hover:text-white">
+                      <Linkedin />
+                    </div>
+                  </Link>
+
+                  <Link href="https://github.com/hasanali112" target="_blank">
+                    <div className="border border-purple-700 rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-purple-500 hover:text-white">
+                      <GithubIcon />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-5">
+              <div className="">
+                <Image
+                  src={about}
+                  alt="about"
+                  width={400}
+                  height={400}
+                  className="h-[460px] w-[460px] rounded-full border-4 border-purple-700"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div>{/* <HeroCard /> */}</div>
+        </Container>
+      </div>
+      <div className="block lg:hidden">
+        <HeroForMobile />
       </div>
     </div>
   );

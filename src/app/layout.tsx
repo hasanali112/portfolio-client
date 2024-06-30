@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./providers";
+import { Providers } from "./lib/providers";
 import Navbar from "@/component/shared/Navbar";
 import Footer from "@/component/shared/Footer";
-import Head from "next/head";
+import { Sora } from "next/font/google";
 
-const inter = Urbanist({ subsets: ["latin"] });
+const inter = Sora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hasan Portfolio",
@@ -21,16 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           <Navbar />
           {children}
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

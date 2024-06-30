@@ -7,7 +7,7 @@ const Blogs = async () => {
   return (
     <div
       id="blog"
-      className="bg-[#000319] pt-20 lg:pt-28 pb-20 transition-transform duration-1000 ease-in-out"
+      className="bg-[#050709] pt-20 text-white lg:pt-28 pb-20 transition-transform duration-1000 ease-in-out"
     >
       <div className="w-full max-w-[1200px] mx-auto">
         <h1 className="text-5xl text-center font-bold text-purple-500 mb-2 tracking-wider">

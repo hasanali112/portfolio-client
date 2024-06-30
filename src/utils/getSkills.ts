@@ -1,6 +1,6 @@
 export const getSkills = async () => {
   const res = await fetch(
-    "https://portfolio-server-eight-sooty.vercel.app/api/v1/skills",
+    "https://portfolio-server-ecru-two.vercel.app/api/v1/skills",
     {
       cache: "no-cache",
     }
