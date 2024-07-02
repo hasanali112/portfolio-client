@@ -2,8 +2,13 @@ import { getBlogData } from "@/utils/getBlog";
 import BlogCard, { TBlog } from "./BlogCard";
 
 const Blogs = async () => {
-  const blogData = await getBlogData();
-  const { data } = blogData;
+  let blogData;
+  try {
+    blogData = await getBlogData();
+  } catch (error) {
+    console.log(error);
+  }
+
   return (
     <div
       id="blog"
@@ -18,7 +23,7 @@ const Blogs = async () => {
           project that inspire you and your customers
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-3 px-10 lg:px-0 lg:gap-2 mt-10">
-          {data?.map((blog: TBlog) => (
+          {blogData?.data?.map((blog: TBlog) => (
             <BlogCard key={blog._id} blog={blog} />
           ))}
         </div>

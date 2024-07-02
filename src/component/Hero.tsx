@@ -29,15 +29,20 @@ const Hero = () => {
                 foundation in both front-end and back-end development
               </p>
               <div className="mt-10 flex gap-10 items-center">
-                <Button
-                  variant="bordered"
-                  className="rounded-full w-[35%] h-[60px] border border-purple-700 text-purple-700 hover:bg-purple-500 hover:text-white"
+                <Link
+                  href="https://drive.google.com/file/d/1dUvhsEipYWnhFykRwJ1vJaNSi2zrs8tQ/view?usp=sharing"
+                  target="_blank"
                 >
-                  Download Resume{" "}
-                  <span>
-                    <ArrowDownToLine />
-                  </span>
-                </Button>
+                  <Button
+                    variant="bordered"
+                    className="rounded-full w-full h-[60px] border border-purple-700 text-purple-700 hover:bg-purple-500 hover:text-white"
+                  >
+                    Download Resume
+                    <span>
+                      <ArrowDownToLine />
+                    </span>
+                  </Button>
+                </Link>
                 <div className="flex gap-5">
                   <Link
                     href="https://www.facebook.com/mdhasan.alikhan.794"

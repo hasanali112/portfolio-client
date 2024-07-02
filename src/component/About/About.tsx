@@ -14,15 +14,15 @@ const About = () => {
     >
       <div className="grid  grid-cols-12 gap-10 w-full max-w-[1200px] mx-auto lg:px-0 px-5">
         <div className="lg:col-span-5 col-span-12  lg:h-[550px] lg:w-full w-[80%] ">
-          <div className="relative group inline-block overflow-hidden w-full">
+          <div className="relative group ">
             <Image
               src={about}
               alt="about"
               width={400}
               height={400}
-              className="lg:w-[85%] w-[90%] lg:h-[490px] h-[80%] rounded-xl mx-auto  border-2 border-purple-600 group-hover:scale-100 transition-transform duration-500"
+              className="lg:w-full w-[90%] lg:h-[550px] h-[80%] rounded-xl mx-auto  border-2 border-purple-600"
             />
-            <div className="lg:w-full w-[90%] lg:h-[490px] h-[80%] rounded-xl mx-auto  bg-black absolute top-0 left-0 opacity-30  group-hover:scale-100 transition-transform duration-500 "></div>
+            <div className="lg:w-full w-[90%] lg:h-[550px] h-[80%] rounded-xl mx-auto  bg-black absolute top-0  opacity-30"></div>
           </div>
         </div>
         <div className="lg:col-span-7 col-span-12 lg:h-[550px] lg:w-full w-[80%] ">
@@ -30,14 +30,14 @@ const About = () => {
           <h1 className="lg:text-5xl text-3xl mt-3 text-purple-500 font-semibold">
             Hey, I am <span className="text-[#d9c7fc]">Hasan.</span>{" "}
           </h1>
-          <p className="mt-4 lg:text-[20px] lg:w-full w-[95%] text-zinc-500">
+          <p className="mt-4 lg:text-[20px] lg:w-full w-[95%] text-[#D6D6D6]">
             I am graduate of University of Rajshahi. My expertise spans across
             the entire stack, ensuring that every component of your web
             application is meticulously crafted and optimized for performance.In
             addition, I have extensive experience with MongoDB, a NoSQL
             database, which I use to design flexible and scalable data models.
           </p>
-          <p className="mt-4 lg:text-[20px] pb-4 lg:w-full w-[95%] text-zinc-500">
+          <p className="mt-4 lg:text-[20px] pb-4 lg:w-full w-[95%] text-[#D6D6D6]">
             By integrating modern technologies and frameworks, I create
             applications that are not only functional but also visually
             appealing and user-friendly. I am passionate about staying
