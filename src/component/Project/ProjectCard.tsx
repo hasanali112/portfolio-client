@@ -55,18 +55,22 @@ const ProjectCard = ({ card }: { card: TProps }) => {
           </div>
           <div className="lg:flex items-center justify-between ml-3 mt-4">
             <div className="flex gap-3">
-              <Button
-                variant="bordered"
-                className="border border-[#1ABC9C] hover:bg-[#1ABC9C] rounded-full text-white"
-              >
-                Live site
-              </Button>
-              <Button
-                variant="bordered"
-                className="border border-[#1ABC9C] hover:bg-[#1ABC9C] rounded-full text-white"
-              >
-                Client site github
-              </Button>
+              <Link href={card.liveLink} target="_blank">
+                <Button
+                  variant="bordered"
+                  className="border border-[#1ABC9C] hover:bg-[#1ABC9C] rounded-full text-white"
+                >
+                  Live site
+                </Button>
+              </Link>
+              <Link href={card.gitRepoLink} target="_black">
+                <Button
+                  variant="bordered"
+                  className="border border-[#1ABC9C] hover:bg-[#1ABC9C] rounded-full text-white"
+                >
+                  Client site github
+                </Button>
+              </Link>
             </div>
             <Link href={card._id}>
               <Button
