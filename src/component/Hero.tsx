@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Container from "./ui/Container";
-import about from "@/assets/about.png";
+import about from "@/assets/about2.png";
 import { Button } from "@nextui-org/react";
 import {
   ArrowDownToLine,
