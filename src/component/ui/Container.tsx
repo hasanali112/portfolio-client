@@ -6,7 +6,7 @@ type TChildrenprops = {
 
 const Container = ({ children }: TChildrenprops) => {
   return (
-    <div className="w-full max-w-[1200px] px-[25px] mx-auto">{children}</div>
+    <div className="w-full max-w-[1400px] px-[20px] mx-auto">{children}</div>
   );
 };
 

@@ -8,7 +8,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="overflow-x-hidden bg-black">
+    <div className=" bg-black">
       <Hero />
       <Skill />
       <Project />
