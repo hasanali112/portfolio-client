@@ -47,37 +47,37 @@ const Navbar = () => {
               <div className="flex  justify-around items-center lg:space-x-4">
                 <Link
                   href="#"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-2xl hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Home
                 </Link>
                 <Link
                   href="#about"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-2xl hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   About
                 </Link>
                 <Link
                   href="#skills"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-2xl hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Skills
                 </Link>
                 <Link
                   href="#projects"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-2xl hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Projects
                 </Link>
                 <Link
                   href="#blog"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-2xl hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Blog
                 </Link>
                 <Link
                   href="#contact"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-2xl hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Contact
                 </Link>
