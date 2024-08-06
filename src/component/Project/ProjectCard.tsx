@@ -1,4 +1,5 @@
 import { Button } from "@nextui-org/react";
+import { ArrowRight, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,73 +15,45 @@ type TProps = {
 
 const ProjectCard = ({ card }: { card: TProps }) => {
   return (
-    <div className="bg-gradient-to-r from-[#2a1650] to-[#6237b7] rounded-md border border-zinc-400 text-zinc-400  p-3 m-2  shadow-md  transition-transform    hover:-translate-y-2 duration-700">
-      <div className="lg:flex gap-5">
-        <Image
-          src={card.image}
-          alt="cardImage"
-          height={400}
-          width={400}
-          className="lg:w-[1000px]  rounded-lg"
-        />
-        <div className="mt-10 lg:mt-0">
-          <div>
-            <h1 className="text-2xl font-bold mb-2  ml-3 text-white">
-              {card.title}
-            </h1>
-            <p className="text-zinc-400 mt-3 ml-3 lg:min-w-[31ch]">
-              The project aims to develop a comprehensive Disaster Relief
-              Donation Platform that connects donors with disaster-stricken
-              communities in need.........
+    <div className="bg-[#1c222a] rounded-lg  w-[440px] h-[500px] p-4">
+      <div>
+        <div>
+          <Image
+            src={card.image}
+            alt="Project Image"
+            width={400}
+            height={200}
+            className="w-full h-[250px] rounded-lg"
+          />
+        </div>
+        <div className="mt-4 flex gap-4 items-center">
+          <h1 className="text-[#f3b90b] text-2xl font-semibold">
+            {card.title}
+          </h1>
+          <Link href={card.gitRepoLink} target="_blank">
+            <div className="border border-[#f8b90c] rounded-full w-[40px] h-[40px] inline-flex justify-center items-center hover:bg-[#f8b90c] hover:text-white">
+              <Github className="text-white" />
+            </div>
+          </Link>
+          <Link href={card.liveLink} target="_blank">
+            <Button
+              variant="bordered"
+              className="rounded-full border-[#f8b90c] text-white"
+            >
+              Live site
+            </Button>
+          </Link>
+        </div>
+        <div className="mt-3">
+          <p className="text-white">{card.description.slice(0, 150)}...</p>
+          <Link href={`/${card._id}`}>
+            <p className="inline-flex gap-3 items-center text-white mt-4 hover:text-[#f3b90b]">
+              See project{" "}
+              <span className="text-[#f3b90b]">
+                <ArrowRight />
+              </span>
             </p>
-            <p className="text-white text-xl mt-3 ml-3 ">Features</p>
-            <ul className="text-zinc-400 mt-3 ml-3 ">
-              <li>1. Use CRUD for donation management</li>
-              <li>2. Different role base authentication and dashboard</li>
-              <li>3. Enhanced User Experience</li>
-              <li></li>
-            </ul>
-            <div>
-              <p className="text-white text-xl mt-3 ml-3 ">Techonolgies:</p>
-              <div className="flex gap-3 ml-3">
-                {card.useTechnology
-                  ?.slice(0, 3)
-                  .map((item: string, index: number) => (
-                    <div key={index}>
-                      <h1 className="font-semibold">{item}</h1>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div>
-          <div className="lg:flex items-center justify-between ml-3 mt-4">
-            <div className="flex gap-3">
-              <Link href={card.liveLink} target="_blank">
-                <Button
-                  variant="bordered"
-                  className="border border-[#1ABC9C] hover:bg-[#1ABC9C] rounded-full text-white"
-                >
-                  Live site
-                </Button>
-              </Link>
-              <Link href={card.gitRepoLink} target="_black">
-                <Button
-                  variant="bordered"
-                  className="border border-[#1ABC9C] hover:bg-[#1ABC9C] rounded-full text-white"
-                >
-                  Client site github
-                </Button>
-              </Link>
-            </div>
-            <Link href={card._id}>
-              <Button
-                variant="bordered"
-                className="border border-[#1ABC9C] w-full hover:bg-[#1ABC9C] rounded-full text-white mt-3"
-              >
-                More detail
-              </Button>
-            </Link>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

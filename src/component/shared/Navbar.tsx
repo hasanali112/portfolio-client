@@ -19,7 +19,7 @@ const parent = {
 
 const Navbar = () => {
   return (
-    <header className="bg-[#111122] text-white fixed z-50 w-full p-6">
+    <header className="bg-[#111122] text-white  w-full p-6 shadow-sm">
       <motion.nav
         initial="hidden"
         animate="visible"

@@ -2,6 +2,7 @@
 "use client";
 
 import { Progress } from "@nextui-org/react";
+import { useScroll, motion, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
@@ -16,12 +17,19 @@ export type TSkills = {
 const tabs = ["Front End", "Back End", "Tools"];
 
 const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
-  const [selected, setSeleted] = useState(tabs[0]);
+  const [selected, setSelected] = useState(tabs[0]);
   const [contain, setContain] = useState(false);
   const refContainer = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: refContainer,
+    offset: ["0 1", "0.5 1"],
+  });
+
+  const xValue = useTransform(scrollYProgress, [0, 1], [-1000, 0]);
+  const opacityValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const allSkill = skillData.filter(
-    (skill: TSkills) => skill.category == selected
+    (skill: TSkills) => skill.category === selected
   );
 
   useEffect(() => {
@@ -48,11 +56,26 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
   }, []);
 
   return (
-    <div ref={refContainer}>
-      <div className="text-white flex  justify-center items-center gap-10">
+    <motion.div
+      ref={refContainer}
+      style={{ x: xValue, opacity: opacityValue, transition: "0.8s ease" }}
+    >
+      <div className="text-white flex justify-center items-center gap-7">
         {tabs.map((tab, indx) => (
           <div key={indx}>
-            <button onClick={() => setSeleted(tab)}>{tab}</button>
+            <button
+              onClick={() => setSelected(tab)}
+              className="relative flex items-center justify-center w-[120px] h-[35px] transition-colors"
+            >
+              <span className="text white z-50">{tab}</span>
+              {selected === tab && (
+                <motion.span
+                  layoutId="pill-tab"
+                  transition={{ type: "spring", stiffness: 100, duration: 0.6 }}
+                  className="absolute top-0 left-0 border border-[#f8b90d] rounded-full w-full h-full"
+                ></motion.span>
+              )}
+            </button>
           </div>
         ))}
       </div>
@@ -78,7 +101,7 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

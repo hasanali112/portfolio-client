@@ -9,7 +9,7 @@ import { Sora } from "next/font/google";
 const inter = Sora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Hasan Portfolio",
+  title: "Hasan Ali - Portfolio Website",
   description: "Modern MERN Mastery Portfolio",
 };
 

@@ -44,7 +44,7 @@ const mainParent = {
 const Hero = () => {
   return (
     <div>
-      <div className="bg-[#111122] hidden lg:block pb-16 pt-28">
+      <div className="bg-[#111122] hidden lg:block pb-16 pt-10">
         <Container>
           <motion.div
             initial="hidden"

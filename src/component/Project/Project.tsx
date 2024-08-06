@@ -9,8 +9,8 @@ const Project = async () => {
     console.log(error.message);
   }
   return (
-    <div id="projects" className="bg-[#0f0715] pt-20 lg:pt-20 pb-20">
-      <div className="w-full max-w-[1220px] mx-auto">
+    <div id="projects" className="bg-[#111122] pt-20 lg:pt-20 pb-20">
+      <div className="w-full max-w-[1400px] px-[20px] mx-auto">
         <div>
           <ProjectTabs projectGet={projectGet?.data} />
         </div>
