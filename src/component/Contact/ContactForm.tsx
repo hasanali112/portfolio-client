@@ -8,6 +8,7 @@ type Inputs = {
   lastName: string;
   email: string;
   phone: string;
+  subject: string;
   message: string;
 };
 
@@ -24,14 +25,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className=" mx-auto p-8  bg-gradient-to-r from-[#2a1650] to-[#522ba0]  border border-zinc-400 rounded-lg h-[790px] lg:h-[750px] w-full text-white">
-      <h1 className="text-5xl font-bold text-purple-500 mb-2 tracking-wider">
-        Let&apos;s work <span className="text-[#d9c7fc]">together!</span>
-      </h1>
-      <p className="mb-6 mt-4 tracking-wider">
-        I design and code beautifully simple things and I love what I do. Just
-        simple like that!
-      </p>
+    <div className=" rounded-lg  w-[900px] h-[550px]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-6 ">
           <div className="flex space-x-4">
@@ -39,13 +33,13 @@ const ContactForm = () => {
               type="text"
               {...register("firstName")}
               placeholder="First name"
-              className="w-full h-12 p-2 bg-[#050709] border border-[#6c6a6d] rounded-md focus:outline-none"
+              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
             />
             <input
               type="text"
               {...register("lastName")}
               placeholder="Last name"
-              className="w-full h-12 p-2 bg-[#050709] border border-[#6c6a6d] rounded-md focus:outline-none"
+              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
             />
           </div>
           <div className="flex space-x-4">
@@ -53,38 +47,37 @@ const ContactForm = () => {
               type="email"
               {...register("email")}
               placeholder="Email address"
-              className="w-full h-12 p-2 bg-[#050709] border border-[#6c6a6d] rounded-md focus:outline-none"
+              className="w-full h-12 p-2 bg-[#1c222a]  border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
             />
             <input
               type="text"
               {...register("phone")}
               placeholder="Phone number"
-              className="w-full h-12 p-2 bg-[#050709] border border-[#6c6a6d] rounded-md focus:outline-none"
+              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
             />
           </div>
           <div>
-            <select className="w-full h-12 p-2 bg-[#050709] border border-[#6c6a6d] rounded-md focus:outline-none">
-              <option>Choose Service</option>
-              <option>Web Development</option>
-              <option>UI/UX Design</option>
-              <option>SEO Optimization</option>
-            </select>
+            <input
+              type="text"
+              {...register("subject")}
+              placeholder="Subject"
+              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
+            />
           </div>
           <div>
             <textarea
               {...register("message")}
               placeholder="Message"
-              rows={9}
-              className="w-full  p-2 bg-[#050709] border border-[#6c6a6d] rounded-md focus:outline-none"
+              rows={8}
+              className="w-full  p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
             ></textarea>
           </div>
         </div>
         <Button
           type="submit"
-          variant="bordered"
-          className="border border-[#1ABC9C] hover:bg-[#1ABC9C] rounded-full text-white w-full"
+          className="bg-[#f8b90c] rounded-full text-white w-[50%] mx-[25%] text-xl mt-4"
         >
-          Submit
+          Send Message
         </Button>
       </form>
     </div>

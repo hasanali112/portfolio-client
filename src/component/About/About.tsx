@@ -1,60 +1,72 @@
 import Image from "next/image";
 import React from "react";
-import about from "@/assets/about6.jpg";
+import about from "@/assets/myhero.png";
 
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Book, BookOpen } from "lucide-react";
 
 const About = () => {
   return (
     <div
       id="about"
-      className="bg-[#0f0715] pt-20 lg:pt-28 pb-20 transition-transform duration-700 ease-in-out"
+      className="bg-[#111122] pt-20 lg:pt-20 pb-20 transition-transform duration-700 ease-in-out"
     >
-      <div className="grid  grid-cols-12 gap-10 w-full max-w-[1200px] mx-auto lg:px-0 px-5">
-        <div className="lg:col-span-5 col-span-12  lg:h-[550px] lg:w-full w-[80%] ">
-          <div className="relative group ">
+      <h1 className="text-5xl font-bold text-center text-white">About Me</h1>
+      <div className="w-full max-w-[1400px] px-[20px] mx-auto">
+        <div className="flex justify-between items-center gap-10 mt-16">
+          <div className="flex flex-col items-center gap-2">
             <Image
               src={about}
               alt="about"
-              width={400}
+              width={300}
               height={400}
-              className="lg:w-full w-[90%] lg:h-[550px] h-[80%] rounded-xl mx-auto  border-2 border-purple-600"
+              className="h-[230px] w-[230px] rounded-full"
             />
-            <div className="lg:w-full w-[90%] lg:h-[550px] h-[80%] rounded-xl mx-auto  bg-black absolute top-0  opacity-30"></div>
+            <h1 className="text-white mt-3 text-2xl">MD Hasan Ali Khan</h1>
+            <p className="text-white">Web Developer (MERN)</p>
+            <div className="bg-[#1c222a] rounded-lg  w-[640px] h-[190px] mt-3">
+              <h1 className="text-3xl text-[#f3b90b] mt-4 ml-5">Education</h1>
+              <BookOpen className="w-9 h-9 text-[#f3b90b] mt-3 ml-5" />
+              <p className="text-white mt-3 ml-5">2019 - 2024</p>
+              <p className="text-white mt-3 ml-5">
+                B. Sc. In Botany, Rajshahi University
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="lg:col-span-7 col-span-12 lg:h-[550px] lg:w-full w-[80%] ">
-          <h1 className="text-2xl text-purple-500">About me</h1>
-          <h1 className="lg:text-5xl text-3xl mt-3 text-purple-500 font-semibold">
-            Hey, I am <span className="text-[#d9c7fc]">Hasan.</span>{" "}
-          </h1>
-          <p className="mt-4 lg:text-[20px] lg:w-full w-[95%] text-[#D6D6D6]">
-            I am graduate of University of Rajshahi. My expertise spans across
-            the entire stack, ensuring that every component of your web
-            application is meticulously crafted and optimized for performance.In
-            addition, I have extensive experience with MongoDB, a NoSQL
-            database, which I use to design flexible and scalable data models.
-          </p>
-          <p className="mt-4 lg:text-[20px] pb-4 lg:w-full w-[95%] text-[#D6D6D6]">
-            By integrating modern technologies and frameworks, I create
-            applications that are not only functional but also visually
-            appealing and user-friendly. I am passionate about staying
-            up-to-date with the latest industry trends and continuously
-            improving my skill set to deliver cutting-edge solutions.
-          </p>
-          <Link href="#contact">
+          <div>
+            <p className="text-white">
+              I’m a MERN Stack developer who is passionate about creating
+              error-free, user-friendly and creative web solutions. I am deeply
+              passionate about continuous learning and openly sharing my
+              knowledge with others. I thrive on solving real-world problems and
+              always approach my work with a strategic, goal-oriented mindset,
+              keeping the end objective in clear focus. My ultimate goal is to
+              excel as a full-stack web developer, seamlessly managing both
+              back-end and front-end development to deliver outstanding user
+              experiences.
+            </p>
+            <p className="text-white mt-7">
+              Over the past years, I have honed my expertise across various web
+              development technologies, including React.js for crafting dynamic
+              and high-performing user interfaces, and Next.js for enhancing
+              performance and SEO through server-side rendering. My proficiency
+              with Redux and RTK Query enables me to manage intricate state in
+              large-scale applications, ensuring a seamless user experience.
+              With TypeScript, I write reliable, type-safe code that enhances
+              maintainability and reduces errors. I develop robust back-end
+              services and APIs using Express, ensuring scalable server-side
+              logic. Using those techonology, I created 30+ project. I take
+              great pride in delivering quality work and maintaining excellent
+              communication.
+            </p>
             <Button
               variant="bordered"
-              className="rounded-full lg:w-[35%] w-[90%] h-[60px] border border-purple-700 text-purple-700 hover:bg-purple-500 hover:text-white"
+              className="rounded-full w-[230px] h-[60px] shadow-md border border-[#f8b90c] text-white text-lg font-semibold  inline-flex items-center px-4 mt-5"
             >
               Contact Me
-              <span>
-                <ArrowRight />
-              </span>
             </Button>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

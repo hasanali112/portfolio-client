@@ -11,9 +11,9 @@ const Home = () => {
     <div className=" bg-black">
       <Hero />
       <Skill />
+      <About />
       <Project />
       <Blogs />
-      <About />
       <Contact />
     </div>
   );

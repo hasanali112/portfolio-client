@@ -46,7 +46,7 @@ const Navbar = () => {
             <div>
               <div className="flex  justify-around items-center lg:space-x-4">
                 <Link
-                  href="#"
+                  href="/"
                   className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Home
