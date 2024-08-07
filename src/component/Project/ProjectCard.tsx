@@ -1,7 +1,11 @@
+"use client";
+
 import { Button } from "@nextui-org/react";
+import { useScroll, useTransform, motion } from "framer-motion";
 import { ArrowRight, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 
 type TProps = {
   _id: string;
@@ -11,11 +15,34 @@ type TProps = {
   liveLink: string;
   gitRepoLink: string;
   useTechnology: string[];
+  position: "left" | "middle" | "right";
 };
 
 const ProjectCard = ({ card }: { card: TProps }) => {
+  const projectRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: projectRef,
+    offset: ["0 1", "0.9 1"],
+  });
+
+  const yValue = useTransform(scrollYProgress, [0, 1], [1500, 1]);
+  const xValueLeft = useTransform(scrollYProgress, [0, 1], [-500, 1]);
+  const xValueRight = useTransform(scrollYProgress, [0, 1], [1500, 1]);
+
+  const transformStyle =
+    card.position === "middle"
+      ? { y: yValue, transition: "y 0.9s ease" }
+      : {
+          x: card.position === "left" ? xValueLeft : xValueRight,
+          transition: "x 0.9s ease",
+        };
+
   return (
-    <div className="bg-[#1c222a] rounded-lg  w-[440px] h-[500px] p-4">
+    <motion.div
+      ref={projectRef}
+      style={transformStyle}
+      className="bg-[#1c222a] rounded-lg lg:w-full  xl:w-[440px] h-[500px] p-4"
+    >
       <div>
         <div>
           <Image
@@ -56,7 +83,7 @@ const ProjectCard = ({ card }: { card: TProps }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

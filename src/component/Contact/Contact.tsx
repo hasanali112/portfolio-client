@@ -26,7 +26,7 @@ const Contact = () => {
               height={400}
               className="w-[500px] rounded-md"
             />
-            <h1 className="text-white mt-4">
+            <h1 className="text-white mt-4 max-w-[40ch]">
               Are You Prepared to Boost Online Visibility for Your Company? I am
               available to assist you.
             </h1>

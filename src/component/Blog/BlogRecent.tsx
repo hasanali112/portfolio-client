@@ -1,7 +1,7 @@
 import { getBlogData } from "@/utils/getBlog";
 import BlogAsideCard, { TBlogs } from "./BlogAsideCard";
 
-const BlogSideCard = async () => {
+const BlogRecent = async () => {
   let blogData;
   try {
     blogData = await getBlogData();
@@ -9,15 +9,14 @@ const BlogSideCard = async () => {
     console.log(error);
   }
 
-  const popularBlog = blogData?.data?.filter((blog: TBlogs) => blog.popular);
-
+  const recentBlog = blogData?.data?.filter((blog: TBlogs) => blog.recent);
   return (
     <div className="flex flex-col gap-4 mt-7">
-      {popularBlog?.slice(0, 4).map((blog: TBlogs) => (
+      {recentBlog?.slice(0, 4).map((blog: TBlogs) => (
         <BlogAsideCard key={blog._id} blogs={blog} />
       ))}
     </div>
   );
 };
 
-export default BlogSideCard;
+export default BlogRecent;

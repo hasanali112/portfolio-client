@@ -25,7 +25,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className=" rounded-lg  w-[900px] h-[550px]">
+    <div className=" rounded-lg lg:w-full xl:w-[900px] h-[550px]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-6 ">
           <div className="flex space-x-4">

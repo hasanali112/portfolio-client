@@ -1,28 +1,62 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import about from "@/assets/myhero.png";
 
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
-import { ArrowRight, Book, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
+import { useScroll, motion, useTransform } from "framer-motion";
 
 const About = () => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: divRef,
+    offset: ["0 1", "0.5 1"],
+  });
+
+  const scaleValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const xSecondValue = useTransform(scrollYProgress, [0, 1], [1000, 0]);
+  const opacityValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const imageScaleValue = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
+
   return (
     <div
       id="about"
-      className="bg-[#111122] pt-20 lg:pt-20 pb-20 transition-transform duration-700 ease-in-out"
+      ref={divRef}
+      className="bg-[#111122] pt-20 lg:pt-20 pb-20 transition-transform duration-700 ease-in-out overflow-x-hidden"
     >
-      <h1 className="text-5xl font-bold text-center text-white">About Me</h1>
+      <motion.h1
+        style={{ scale: scaleValue, transition: "0.5s ease" }}
+        className="text-5xl font-bold text-center text-white"
+      >
+        About Me
+      </motion.h1>
       <div className="w-full max-w-[1400px] px-[20px] mx-auto">
-        <div className="flex justify-between items-center gap-10 mt-16">
+        <motion.div
+          style={{
+            x: xSecondValue,
+            opacity: opacityValue,
+            transition: "0.8s ease",
+          }}
+          className="flex flex-col lg:flex-row lg:justify-between items-center gap-10 mt-16"
+        >
           <div className="flex flex-col items-center gap-2">
-            <Image
-              src={about}
-              alt="about"
-              width={300}
-              height={400}
-              className="h-[230px] w-[230px] rounded-full"
-            />
+            <motion.div
+              style={{
+                scale: imageScaleValue,
+                transition: "0.8s ease 0.5s",
+              }}
+            >
+              <Image
+                src={about}
+                alt="about"
+                width={300}
+                height={400}
+                className="h-[230px] w-[230px] rounded-full"
+              />
+            </motion.div>
             <h1 className="text-white mt-3 text-2xl">MD Hasan Ali Khan</h1>
             <p className="text-white">Web Developer (MERN)</p>
             <div className="bg-[#1c222a] rounded-lg  w-[640px] h-[190px] mt-3">
@@ -60,14 +94,16 @@ const About = () => {
               great pride in delivering quality work and maintaining excellent
               communication.
             </p>
-            <Button
-              variant="bordered"
-              className="rounded-full w-[230px] h-[60px] shadow-md border border-[#f8b90c] text-white text-lg font-semibold  inline-flex items-center px-4 mt-5"
-            >
-              Contact Me
-            </Button>
+            <Link href="#contact">
+              <Button
+                variant="bordered"
+                className="rounded-full w-[230px] h-[60px] shadow-md border border-[#f8b90c] text-white text-lg font-semibold  inline-flex items-center px-4 mt-5"
+              >
+                Contact Me
+              </Button>
+            </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

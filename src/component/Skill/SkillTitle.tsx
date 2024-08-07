@@ -7,15 +7,15 @@ const SkillTitle = () => {
   const skillRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: skillRef,
-    offset: ["0 1", "1.5 1"],
+    offset: ["0 1", "0.5 1"],
   });
 
-  const xValue = useTransform(scrollYProgress, [0, 1], [500, 0]);
+  const scaleValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <motion.div
       ref={skillRef}
-      style={{ x: xValue, transition: "1s ease" }}
+      style={{ scale: scaleValue, transition: "0.8s ease" }}
       className="overflow-x-hidden"
     >
       <h1 className="text-5xl text-center font-bold text-white mb-2 tracking-wider">

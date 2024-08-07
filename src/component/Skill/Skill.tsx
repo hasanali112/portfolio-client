@@ -16,7 +16,7 @@ const Skill = async () => {
       id="skills"
       className="bg-[#111122] lg:pt-20 pt-28 pb-20 transition-transform duration-1000 ease-in-out overflow-x-hidden"
     >
-      <div className="w-full max-w-[1400px] px-[20px] mx-auto">
+      <div className="w-full lg:max-w-[1220px] xl:max-w-[1400px] px-[20px] mx-auto">
         <SkillTitle />
 
         <div className="mt-10">

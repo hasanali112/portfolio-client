@@ -17,20 +17,27 @@ export type TBlog = {
 const BlogCard = ({ blogs, className }: TBlog) => {
   return (
     <div
-      className={`bg-[#1c222a] w-[440px] h-[530px] rounded-lg p-2 relative ${className}`}
+      className={`bg-[#1c222a] lg:w-full xl:w-[440px] h-[550px] rounded-lg p-2 relative ${className}`}
     >
-      <div className="relative">
-        <Image
-          src={blogs.image}
-          alt="blogImage"
-          width={400}
-          height={400}
-          className=" w-full h-[270px] rounded-lg "
-        />
-        <div className="absolute top-0 w-full h-[270px] rounded-lg bg-black bg-opacity-45"></div>
-      </div>
+      <Link href={`/blogs/${blogs._id}`}>
+        <div className="relative">
+          <Image
+            src={blogs.image}
+            alt="blogImage"
+            width={400}
+            height={400}
+            className=" w-full h-[270px] rounded-lg "
+          />
+          <div className="absolute top-0 w-full h-[270px] rounded-lg bg-black bg-opacity-45"></div>
+        </div>
+      </Link>
+
       <div className="mt-5 ml-3">
-        <h1 className="text-xl font-semibold">{blogs.title}</h1>
+        <Link href={`/blogs/${blogs._id}`}>
+          <h1 className="text-xl font-semibold hover:text-[#f3b90b]">
+            {blogs.title}
+          </h1>
+        </Link>
         <div className="flex gap-4 mt-2">
           <h1 className="inline-flex items-center  gap-2 text-sm">
             <span className="text-[#f3b90b]">
