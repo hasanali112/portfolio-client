@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./lib/providers";
 import Navbar from "@/component/shared/Navbar";
 import Footer from "@/component/shared/Footer";
-import { Sora } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const inter = Sora({ subsets: ["latin"] });
+const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hasan Ali - Portfolio Website",
@@ -20,10 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <Providers>
           <Navbar />
           {children}
+          <SpeedInsights />
           <Footer />
         </Providers>
       </body>

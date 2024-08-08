@@ -21,7 +21,7 @@ const SkillTitle = () => {
       <h1 className="text-5xl text-center font-bold text-white mb-2 tracking-wider">
         My Skills
       </h1>
-      <p className="lg:w-[50%] w-[80%] text-[#f3b90b] mx-auto text-center mt-7 ">
+      <p className="lg:w-[50%] w-full text-[#f3b90b] mx-auto text-center mt-7 ">
         I put your ideas and thus your wishes in the form of a unique web
         project that inspire you and your customers
       </p>

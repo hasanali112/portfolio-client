@@ -60,12 +60,12 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
       ref={refContainer}
       style={{ x: xValue, opacity: opacityValue, transition: "0.8s ease" }}
     >
-      <div className="text-white flex justify-center items-center gap-7">
+      <div className="text-white flex justify-center items-center gap-3 lg:gap-7">
         {tabs.map((tab, indx) => (
           <div key={indx}>
             <button
               onClick={() => setSelected(tab)}
-              className="relative flex items-center justify-center w-[120px] h-[35px] transition-colors"
+              className="relative flex items-center justify-center w-[100px] lg:w-[120px] h-[35px] transition-colors"
             >
               <span className="text white z-50">{tab}</span>
               {selected === tab && (
@@ -79,17 +79,23 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
           </div>
         ))}
       </div>
-      <div className="grid lg:grid-cols-5 xl:grid-cols-5 xl:gap-5 lg:gap-4 text-white mt-10 px-[10px]">
+      <div className="grid grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-5 xl:gap-5 lg:gap-4  text-white mt-10 px-[10px]">
         {allSkill?.map((skill: TSkills) => (
           <div
             key={skill._id}
-            className="bg-[#1c222a] lg:w-full xl:w-[250px] h-[200px] rounded-md pt-4"
+            className="bg-[#1c222a] w-[99%] lg:w-full xl:w-[250px] h-[170px] lg:h-[200px] rounded-md pt-4"
           >
-            <div className="flex flex-col items-center justify-center gap-5">
-              <Image src={skill.image} alt="Skill" width={70} height={70} />
+            <div className="flex flex-col items-center justify-center lg:gap-5">
+              <Image
+                src={skill.image}
+                alt="Skill"
+                width={70}
+                height={70}
+                className="w-[50px] h-[50px] lg:w-[70px] lg:h-[70px]"
+              />
               <h1>{skill.title}</h1>
             </div>
-            <div className="flex items-center justify-center gap-3 mt-3">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mt-3">
               <Progress
                 color="warning"
                 aria-label={contain ? "Loaded" : "Loading..."}

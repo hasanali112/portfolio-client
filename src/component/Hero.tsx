@@ -14,7 +14,7 @@ import Link from "next/link";
 import HeroForMobile from "./Home/HeroForMobile";
 import { motion } from "framer-motion";
 
-const parent = {
+export const parent = {
   up: { y: -16 },
   down: {
     y: [16, 0, 16],
@@ -28,7 +28,7 @@ const parent = {
   },
 };
 
-const mainParent = {
+export const mainParent = {
   hidden: { opacity: 0, y: 100 },
   visible: {
     y: 0,
@@ -59,7 +59,7 @@ const Hero = () => {
                 <span className="text-[#f9c73f]"> Devel</span>
                 <span className="text-[#efd58d]">oper</span>
               </h1>
-              <p className="max-w-[37ch] tracking-wider text-lg">
+              <p className="max-w-[45ch] tracking-wider text-lg">
                 I specialize in creating dynamic web applications, with a robust
                 foundation in both front-end and back-end development
               </p>

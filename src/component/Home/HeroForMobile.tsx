@@ -1,5 +1,5 @@
 import Image from "next/image";
-import about from "@/assets/about.png";
+import about from "@/assets/myhero.png";
 import { Button } from "@nextui-org/react";
 import {
   ArrowDownToLine,
@@ -9,50 +9,55 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Container from "../ui/Container";
+import { motion } from "framer-motion";
+import { mainParent, parent } from "../Hero";
 
 const HeroForMobile = () => {
   return (
-    <div className=" bg-gradient-to-r from-[#0f0715] via-[#0f0715] to-[#291746] pb-20">
+    <div className=" bg-[#111122] pb-20">
       <Container>
-        <div className="text-white flex flex-col gap-10 items-center justify-center pt-20">
+        <motion.div
+          initial={mainParent.hidden}
+          animate={mainParent.visible}
+          variants={mainParent}
+          className="text-white flex flex-col-reverse  items-center gap-5 pt-10"
+        >
           <div>
-            <div className="">
-              <Image
-                src={about}
-                alt="about"
-                width={400}
-                height={400}
-                className="h-[300px] w-[300px] rounded-full border-4 border-purple-700"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col justify-center items-center">
             <h1 className="text-3xl font-bold mb-3">Hey, I am Hasan</h1>
-            <h1 className="text-4xl font-bold mb-6 text-center tracking-wider">
-              <span className="text-purple-700">Web</span>
-              <span className="text-[#aa82fa]"> Devel</span>
-              <span className="text-[#decffd]">oper</span>
+            <h1 className="text-4xl font-bold mb-6 tracking-wider">
+              <span className="text-[#f8b90c]">Web</span>
+              <span className="text-[#f9c73f]"> Devel</span>
+              <span className="text-[#efd58d]">oper</span>
             </h1>
-            <p className="text-center tracking-wider text-lg">
+            <p className="max-w-[45ch] tracking-wider text-lg">
               I specialize in creating dynamic web applications, with a robust
               foundation in both front-end and back-end development
             </p>
-            <div className="mt-10 flex flex-col gap-10 items-center">
-              <Button
-                variant="bordered"
-                className="rounded-full w-full h-[60px] border border-purple-700 text-purple-700 hover:bg-purple-500 hover:text-white"
-              >
-                Download Resume{" "}
-                <span>
-                  <ArrowDownToLine />
-                </span>
-              </Button>
+            <div className="mt-5 flex flex-col-reverse gap-3">
+              <div>
+                <Link
+                  href="https://drive.google.com/file/d/1dUvhsEipYWnhFykRwJ1vJaNSi2zrs8tQ/view?usp=sharing"
+                  target="_blank"
+                >
+                  <motion.button
+                    initial={parent.up}
+                    animate={parent.down}
+                    variants={parent}
+                    className="rounded-full w-[120px] h-[45px] shadow-md shadow-[#f8b90c] bg-[#f8b90c] text-white text-md font-semibold hover:bg-[#f8b90c] hover:text-white inline-flex items-center px-4"
+                  >
+                    Resume
+                    <span>
+                      <ArrowDownToLine />
+                    </span>
+                  </motion.button>
+                </Link>
+              </div>
               <div className="flex gap-5">
                 <Link
                   href="https://www.facebook.com/mdhasan.alikhan.794"
                   target="_blank"
                 >
-                  <div className="border border-purple-700 rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-purple-500 hover:text-white">
+                  <div className="border border-[#f8b90c] rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-[#f8b90c] hover:text-white">
                     <FacebookIcon />
                   </div>
                 </Link>
@@ -61,20 +66,55 @@ const HeroForMobile = () => {
                   href="https://www.linkedin.com/in/md-hasan-ali-khan/"
                   target="_blank"
                 >
-                  <div className="border border-purple-700 rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-purple-500 hover:text-white">
+                  <div className="border border-[#f8b90c] rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-[#f8b90c] hover:text-white">
                     <Linkedin />
-                  </div>
-                </Link>
-
-                <Link href="https://github.com/hasanali112" target="_blank">
-                  <div className="border border-purple-700 rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-purple-500 hover:text-white">
-                    <GithubIcon />
                   </div>
                 </Link>
               </div>
             </div>
+            <div className="mt-10">
+              <div>
+                <motion.div
+                  initial={parent.up}
+                  animate={parent.down}
+                  variants={parent}
+                  className="bg-[#111122] border border-[#f8b90c] rounded-full w-[95%] h-[80px]"
+                >
+                  <h1 className="text-center mt-2">30+</h1>
+                  <p className="text-center text-[#f8b90c]">
+                    Completed Project{" "}
+                  </p>
+                </motion.div>
+              </div>
+              <div>
+                <Link href="https://github.com/hasanali112" target="_blank">
+                  <motion.div
+                    initial="up"
+                    animate="down"
+                    variants={parent}
+                    className="bg-[#111122] border border-[#f8b90c] rounded-full w-[95%] h-[80px] mt-6"
+                  >
+                    <GithubIcon className="w-1/2 mx-auto mt-2" />
+                    <p className="text-center text-[#f8b90c]">
+                      Visit My GitHub
+                    </p>
+                  </motion.div>
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
+          <div>
+            <div>
+              <Image
+                src={about}
+                alt="about"
+                width={400}
+                height={400}
+                className="h-[330px] w-[330px] rounded-full border-2 border-purple-700"
+              />
+            </div>
+          </div>
+        </motion.div>
       </Container>
     </div>
   );
