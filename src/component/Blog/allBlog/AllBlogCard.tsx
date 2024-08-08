@@ -1,6 +1,6 @@
 "use client";
 
-import { useScroll, useTransform, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { CalendarDays, UserRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,30 +19,25 @@ export type TBlog = {
   };
 };
 
-const BlogCard = ({ blogs, className }: TBlog) => {
-  const blogCardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: blogCardRef,
-    offset: ["0 1", "0.5 1"],
-  });
+const blogCardParent = {
+  hidden: { opacity: 0, x: -1500 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      delay: 0.3,
+      type: "ease",
+    },
+  },
+};
 
-  const yValue = useTransform(scrollYProgress, [0, 1], [1500, 1]);
-  const xValueLeft = useTransform(scrollYProgress, [0, 1], [-1500, 1]);
-  const xValueRight = useTransform(scrollYProgress, [0, 1], [1500, 1]);
-  const opacityValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
+const AllBlogCard = ({ blogs, className }: TBlog) => {
   return (
     <motion.div
-      ref={blogCardRef}
-      style={
-        blogs.position === "middle"
-          ? { y: yValue, opacity: opacityValue, transition: "0.8s ease" }
-          : {
-              x: blogs.position === "left" ? xValueLeft : xValueRight,
-              opacity: opacityValue,
-              transition: "0.8s ease",
-            }
-      }
+      initial="hidden"
+      animate="visible"
+      variants={blogCardParent}
       className={`bg-[#1c222a] lg:w-[99%] xl:w-[98%] h-[545px] rounded-lg p-2 relative ${className}`}
     >
       <Link href={`/blogs/${blogs._id}`}>
@@ -87,4 +82,4 @@ const BlogCard = ({ blogs, className }: TBlog) => {
   );
 };
 
-export default BlogCard;
+export default AllBlogCard;

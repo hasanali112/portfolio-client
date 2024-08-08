@@ -44,15 +44,15 @@ const mainParent = {
 const Hero = () => {
   return (
     <div>
-      <div className="bg-[#111122] hidden lg:block pb-16 pt-10">
+      <div className="bg-[#111122] hidden lg:block pb-16 lg:pt-[80px] xl:pt-[100px]">
         <Container>
           <motion.div
             initial="hidden"
             animate="visible"
             variants={mainParent}
-            className="text-white flex justify-between gap-5 items-center  pt-20"
+            className="text-white flex justify-between  items-center"
           >
-            <div className="col-span-7">
+            <div>
               <h1 className="text-3xl font-bold mb-3">Hey, I am Hasan</h1>
               <h1 className="text-6xl font-bold mb-6 tracking-wider">
                 <span className="text-[#f8b90c]">Web</span>

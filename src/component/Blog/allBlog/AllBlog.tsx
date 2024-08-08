@@ -1,5 +1,5 @@
 import { getBlogData } from "@/utils/getBlog";
-import BlogCard from "./BlogCard";
+import AllBlogCard from "./AllBlogCard";
 
 type TBlogs = {
   _id: string;
@@ -8,6 +8,7 @@ type TBlogs = {
   recent: boolean;
   popular: boolean;
   description: string;
+  position: "left" | "middle" | "right";
 };
 
 const AllBlog = async () => {
@@ -22,7 +23,7 @@ const AllBlog = async () => {
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2  gap-7 mt-10">
         {blogData?.data?.map((blog: TBlogs) => (
-          <BlogCard key={blog._id} blogs={blog} />
+          <AllBlogCard key={blog._id} blogs={blog} />
         ))}
       </div>
     </div>

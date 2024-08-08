@@ -79,7 +79,7 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
           </div>
         ))}
       </div>
-      <div className="grid lg:grid-cols-5 xl:grid-cols-5 xl:gap-5 lg:gap-4 text-white mt-10">
+      <div className="grid lg:grid-cols-5 xl:grid-cols-5 xl:gap-5 lg:gap-4 text-white mt-10 px-[10px]">
         {allSkill?.map((skill: TSkills) => (
           <div
             key={skill._id}

@@ -2,6 +2,7 @@ import { getBlogData } from "@/utils/getBlog";
 import BlogCard from "./BlogCard";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
+import BlogTitleAnimation from "./BlogTitleAnimation";
 
 type TAllBlog = {
   _id: string;
@@ -26,16 +27,17 @@ const Blogs = async () => {
       className="bg-[#111122] pt-20 text-white lg:pt-28 pb-20 transition-transform duration-1000 ease-in-out"
     >
       <div className="w-full max-w-[1400px] px-[20px] mx-auto">
-        <h1 className="text-5xl text-center font-bold text-white mb-2 tracking-wider">
-          Recent Blogs
-        </h1>
-        <p className="lg:w-[50%] w-[90%] mx-auto text-center mt-7 text-[#f3b90b]">
-          I put your ideas and thus your wishes in the form of a unique web
-          project that inspire you and your customers
-        </p>
-        <div className="grid grid-cols-1 lg:grid-cols-3 px-10 lg:px-0 lg:gap-2 mt-10">
-          {blogData?.data?.map((blog: TAllBlog) => (
-            <BlogCard key={blog._id} blogs={blog} />
+        <BlogTitleAnimation />
+        <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-3 xl:gap-4 mt-10 overflow-hidden px-[10px]">
+          {blogData?.data?.map((blog: TAllBlog, index: number) => (
+            <BlogCard
+              key={blog._id}
+              blogs={{
+                ...blog,
+                position:
+                  index === 1 ? "middle" : index % 3 === 0 ? "left" : "right",
+              }}
+            />
           ))}
         </div>
         <div className="flex justify-center mt-9">

@@ -1,24 +1,42 @@
+"use client";
+
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 import contact from "@/assets/contact.jpg";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useScroll, motion, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Contact = () => {
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: contactRef,
+    offset: ["0 1", "0.5 1"],
+  });
+
+  const scaleValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const xLeftValue = useTransform(scrollYProgress, [0, 1], [-1500, 0]);
+  const xRightValue = useTransform(scrollYProgress, [0, 1], [1500, 0]);
+
   return (
     <div
       id="contact"
+      ref={contactRef}
       className="bg-[#111122] pt-20 pb-20 transition-transform duration-1000 ease-in-out"
     >
-      <div className="w-full max-w-[1400px] px-[20px] mx-auto ">
-        <h1 className="text-center text-5xl font-bold text-white">
-          Contact Me
-        </h1>
-        <p className="text-[#f8b90c] text-center mt-4">
-          Any need, Feel free contact me
-        </p>
+      <div className="w-full max-w-[1400px] px-[25px] mx-auto overflow-hidden">
+        <motion.div style={{ scale: scaleValue, transition: "0.5s ease" }}>
+          <h1 className="text-center text-5xl font-bold text-white">
+            Contact Me
+          </h1>
+          <p className="text-[#f8b90c] text-center mt-4">
+            Any need, Feel free contact me
+          </p>
+        </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-16 mt-16">
-          <div>
+          <motion.div style={{ x: xLeftValue, transition: "0.8s ease" }}>
             <Image
               src={contact}
               alt="contact"
@@ -51,10 +69,10 @@ const Contact = () => {
                 <p>+8801307034372 (WhatsApp)</p>
               </div>
             </div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div style={{ x: xRightValue, transition: "0.8s ease" }}>
             <ContactForm />
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

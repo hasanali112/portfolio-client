@@ -12,32 +12,32 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link href="#about" className="hover:text-purple-500">
+            <Link href="#about" className="hover:text-[#f8b90c]">
               About
             </Link>
           </li>
           <li>
-            <Link href="#skills" className="hover:text-purple-500">
+            <Link href="#skills" className="hover:text-[#f8b90c]">
               Skills
             </Link>
           </li>
           <li>
-            <Link href="#projects" className="hover:text-purple-500">
+            <Link href="#projects" className="hover:text-[#f8b90c]">
               Project
             </Link>
           </li>
           <li>
-            <Link href="#blog" className="hover:text-purple-500">
+            <Link href="#blog" className="hover:text-[#f8b90c]">
               Blogs
             </Link>
           </li>
           <li>
-            <Link href="#contact" className="hover:text-purple-500">
+            <Link href="#contact" className="hover:text-[#f8b90c]">
               Contact
             </Link>
           </li>
         </ul>
-        <p className="text-purple-500">
+        <p className="text-[#f8b90c]">
           © 2024 All rights reserved by{" "}
           <Link href="#" className="hover:underline">
             Hasan
@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="mt-4">
           <Link
             href="#top"
-            className="inline-block p-2 bg-purple-500 rounded-full hover:bg-purple-600"
+            className="inline-block p-2 bg-[#f8b90c] rounded-full hover:bg-[#f8b90c]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

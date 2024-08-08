@@ -1,5 +1,5 @@
-import AllBlog from "@/component/Blog/AllBlog";
-import BlogSideBar from "@/component/Blog/BlogSideBar";
+import AllBlog from "@/component/Blog/allBlog/AllBlog";
+import BlogSideBar from "@/component/Blog/allBlog/BlogSideBar";
 
 const Blog = () => {
   return (
@@ -9,7 +9,7 @@ const Blog = () => {
           <div className="col-span-8">
             <AllBlog />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-4 overflow-hidden">
             <BlogSideBar />
           </div>
         </div>

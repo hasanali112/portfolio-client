@@ -25,7 +25,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className=" rounded-lg lg:w-full xl:w-[900px] h-[550px]">
+    <div className=" rounded-lg lg:w-[99%] xl:w-[900px] h-[550px]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-6 ">
           <div className="flex space-x-4">
@@ -33,13 +33,13 @@ const ContactForm = () => {
               type="text"
               {...register("firstName")}
               placeholder="First name"
-              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
+              className="lg:w-[330px]  xl:w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
             />
             <input
               type="text"
               {...register("lastName")}
               placeholder="Last name"
-              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
+              className="lg:w-[330px]  xl:w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
             />
           </div>
           <div className="flex space-x-4">

@@ -19,12 +19,12 @@ const parent = {
 
 const Navbar = () => {
   return (
-    <header className="bg-[#111122] text-white  w-full p-6 shadow-sm">
+    <header className="bg-[#111122] text-white  w-full pt-6 pb-6 shadow-sm">
       <motion.nav
         initial="hidden"
         animate="visible"
         variants={parent}
-        className="w-full max-w-[1400px] mx-auto px-[20px]"
+        className="w-full max-w-[1400px] mx-auto px-[25px]"
       >
         <div>
           <div className="flex justify-between items-center">

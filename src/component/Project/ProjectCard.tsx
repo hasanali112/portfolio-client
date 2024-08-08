@@ -22,26 +22,27 @@ const ProjectCard = ({ card }: { card: TProps }) => {
   const projectRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,
-    offset: ["0 1", "0.9 1"],
+    offset: ["0 1", "0.5 1"],
   });
 
   const yValue = useTransform(scrollYProgress, [0, 1], [1500, 1]);
-  const xValueLeft = useTransform(scrollYProgress, [0, 1], [-500, 1]);
+  const xValueLeft = useTransform(scrollYProgress, [0, 1], [-1500, 1]);
   const xValueRight = useTransform(scrollYProgress, [0, 1], [1500, 1]);
-
-  const transformStyle =
-    card.position === "middle"
-      ? { y: yValue, transition: "y 0.9s ease" }
-      : {
-          x: card.position === "left" ? xValueLeft : xValueRight,
-          transition: "x 0.9s ease",
-        };
+  const opacityValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <motion.div
       ref={projectRef}
-      style={transformStyle}
-      className="bg-[#1c222a] rounded-lg lg:w-full  xl:w-[440px] h-[500px] p-4"
+      style={
+        card.position === "middle"
+          ? { y: yValue, opacity: opacityValue, transition: "0.8s ease" }
+          : {
+              x: card.position === "left" ? xValueLeft : xValueRight,
+              opacity: opacityValue,
+              transition: "0.8s ease",
+            }
+      }
+      className="bg-[#1c222a] rounded-lg lg:w-full  xl:w-[98%] h-[500px] p-4"
     >
       <div>
         <div>

@@ -18,7 +18,7 @@ const ProjectTab = ({ projectGet }: { projectGet: TProps[] }) => {
   const projectRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,
-    offset: ["0 1", "0.5 1"],
+    offset: ["0 1", "0.9 1"],
   });
 
   const scaleValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
@@ -27,7 +27,7 @@ const ProjectTab = ({ projectGet }: { projectGet: TProps[] }) => {
     <div>
       <motion.div
         ref={projectRef}
-        style={{ scale: scaleValue, transition: "0.6s ease" }}
+        style={{ scale: scaleValue, transition: "0.8s ease" }}
         className="overflow-x-hidden"
       >
         <h1 className="text-5xl text-center font-bold text-white mb-2 tracking-wider">
@@ -39,7 +39,7 @@ const ProjectTab = ({ projectGet }: { projectGet: TProps[] }) => {
           robust and user-friendly solutions.
         </p>
       </motion.div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-20 overflow-x-hidden overflow-y-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 xl:gap-4 mt-20 overflow-hidden px-[10px]">
         {projectGet?.map((card: TProps, index: number) => (
           <ProjectCard
             key={card._id}

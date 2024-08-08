@@ -40,7 +40,7 @@ const About = () => {
             opacity: opacityValue,
             transition: "0.8s ease",
           }}
-          className="flex flex-col lg:flex-row lg:justify-between items-center gap-10 mt-16"
+          className="flex flex-col lg:flex-row lg:justify-between items-center gap-10 mt-16 px-[10px]"
         >
           <div className="flex flex-col items-center gap-2">
             <motion.div
