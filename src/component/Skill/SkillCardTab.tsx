@@ -79,7 +79,7 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-5 xl:gap-5 lg:gap-4  text-white mt-10 px-[10px]">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-5 xl:gap-5 lg:gap-4  text-white mt-10 px-[10px]">
         {allSkill?.map((skill: TSkills) => (
           <div
             key={skill._id}
@@ -91,7 +91,7 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
                 alt="Skill"
                 width={70}
                 height={70}
-                className="w-[50px] h-[50px] lg:w-[70px] lg:h-[70px]"
+                className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] lg:w-[70px] lg:h-[70px] object-cover"
               />
               <h1>{skill.title}</h1>
             </div>

@@ -110,7 +110,7 @@ const HeroForMobile = () => {
                 alt="about"
                 width={400}
                 height={400}
-                className="h-[330px] w-[330px] rounded-full border-2 border-purple-700"
+                className="h-[250px] w-[250px] rounded-full border-2 border-purple-700"
               />
             </div>
           </div>

@@ -96,9 +96,9 @@ const NavbarForMobile = () => {
               animate={open ? "opened" : "closed"}
               variants={navParent}
               style={{ originY: "top" }}
-              className="bg-[#f8b90c] w-[300px] h-[300px] absolute top-[110%] right-[10%] rounded-lg"
+              className="bg-[#1c222a] w-[300px] h-[300px] md:w-[600px] md:h-[150px] absolute top-[110%] right-[10%] rounded-lg z-50"
             >
-              <ul className="space-y-[17px] pt-[10px]">
+              <ul className="space-y-[17px] md:flex md:space-y-0 md:justify-center pt-[10px] md:pt-7">
                 <li onClick={() => setOpen(false)}>
                   <Link
                     href="/"

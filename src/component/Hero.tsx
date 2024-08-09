@@ -44,7 +44,7 @@ export const mainParent = {
 const Hero = () => {
   return (
     <div>
-      <div className="bg-[#111122] hidden lg:block pb-16 lg:pt-[80px] xl:pt-[100px]">
+      <div className="bg-[#111122] hidden md:block lg:block xl:block pb-16 md:pt-[60px] lg:pt-[80px] xl:pt-[100px]">
         <Container>
           <motion.div
             initial="hidden"
@@ -54,7 +54,7 @@ const Hero = () => {
           >
             <div>
               <h1 className="text-3xl font-bold mb-3">Hey, I am Hasan</h1>
-              <h1 className="text-6xl font-bold mb-6 tracking-wider">
+              <h1 className="md:text-4xl lg:text-6xl font-bold mb-6 tracking-wider">
                 <span className="text-[#f8b90c]">Web</span>
                 <span className="text-[#f9c73f]"> Devel</span>
                 <span className="text-[#efd58d]">oper</span>
@@ -72,9 +72,10 @@ const Hero = () => {
                     initial="up"
                     animate="down"
                     variants={parent}
-                    className="rounded-full w-[230px] h-[60px] shadow-md shadow-[#f8b90c] bg-[#f8b90c] text-white text-lg font-semibold hover:bg-[#f8b90c] hover:text-white inline-flex items-center px-4"
+                    className="rounded-full md:w-[140px] md:h-[50px] lg:w-[230px] lg:h-[60px] shadow-md shadow-[#f8b90c] bg-[#f8b90c] text-white text-lg lg:font-semibold hover:bg-[#f8b90c] hover:text-white inline-flex items-center px-4"
                   >
-                    Download Resume
+                    <span className="md:hidden lg:block mr-1">Download </span>{" "}
+                    Resume
                     <span>
                       <ArrowDownToLine />
                     </span>
@@ -108,14 +109,14 @@ const Hero = () => {
                   alt="about"
                   width={400}
                   height={400}
-                  className="h-[430px] w-[430px] rounded-full border-2 border-purple-700"
+                  className=" lg:h-[430px] lg:w-[430px]  xl:h-[430px] xl:w-[430px] rounded-full border-2 border-purple-700"
                 />
-                <div className="absolute bottom-[28%] -left-[30%]">
+                <div className="absolute md:bottom-[5%] lg:bottom-[28%] lg:-left-[30%]">
                   <motion.div
                     initial="up"
                     animate="down"
                     variants={parent}
-                    className="bg-[#111122] border border-[#f8b90c] rounded-full w-[250px] h-[70px]"
+                    className="bg-[#111122] border border-[#f8b90c] rounded-full md:w-[200px] md:h-[70px] lg:w-[250px] lg:h-[70px]"
                   >
                     <h1 className="text-center mt-2">30+</h1>
                     <p className="text-center text-[#f8b90c]">
@@ -123,13 +124,13 @@ const Hero = () => {
                     </p>
                   </motion.div>
                 </div>
-                <div className="absolute bottom-[0%] -left-[3%]">
+                <div className="absolute md:-bottom-[20%] md:left-[20%] lg:bottom-[0%] lg:-left-[3%]">
                   <Link href="https://github.com/hasanali112" target="_blank">
                     <motion.div
                       initial="up"
                       animate="down"
                       variants={parent}
-                      className="bg-[#111122] border border-[#f8b90c] rounded-full w-[250px] h-[70px]"
+                      className="bg-[#111122] border border-[#f8b90c] rounded-full md:w-[200px] md:h-[70px] lg:w-[250px] lg:h-[70px]"
                     >
                       <GithubIcon className="w-1/2 mx-auto mt-2" />
                       <p className="text-center text-[#f8b90c]">
@@ -143,7 +144,7 @@ const Hero = () => {
           </motion.div>
         </Container>
       </div>
-      <div className="block lg:hidden">
+      <div className="block md:hidden lg:hidden xl:hidden">
         <HeroForMobile />
       </div>
     </div>

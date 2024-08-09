@@ -19,12 +19,12 @@ const parent = {
 
 const Navbar = () => {
   return (
-    <header className="bg-[#111122] text-white  w-full pt-6 pb-6 shadow-sm">
+    <header className="bg-[#111122] text-white  w-full pt-6 pb-6 shadow-sm z-50">
       <motion.nav
         initial="hidden"
         animate="visible"
         variants={parent}
-        className="w-full max-w-[1400px] mx-auto px-[25px] hidden md:block lg:block xl:block"
+        className="w-full max-w-[1400px] mx-auto px-[25px] hidden md:hidden lg:block xl:block"
       >
         <div>
           <div className="flex justify-between items-center">
@@ -92,7 +92,7 @@ const Navbar = () => {
           </div>
         </div>
       </motion.nav>
-      <div className="block md:hidden lg:hidden xl:hidden">
+      <div className="block md:block lg:hidden xl:hidden z-50">
         <NavbarForMobile />
       </div>
     </header>
