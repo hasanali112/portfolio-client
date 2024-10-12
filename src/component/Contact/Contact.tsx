@@ -23,11 +23,11 @@ const Contact = () => {
     <div
       id="contact"
       ref={contactRef}
-      className="bg-[#111122] pt-20 pb-20 transition-transform duration-1000 ease-in-out"
+      className="bg-[#111122] pt-10 md:pt-20 lg:pb-20 md:pb-20 pb-10 transition-transform duration-1000 ease-in-out"
     >
       <div className="w-full max-w-[1400px] px-[25px] mx-auto overflow-hidden">
         <motion.div style={{ scale: scaleValue, transition: "0.5s ease" }}>
-          <h1 className="text-center text-5xl font-bold text-white">
+          <h1 className="text-center text-4xl md:text-5xl lg:text-5xl font-bold text-white">
             Contact Me
           </h1>
           <p className="text-[#f8b90c] text-center mt-4">
@@ -42,7 +42,7 @@ const Contact = () => {
               alt="contact"
               width={400}
               height={400}
-              className="w-[500px] rounded-md"
+              className="w-[500px] md:w-full rounded-md"
             />
             <h1 className="text-white mt-4 max-w-[40ch]">
               Are You Prepared to Boost Online Visibility for Your Company? I am

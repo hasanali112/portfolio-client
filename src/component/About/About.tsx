@@ -72,7 +72,7 @@ const About = () => {
               </motion.div>
               <h1 className="text-white mt-3 text-2xl">MD Hasan Ali Khan</h1>
               <p className="text-white">Web Developer (MERN)</p>
-              <div className="bg-[#1c222a] rounded-lg w-[120%] md:w-[690px]  lg:w-[640px] h-[190px] mt-3">
+              <div className="bg-[#1c222a] rounded-lg w-[120%] md:w-[750px]  lg:w-[640px] h-[190px] mt-3">
                 <h1 className="text-3xl text-[#f3b90b] mt-4 ml-5">Education</h1>
                 <BookOpen className="w-9 h-9 text-[#f3b90b] mt-3 ml-5" />
                 <p className="text-white mt-3 ml-5">2019 - 2024</p>

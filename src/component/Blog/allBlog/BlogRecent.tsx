@@ -10,6 +10,7 @@ const BlogRecent = async () => {
   }
 
   const recentBlog = blogData?.data?.filter((blog: TBlogs) => blog.recent);
+
   return (
     <div className="flex flex-col gap-4 mt-7">
       {recentBlog?.slice(0, 4).map((blog: TBlogs) => (

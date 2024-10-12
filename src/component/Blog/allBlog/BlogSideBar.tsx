@@ -33,7 +33,7 @@ const BlogSideBar = () => {
           <BlogSideCard />
         </div>
       </div>
-      <div className="bg-[#1c222a] rounded-lg h-[70px] mt-72 pt-5">
+      <div className="bg-[#1c222a] rounded-lg h-[70px] mt-72 md:mt-[450px]  lg:mt-72 pt-5">
         <h1 className="text-center text-[#f3b90b] text-2xl font-bold">
           Latest
         </h1>

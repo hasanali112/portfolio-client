@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import HeroForMobile from "./Home/HeroForMobile";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export const parent = {
   up: { y: -16 },
@@ -42,6 +43,16 @@ export const mainParent = {
 };
 
 const Hero = () => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const handleToggle = setInterval(() => {
+      setShow((prev) => !prev);
+    }, 5000);
+
+    return () => clearInterval(handleToggle);
+  }, []);
+
   return (
     <div>
       <div className="bg-[#111122] hidden md:block lg:block xl:block pb-16 md:pt-[60px] lg:pt-[80px] xl:pt-[100px]">
@@ -54,11 +65,27 @@ const Hero = () => {
           >
             <div>
               <h1 className="text-3xl font-bold mb-3">Hey, I am Hasan</h1>
-              <h1 className="md:text-4xl lg:text-6xl font-bold mb-6 tracking-wider">
-                <span className="text-[#f8b90c]">Web</span>
-                <span className="text-[#f9c73f]"> Devel</span>
-                <span className="text-[#efd58d]">oper</span>
-              </h1>
+              <motion.h1
+                key={show ? "Frontend Developer" : "MERN Stack Developer"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 10, repeat: Infinity, repeatDelay: 10 }}
+                className="md:text-4xl lg:text-5xl font-bold mb-6 tracking-wider"
+              >
+                {show ? (
+                  <>
+                    <span className="text-[#f8b90c]">Front</span>
+                    <span className="text-[#f9c73f]"> End</span>
+                    <span className="text-[#efd58d]"> Developer</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-[#f8b90c]">MERN</span>
+                    <span className="text-[#f9c73f]"> Stack</span>
+                    <span className="text-[#efd58d]"> Developer</span>
+                  </>
+                )}
+              </motion.h1>
               <p className="max-w-[45ch] tracking-wider text-lg">
                 I specialize in creating dynamic web applications, with a robust
                 foundation in both front-end and back-end development

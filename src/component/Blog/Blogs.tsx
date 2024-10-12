@@ -24,11 +24,11 @@ const Blogs = async () => {
   return (
     <div
       id="blog"
-      className="bg-[#111122] pt-20 text-white lg:pt-28 pb-20 transition-transform duration-1000 ease-in-out"
+      className="bg-[#111122] pt-10 text-white lg:pt-28 pb-20 transition-transform duration-1000 ease-in-out"
     >
       <div className="w-full max-w-[1400px] px-[20px] mx-auto">
         <BlogTitleAnimation />
-        <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-3 xl:gap-4 mt-10 overflow-hidden px-[10px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-3 xl:gap-4 mt-10 overflow-hidden px-[10px]">
           {blogData?.data?.map((blog: TAllBlog, index: number) => (
             <BlogCard
               key={blog._id}

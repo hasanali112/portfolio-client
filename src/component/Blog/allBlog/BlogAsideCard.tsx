@@ -13,16 +13,16 @@ export type TBlogs = {
 const BlogAsideCard = ({ blogs }: { blogs: TBlogs }) => {
   return (
     <div className="bg-[#1c222a] rounded-lg p-2 grid grid-cols-12 gap-3">
-      <div className="col-span-3">
+      <div className="col-span-3 lg:col-span-3 md:col-span-12">
         <Image
           src={blogs.image}
           alt="card image"
           width={100}
           height={100}
-          className="w-[100px] h-[100px] rounded-lg"
+          className="w-full lg:w-[100px] h-[100px] rounded-lg"
         />
       </div>
-      <div className="col-span-9">
+      <div className="col-span-9 lg:col-span-9 md:col-span-12">
         <h1>{blogs.title}</h1>
         <div className="flex gap-4 mt-2">
           <h1 className="inline-flex items-center  gap-2 text-sm">

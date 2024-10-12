@@ -42,7 +42,7 @@ const ProjectCard = ({ card }: { card: TProps }) => {
               transition: "0.8s ease",
             }
       }
-      className="bg-[#1c222a] rounded-lg lg:w-full  xl:w-[98%] h-[500px] p-4"
+      className="bg-[#1c222a] rounded-lg lg:w-full  xl:w-[98%] md:h-[570px] lg:h-[500px] p-4"
     >
       <div>
         <div>
@@ -54,23 +54,25 @@ const ProjectCard = ({ card }: { card: TProps }) => {
             className="w-full h-[250px] rounded-lg"
           />
         </div>
-        <div className="mt-4 flex gap-4 items-center">
+        <div className="mt-4 flex flex-col md:flex-col lg:flex-row gap-4 lg:items-center">
           <h1 className="text-[#f3b90b] text-2xl font-semibold">
             {card.title}
           </h1>
-          <Link href={card.gitRepoLink} target="_blank">
-            <div className="border border-[#f8b90c] rounded-full w-[40px] h-[40px] inline-flex justify-center items-center hover:bg-[#f8b90c] hover:text-white">
-              <Github className="text-white" />
-            </div>
-          </Link>
-          <Link href={card.liveLink} target="_blank">
-            <Button
-              variant="bordered"
-              className="rounded-full border-[#f8b90c] text-white"
-            >
-              Live site
-            </Button>
-          </Link>
+          <div className="flex gap-4">
+            <Link href={card.gitRepoLink} target="_blank">
+              <div className="border border-[#f8b90c] rounded-full w-[40px] h-[40px] inline-flex justify-center items-center hover:bg-[#f8b90c] hover:text-white">
+                <Github className="text-white" />
+              </div>
+            </Link>
+            <Link href={card.liveLink} target="_blank">
+              <Button
+                variant="bordered"
+                className="rounded-full border-[#f8b90c] text-white"
+              >
+                Live site
+              </Button>
+            </Link>
+          </div>
         </div>
         <div className="mt-3">
           <p className="text-white">{card.description.slice(0, 150)}...</p>
