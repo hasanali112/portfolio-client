@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/H.png";
+import logo from "@/assets/hasan.png";
 import { Button } from "@nextui-org/react";
 import NavbarForMobile from "./NavbarForMobile";
 import { motion } from "framer-motion";
@@ -19,7 +19,7 @@ const parent = {
 
 const Navbar = () => {
   return (
-    <header className="bg-[#111122] text-white  w-full pt-6 pb-6 shadow-sm z-50">
+    <header className="bg-[#0f0715]  text-white  w-full pt-6 pb-6 shadow-sm z-50">
       <motion.nav
         initial="hidden"
         animate="visible"
@@ -33,13 +33,13 @@ const Navbar = () => {
                 <Image
                   src={logo}
                   alt="logo"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
+                  width={140}
+                  height={140}
+                  className="w-[50px] h-[50px] rounded-full"
                 />
                 <h1 className="text-3xl">
                   HasanAli
-                  <span className="text-[#f8b90c]  font-extrabold">.</span>
+                  <span className="text-[#017cc2]  font-extrabold">.</span>
                 </h1>
               </div>
             </Link>
@@ -47,43 +47,43 @@ const Navbar = () => {
               <div className="flex  justify-around items-center lg:space-x-4">
                 <Link
                   href="/"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Home
                 </Link>
                 <Link
                   href="#about"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   About
                 </Link>
                 <Link
                   href="#skills"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Skills
                 </Link>
                 <Link
                   href="#projects"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Projects
                 </Link>
                 <Link
                   href="#blog"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Blog
                 </Link>
                 <Link
                   href="#contact"
-                  className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
                 >
                   Contact
                 </Link>
                 <Button
                   variant="solid"
-                  className="bg-[#f8b90c] shadow-md shadow-[#f8b90c] text-white w-[110px] h-[45px] rounded-full hover:bg-[#f8b90c] duration-700 hover:-translate-y-1"
+                  className="bg-[#017cc2] shadow-md  text-white w-[80px] h-[40px] rounded-lg hover:bg-[#f8b90c] duration-700 hover:-translate-y-1"
                 >
                   Hire me!
                 </Button>
