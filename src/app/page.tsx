@@ -4,7 +4,6 @@ import Contact from "@/component/Contact/Contact";
 import Hero from "@/component/Hero";
 import Project from "@/component/Project/Project";
 import Skill from "@/component/Skill/Skill";
-import React from "react";
 
 const Home = () => {
   return (

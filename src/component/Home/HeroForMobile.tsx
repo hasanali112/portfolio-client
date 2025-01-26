@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import about from "@/assets/myhero.png";
 import { Button } from "@nextui-org/react";
@@ -10,8 +11,7 @@ import {
 import Link from "next/link";
 import Container from "../ui/Container";
 import { motion } from "framer-motion";
-import { mainParent, parent } from "../Hero";
-
+import { mainParent, parent } from "@/animation/animation";
 const HeroForMobile = () => {
   return (
     <div className=" bg-[#111122] pb-20">
