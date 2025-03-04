@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/H.png";
+import logo from "@/assets/hasan.png";
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Menu } from "lucide-react";
@@ -77,13 +77,13 @@ const NavbarForMobile = () => {
               <Image
                 src={logo}
                 alt="logo"
-                width={40}
-                height={40}
-                className="rounded-full"
+                width={140}
+                height={140}
+                className="w-[50px] h-[50px] rounded-full"
               />
               <h1 className="text-3xl">
                 HasanAli
-                <span className="text-[#f8b90c] font-extrabold">.</span>
+                <span className="text-[#017cc2]  font-extrabold">.</span>
               </h1>
             </div>
           </Link>

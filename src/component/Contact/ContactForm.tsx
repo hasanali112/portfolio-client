@@ -75,7 +75,7 @@ const ContactForm = () => {
         </div>
         <Button
           type="submit"
-          className="bg-[#f8b90c] rounded-full text-white w-[50%] mx-[25%] text-xl mt-4"
+          className="bg-[#027bc2] rounded-full text-white w-[50%] mx-[25%] text-xl mt-4"
         >
           Send Message
         </Button>

@@ -72,9 +72,9 @@ const About = () => {
               </motion.div>
               <h1 className="text-white mt-3 text-2xl">MD Hasan Ali Khan</h1>
               <p className="text-white">Web Developer (MERN)</p>
-              <div className="bg-[#1c222a] rounded-lg w-[120%] md:w-[750px]  lg:w-[640px] h-[190px] mt-3">
-                <h1 className="text-3xl text-[#f3b90b] mt-4 ml-5">Education</h1>
-                <BookOpen className="w-9 h-9 text-[#f3b90b] mt-3 ml-5" />
+              <div className="bg-[#1f2937] rounded-lg w-[120%] md:w-[750px]  lg:w-[640px] h-[190px] mt-3">
+                <h1 className="text-3xl text-[#89c9f4] mt-4 ml-5">Education</h1>
+                <BookOpen className="w-9 h-9 text-[#89c9f4] mt-3 ml-5" />
                 <p className="text-white mt-3 ml-5">2019 - 2024</p>
                 <p className="text-white mt-3 ml-5">
                   B. Sc. In Botany, Rajshahi University
@@ -110,7 +110,7 @@ const About = () => {
               <Link href="#contact">
                 <Button
                   variant="bordered"
-                  className="rounded-full w-[230px] h-[60px] shadow-md border border-[#f8b90c] text-white text-lg font-semibold  inline-flex items-center px-4 mt-5"
+                  className="rounded-full w-[230px] h-[60px] shadow-md border border-[#89c9f4] text-white text-lg font-semibold  inline-flex items-center px-4 mt-5"
                 >
                   Contact Me
                 </Button>

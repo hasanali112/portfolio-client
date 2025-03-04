@@ -20,7 +20,7 @@ const BlogTitleAnimation = () => {
       <h1 className=" text-4xl md:text-5xl lg:text-5xl text-center font-bold text-white mb-2 tracking-wider">
         Recent Blogs
       </h1>
-      <p className="lg:w-[50%] w-[95%] mx-auto text-center mt-7 text-[#f3b90b]">
+      <p className="lg:w-[50%] w-[95%] mx-auto text-center mt-7 text-[#89c9f4]">
         I put your ideas and thus your wishes in the form of a unique web
         project that inspire you and your customers
       </p>

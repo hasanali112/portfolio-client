@@ -42,7 +42,7 @@ const Blogs = async () => {
         </div>
         <div className="flex justify-center mt-9">
           <Link href="/blogs">
-            <Button className="bg-[#f3b90b] rounded-full text-white">
+            <Button className="bg-[#2871a1] rounded-full text-white">
               See More
             </Button>
           </Link>

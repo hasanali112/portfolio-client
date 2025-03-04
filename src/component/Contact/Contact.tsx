@@ -23,14 +23,14 @@ const Contact = () => {
     <div
       id="contact"
       ref={contactRef}
-      className="bg-[#111122] pt-10 md:pt-20 lg:pb-20 md:pb-20 pb-10 transition-transform duration-1000 ease-in-out"
+      className="bg-[#0f0715] pt-10 md:pt-20 lg:pb-20 md:pb-20 pb-10 transition-transform duration-1000 ease-in-out"
     >
       <div className="w-full max-w-[1400px] px-[25px] mx-auto overflow-hidden">
         <motion.div style={{ scale: scaleValue, transition: "0.5s ease" }}>
           <h1 className="text-center text-4xl md:text-5xl lg:text-5xl font-bold text-white">
             Contact Me
           </h1>
-          <p className="text-[#f8b90c] text-center mt-4">
+          <p className="text-[#89c9f4] text-center mt-4">
             Any need, Feel free contact me
           </p>
         </motion.div>
@@ -49,21 +49,21 @@ const Contact = () => {
               available to assist you.
             </h1>
             <div className="flex mt-4 gap-4">
-              <MapPin className="text-[#f8b90c] w-8 h-8" />
+              <MapPin className="text-[#89c9f4] w-8 h-8" />
               <div className="text-white">
                 <h1 className="text-xl font-bold">Address</h1>
                 <p>Rajshahi, Bangladesh</p>
               </div>
             </div>
             <div className="flex mt-4 gap-4">
-              <Mail className="text-[#f8b90c] w-8 h-8" />
+              <Mail className="text-[#89c9f4] w-8 h-8" />
               <div className="text-white">
                 <h1 className="text-xl font-bold">Mail</h1>
                 <p>mdhasan.alikhan67@gmail.com</p>
               </div>
             </div>
             <div className="flex mt-4 gap-4">
-              <Phone className="text-[#f8b90c] w-8 h-8" />
+              <Phone className="text-[#89c9f4] w-8 h-8" />
               <div className="text-white">
                 <h1 className="text-xl font-bold">Phone</h1>
                 <p>+8801307034372 (WhatsApp)</p>

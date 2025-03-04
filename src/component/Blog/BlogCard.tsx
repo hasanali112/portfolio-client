@@ -60,19 +60,19 @@ const BlogCard = ({ blogs, className }: TBlog) => {
 
       <div className="mt-5 ml-3">
         <Link href={`/blogs/${blogs._id}`}>
-          <h1 className="text-xl font-semibold hover:text-[#f3b90b]">
+          <h1 className="text-xl font-semibold hover:text-[#89c9f4]">
             {blogs.title}
           </h1>
         </Link>
         <div className="flex gap-4 mt-2">
           <h1 className="inline-flex items-center  gap-2 text-sm">
-            <span className="text-[#f3b90b]">
+            <span className="text-[#89c9f4]">
               <UserRound className="w-5" />
             </span>{" "}
             Hasan Ali
           </h1>
           <h1 className="inline-flex items-center gap-2 text-sm">
-            <span className="text-[#f3b90b]">
+            <span className="text-[#89c9f4]">
               <CalendarDays className="w-5" />
             </span>{" "}
             9/11/23
@@ -80,7 +80,7 @@ const BlogCard = ({ blogs, className }: TBlog) => {
         </div>
         <p className="mt-4 ">{blogs.description.slice(0, 150)}</p>
       </div>
-      <div className="absolute top-4 left-4 bg-[#1c222a] border border-[#f3b90b] rounded-2xl p-1">
+      <div className="absolute top-4 left-4 bg-[#1c222a] border border-[#89c9f4] rounded-2xl p-1">
         <h1>{blogs.recent ? "Recent" : "Popular"}</h1>
       </div>
     </motion.div>

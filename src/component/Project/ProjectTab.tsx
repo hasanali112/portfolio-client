@@ -33,7 +33,7 @@ const ProjectTab = ({ projectGet }: { projectGet: TProps[] }) => {
         <h1 className="text-4xl md:text-5xl lg:text-5xl text-center font-bold text-white mb-2 tracking-wider">
           My Recent Work
         </h1>
-        <p className="text-center text-[#f3b90b] lg:w-[60%] lg:mx-auto mx-3 mt-6">
+        <p className="text-center text-[#89c9f4] lg:w-[60%] lg:mx-auto mx-3 mt-6">
           My recent projects involve creating dynamic web applications using
           modern frameworks. These projects showcasing my ability to deliver
           robust and user-friendly solutions.

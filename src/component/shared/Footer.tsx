@@ -12,32 +12,32 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link href="#about" className="hover:text-[#f8b90c]">
+            <Link href="#about" className="hover:text-[#89c9f4]">
               About
             </Link>
           </li>
           <li>
-            <Link href="#skills" className="hover:text-[#f8b90c]">
+            <Link href="#skills" className="hover:text-[#89c9f4]">
               Skills
             </Link>
           </li>
           <li>
-            <Link href="#projects" className="hover:text-[#f8b90c]">
+            <Link href="#projects" className="hover:text-[#89c9f4]">
               Project
             </Link>
           </li>
           <li>
-            <Link href="#blog" className="hover:text-[#f8b90c]">
+            <Link href="#blog" className="hover:text-[#89c9f4]">
               Blogs
             </Link>
           </li>
           <li>
-            <Link href="#contact" className="hover:text-[#f8b90c]">
+            <Link href="#contact" className="hover:text-[#89c9f4]">
               Contact
             </Link>
           </li>
         </ul>
-        <p className="text-[#f8b90c]">
+        <p className="text-[#89c9f4]">
           © 2024 All rights reserved by{" "}
           <Link href="#" className="hover:underline">
             Hasan
@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="mt-4">
           <Link
             href="#top"
-            className="inline-block p-2 bg-[#f8b90c] rounded-full hover:bg-[#f8b90c]"
+            className="inline-block p-2 bg-[#027bc2] rounded-full hover:bg-[#027bc2]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

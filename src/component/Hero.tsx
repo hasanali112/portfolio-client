@@ -20,10 +20,10 @@ import HeroDecorative from "./Home/Hero/HeroDecorative/HeroDecorative";
 const Hero = () => {
   return (
     <div>
-      <div className="bg-[#0f0715] hidden md:block lg:block xl:block pb-16 md:pt-[60px] lg:pt-[20px] xl:pt-[50px]">
+      <div className="bg-[#0f0715] hidden md:block lg:block xl:block pb-16 md:pt-[60px] lg:pt-[20px] xl:pt-[50px] min-h-screen">
         <Container>
           <div className="relative   flex items-center overflow-hidden">
-            <div className=" mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
+            <div className=" mx-auto px-4 grid  md:grid-cols-2 gap-8 items-center relative z-10">
               {/* Text Content */}
               <HeroMainTittle>
                 <div className="space-y-3">
@@ -31,7 +31,7 @@ const Hero = () => {
                     Hey, I&apos;m Hasan Ali
                   </h2>
                   <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#72c4f2] to-[#e7dbfd] mt-10">
-                    MERN Stack{" "}
+                    MERN Stack
                     {/* <Typewriter
                       words={["Developer"]}
                       loop={true}
@@ -91,15 +91,9 @@ const Hero = () => {
 
               {/* Image Section */}
               <HeroImage>
-                <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full animate-pulse" />
+                <div className="absolute inset-0 max-w-[400px] md:max-w-[500px] h-[400px] md:h-[500px] bg-blue-500/20 blur-3xl rounded-full animate-pulse" />
                 <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
-                  <Image
-                    src={about}
-                    alt="Hasan Ali"
-                    width={500}
-                    height={500}
-                    className="object-cover w-full h-full"
-                  />
+                  <Image src={about} alt="Hasan Ali" width={500} height={500} />
                 </div>
               </HeroImage>
             </div>

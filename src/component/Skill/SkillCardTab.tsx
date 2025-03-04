@@ -14,7 +14,7 @@ export type TSkills = {
   category: string;
 };
 
-const tabs = ["Front End", "Back End", "Tools"];
+const tabs = ["Front End", "Back End", "Database", "DevsOps", "Tools"];
 
 const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
   const [selected, setSelected] = useState(tabs[0]);
@@ -60,7 +60,7 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
       ref={refContainer}
       style={{ x: xValue, opacity: opacityValue, transition: "0.8s ease" }}
     >
-      <div className="text-white flex justify-center items-center gap-3 lg:gap-7">
+      <div className="text-white grid grid-cols-3 md:flex  md:justify-center items-center gap-3 lg:gap-7 ">
         {tabs.map((tab, indx) => (
           <div key={indx}>
             <button
@@ -72,7 +72,7 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
                 <motion.span
                   layoutId="pill-tab"
                   transition={{ type: "spring", stiffness: 100, duration: 0.6 }}
-                  className="absolute top-0 left-0 border border-[#f8b90d] rounded-full w-full h-full"
+                  className="absolute top-0 left-0 border border-[#8ac9f4] rounded-full w-full h-full"
                 ></motion.span>
               )}
             </button>
@@ -83,26 +83,17 @@ const SkillCardTab = ({ skillData }: { skillData: TSkills[] }) => {
         {allSkill?.map((skill: TSkills) => (
           <div
             key={skill._id}
-            className="bg-[#1c222a] w-[99%] lg:w-full xl:w-[250px] h-[170px] lg:h-[200px] rounded-md pt-4"
+            className="bg-[#1f2937] w-[99%] lg:w-full xl:w-[250px] h-[70px] lg:h-[70px] rounded-md pt-4"
           >
-            <div className="flex flex-col items-center justify-center lg:gap-5">
+            <div className="flex flex-row items-center justify-center gap-2 lg:gap-5">
               <Image
                 src={skill.image}
                 alt="Skill"
-                width={70}
-                height={70}
-                className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] lg:w-[70px] lg:h-[70px] object-cover"
+                width={100}
+                height={100}
+                className="w-[30px] h-[30px] md:w-[30px] md:h-[30px] lg:w-[50px] lg:h-[35px] object-contain"
               />
-              <h1>{skill.title}</h1>
-            </div>
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mt-3">
-              <Progress
-                color="warning"
-                aria-label={contain ? "Loaded" : "Loading..."}
-                value={contain ? skill.skillProficiency : 0}
-                className="w-[70%]"
-              />
-              <h1>{skill.skillProficiency}%</h1>
+              <h1 className="md:text-lg">{skill.title}</h1>
             </div>
           </div>
         ))}
