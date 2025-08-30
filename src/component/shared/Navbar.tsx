@@ -6,6 +6,7 @@ import logo from "@/assets/hasan.png";
 import { Button } from "@nextui-org/react";
 import NavbarForMobile from "./NavbarForMobile";
 import { motion } from "framer-motion";
+import ReButton from "../Button/ReButton";
 
 const parent = {
   hidden: { y: -100 },
@@ -19,7 +20,7 @@ const parent = {
 
 const Navbar = () => {
   return (
-    <header className="bg-[#0f0715]  text-white  w-full pt-6 pb-6 shadow-sm z-50">
+    <header className="bg-[#000000]  text-white  w-full pt-5 pb-5 shadow-sm z-50">
       <motion.nav
         initial="hidden"
         animate="visible"
@@ -45,48 +46,25 @@ const Navbar = () => {
             </Link>
             <div>
               <div className="flex  justify-around items-center lg:space-x-4">
-                <Link
-                  href="/"
-                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
-                >
+                <Link href="/" className="navbar-design">
                   Home
                 </Link>
-                <Link
-                  href="#about"
-                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
-                >
+                <Link href="#about" className="navbar-design">
                   About
                 </Link>
-                <Link
-                  href="#skills"
-                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
-                >
+                <Link href="#skills" className="navbar-design">
                   Skills
                 </Link>
-                <Link
-                  href="#projects"
-                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
-                >
+                <Link href="#projects" className="navbar-design">
                   Projects
                 </Link>
-                <Link
-                  href="#blog"
-                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
-                >
+                <Link href="#blog" className="navbar-design">
                   Blog
                 </Link>
-                <Link
-                  href="#contact"
-                  className="hover:bg-[#017cc2] px-3 py-2 rounded-lg hover:transition-transform duration-500 hover:ease-in-out"
-                >
+                <Link href="#contact" className="navbar-design">
                   Contact
                 </Link>
-                <Button
-                  variant="solid"
-                  className="bg-[#017cc2] shadow-md  text-white w-[80px] h-[40px] rounded-lg hover:bg-[#f8b90c] duration-700 hover:-translate-y-1"
-                >
-                  Hire me!
-                </Button>
+                <ReButton title="Hire me!" />
               </div>
             </div>
           </div>

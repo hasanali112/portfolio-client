@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar-design {
+  @apply hover:bg-gradient-to-l hover:to-[#04376b] hover:via-[#04659d] hover:from-[#0484d3] px-3 h-[35px] rounded hover:transition-transform duration-500 hover:ease-in-out flex items-center justify-center;
+}

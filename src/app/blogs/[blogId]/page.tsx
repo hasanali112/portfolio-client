@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, CalendarDays, Github, UserRound } from "lucide-react";
+import { CalendarDays, UserRound } from "lucide-react";
 import { singleBlog } from "@/utils/getBlogSingle";
 import BlogSideBar from "@/component/Blog/allBlog/BlogSideBar";
 

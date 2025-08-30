@@ -8,7 +8,7 @@ const HeroImage = ({ children }: { children: React.ReactNode }) => {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="relative flex justify-center items-center"
+      className="relative flex justify-center items-center lg:ml-28"
     >
       {children}
     </motion.div>
