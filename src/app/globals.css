@@ -5,3 +5,24 @@
 .navbar-design {
   @apply hover:bg-gradient-to-l hover:to-[#04376b] hover:via-[#04659d] hover:from-[#0484d3] px-3 h-[35px] rounded hover:transition-transform duration-500 hover:ease-in-out flex items-center justify-center;
 }
+
+/* Custom Range Slider */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.slider::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}

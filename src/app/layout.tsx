@@ -2,14 +2,18 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./lib/providers";
-import Navbar from "@/component/shared/Navbar";
-import Footer from "@/component/shared/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] });
+const poppins = Poppins({ 
+  weight: ["400", "700"], 
+  subsets: ["latin"],
+  display: 'swap',
+  fallback: ['system-ui', 'arial']
+});
 
 export const metadata: Metadata = {
-  title: "Hasan Ali | Full-Stack Developer & MERN Stack Expert",
+  metadataBase: new URL('https://mdhasanalikhan.vercel.app'),
+  title: "Hasan Ali | Real Estate Website Developer & MERN Stack Expert",
   description:
     "Professional portfolio showcasing expertise in modern web/app development, responsive UI/UX design, and scalable full-stack solutions built with React, Node.js, and MongoDB.",
   keywords: [
@@ -95,10 +99,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <Providers>
-          <Navbar />
           {children}
           <SpeedInsights />
-          <Footer />
         </Providers>
       </body>
     </html>
