@@ -1,5 +1,10 @@
 import axiosInstance from "@/app/lib/AxiosInstance";
 
+export const submitContactForm = async (contactData: any) => {
+  const { data } = await axiosInstance.post("/contact", contactData);
+  return data;
+};
+
 export const getAllContacts = async () => {
   const { data } = await axiosInstance.get("/contact");
   return data;

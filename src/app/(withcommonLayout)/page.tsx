@@ -5,17 +5,20 @@ import DeveloperSkillsCard from "@/component/Experience/DeveloperSkillCards";
 import Hero from "@/component/Hero";
 import Project from "@/component/Project/Project";
 import Skill from "@/component/Skill/Skill";
+import Testimonials from "@/component/Testimonial/Testimonial";
 
 const Home = () => {
   return (
     <div className=" bg-black">
-      <Hero />
+      {/* <Hero />
       <Skill />
       <DeveloperSkillsCard />
       <About />
       <Project />
-      <Blogs />
+      <Blogs /> */}
+      <Testimonials />
       <Contact />
+      <Blogs />
     </div>
   );
 };

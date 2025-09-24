@@ -6,9 +6,10 @@ interface ContactInfoFormProps {
   contactInfo?: IContactInfo;
   onSubmit: (data: IContactInfo) => void;
   isLoading: boolean;
+  isFetching?: boolean;
 }
 
-const ContactInfoForm: React.FC<ContactInfoFormProps> = ({ contactInfo, onSubmit, isLoading }) => {
+const ContactInfoForm: React.FC<ContactInfoFormProps> = ({ contactInfo, onSubmit, isLoading, isFetching }) => {
   const [formData, setFormData] = useState<IContactInfo>({
     email: "",
     phone: "",
@@ -16,7 +17,13 @@ const ContactInfoForm: React.FC<ContactInfoFormProps> = ({ contactInfo, onSubmit
     city: "",
     country: "",
     website: "",
-    socialLinks: {},
+    socialLinks: {
+      facebook: "",
+      twitter: "",
+      linkedin: "",
+      instagram: "",
+      github: ""
+    },
     businessHours: {
       monday: "9:00 AM - 5:00 PM",
       tuesday: "9:00 AM - 5:00 PM",
@@ -31,7 +38,16 @@ const ContactInfoForm: React.FC<ContactInfoFormProps> = ({ contactInfo, onSubmit
 
   useEffect(() => {
     if (contactInfo) {
-      setFormData(contactInfo);
+      setFormData({
+        ...contactInfo,
+        socialLinks: {
+          facebook: contactInfo.socialLinks?.facebook || "",
+          twitter: contactInfo.socialLinks?.twitter || "",
+          linkedin: contactInfo.socialLinks?.linkedin || "",
+          instagram: contactInfo.socialLinks?.instagram || "",
+          github: contactInfo.socialLinks?.github || ""
+        }
+      });
     }
   }, [contactInfo]);
 
@@ -39,6 +55,21 @@ const ContactInfoForm: React.FC<ContactInfoFormProps> = ({ contactInfo, onSubmit
     e.preventDefault();
     onSubmit(formData);
   };
+
+  if (isFetching) {
+    return (
+      <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+        <div className="animate-pulse space-y-4">
+          <div className="h-6 bg-gray-700 rounded w-1/3"></div>
+          <div className="space-y-3">
+            <div className="h-10 bg-gray-700 rounded"></div>
+            <div className="h-10 bg-gray-700 rounded"></div>
+            <div className="h-10 bg-gray-700 rounded"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
@@ -114,7 +145,7 @@ const ContactInfoForm: React.FC<ContactInfoFormProps> = ({ contactInfo, onSubmit
         <div>
           <h3 className="text-lg font-medium text-white mb-4">Social Links</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {Object.entries(formData.socialLinks).map(([platform, url]) => (
+            {Object.entries(formData.socialLinks || {}).map(([platform, url]) => (
               <div key={platform}>
                 <label className="block text-sm font-medium text-gray-300 mb-2 capitalize">{platform}</label>
                 <input

@@ -12,7 +12,7 @@ const ContactPage = () => {
   const [showContactInfo, setShowContactInfo] = useState(false);
 
   const { data: contactsData, isLoading } = useGetContacts();
-  const { data: contactInfoData } = useGetContactInfo();
+  const { data: contactInfoData, isLoading: isContactInfoLoading } = useGetContactInfo();
   const markAsReadMutation = useMarkAsRead();
   const markAsRepliedMutation = useMarkAsReplied();
   const archiveMutation = useArchiveContact();
@@ -80,6 +80,7 @@ const ContactPage = () => {
           contactInfo={contactInfo}
           onSubmit={handleContactInfoSubmit}
           isLoading={createContactInfoMutation.isPending || updateContactInfoMutation.isPending}
+          isFetching={isContactInfoLoading}
         />
       )}
 

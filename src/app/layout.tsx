@@ -1,15 +1,7 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
-const poppins = Poppins({ 
-  weight: ["400", "700"], 
-  subsets: ["latin"],
-  display: 'swap',
-  fallback: ['system-ui', 'arial']
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mdhasanalikhan.vercel.app'),
@@ -97,7 +89,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body style={{ fontFamily: 'system-ui, sans-serif' }}>
         <Providers>
           {children}
           <SpeedInsights />

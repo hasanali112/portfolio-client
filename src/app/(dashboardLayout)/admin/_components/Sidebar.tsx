@@ -2,18 +2,22 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  Code, 
-  FolderOpen, 
-  BookOpen, 
-  User, 
-  ShoppingBag, 
-  Briefcase, 
-  MessageSquare, 
-  Settings, 
-  Phone 
+import { logout } from "@/services/cookieService";
+import {
+  LayoutDashboard,
+  Code,
+  FolderOpen,
+  BookOpen,
+  User,
+  ShoppingBag,
+  Briefcase,
+  MessageSquare,
+  Settings,
+  Phone,
+  LogOut,
 } from "lucide-react";
+import Image from "next/image";
+import logo from "@/assets/hasan.png";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -31,23 +35,48 @@ const Sidebar = () => {
     { name: "Contact", href: "/admin/contact", icon: Phone },
   ];
 
+  const handleLogout = async () => {
+    await logout();
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  };
+
   return (
     <aside className="fixed left-0 top-0 z-40 w-64 h-screen bg-gray-900 border-r border-gray-800 hidden lg:block overflow-hidden">
-      <div className="h-full px-3 py-4 overflow-y-auto">
+      <div className="h-full px-3 py-4 overflow-y-auto flex flex-col">
         {/* Logo */}
-        <div className="flex items-center mb-8 px-4">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
-            <User className="w-6 h-6 text-white" />
-          </div>
-          <span className="ml-3 text-xl font-bold text-white truncate">Dashboard</span>
+        <div className="mb-5 px-4 py-2 border-b border-gray-800">
+          <Link href="/">
+            <div className="flex items-center gap-4 hover:opacity-80 transition-opacity">
+              <div className="relative">
+                <Image
+                  src={logo}
+                  alt="logo"
+                  width={140}
+                  height={140}
+                  className="w-[40px] h-[40px] rounded-full  shadow-lg"
+                />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-gray-900"></div>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-white">
+                  HasanAli
+                  <span className="text-[#017cc2] font-extrabold">.</span>
+                </h1>
+                <p className="text-xs text-gray-400 font-medium">
+                  Admin Dashboard
+                </p>
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* Navigation */}
-        <ul className="space-y-2">
+        <ul className="space-y-2 flex-1">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
-            
+
             return (
               <li key={item.name} className="relative">
                 {isActive && (
@@ -61,12 +90,18 @@ const Sidebar = () => {
                       : "text-gray-300 hover:bg-gray-800 hover:text-white"
                   }`}
                 >
-                  <Icon className={`w-5 h-5 flex-shrink-0 ${
-                    isActive ? "text-blue-400" : "text-gray-400 group-hover:text-white"
-                  }`} />
-                  <span className={`ml-3 font-medium truncate ${
-                    isActive ? "text-white font-semibold" : ""
-                  }`}>
+                  <Icon
+                    className={`w-5 h-5 flex-shrink-0 ${
+                      isActive
+                        ? "text-blue-400"
+                        : "text-gray-400 group-hover:text-white"
+                    }`}
+                  />
+                  <span
+                    className={`ml-3 font-medium truncate ${
+                      isActive ? "text-white font-semibold" : ""
+                    }`}
+                  >
                     {item.name}
                   </span>
                   {isActive && (
@@ -77,6 +112,17 @@ const Sidebar = () => {
             );
           })}
         </ul>
+
+        {/* Logout Button */}
+        <div className="mt-auto pt-2 border-t border-gray-800">
+          <button
+            onClick={handleLogout}
+            className="flex items-center p-3 mx-2 w-full rounded-lg transition-all duration-200 text-gray-300 hover:bg-red-500/20 hover:text-red-400 group"
+          >
+            <LogOut className="w-5 h-5 flex-shrink-0 text-gray-400 group-hover:text-red-400" />
+            <span className="ml-3 font-medium truncate">Logout</span>
+          </button>
+        </div>
       </div>
     </aside>
   );

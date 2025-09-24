@@ -1,85 +1,97 @@
 "use client";
-
-import { Button } from "@nextui-org/react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import Swal from "sweetalert2";
-type Inputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  subject: string;
-  message: string;
-};
+import React, { useState } from "react";
+import { submitContactForm } from "@/services/contactService";
+import { toast } from "sonner";
 
 const ContactForm = () => {
-  const { register, handleSubmit, reset } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    Swal.fire({
-      title: "Sent!",
-      text: "Message sent successfully!",
-      icon: "success",
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-    reset();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await submitContactForm(formData);
+      toast.success("Message sent successfully! I'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className=" rounded-lg lg:w-[99%] xl:w-[900px] h-[550px]">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="space-y-6 ">
-          <div className="flex space-x-4 ">
+    <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-5 md:p-8 shadow-2xl border border-slate-700">
+      <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-gray-300 mb-2 text-sm font-medium">
+              Name
+            </label>
             <input
               type="text"
-              {...register("firstName")}
-              placeholder="First name"
-              className="w-full lg:w-[330px]  xl:w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
-            />
-            <input
-              type="text"
-              {...register("lastName")}
-              placeholder="Last name"
-              className=" w-full lg:w-[330px]  xl:w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+              required
             />
           </div>
-          <div className="flex space-x-4">
+          <div>
+            <label className="block text-gray-300 mb-2 text-sm font-medium">
+              Email
+            </label>
             <input
               type="email"
-              {...register("email")}
-              placeholder="Email address"
-              className="w-full h-12 p-2 bg-[#1c222a]  border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="your.email@example.com"
+              className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+              required
             />
-            <input
-              type="text"
-              {...register("phone")}
-              placeholder="Phone number"
-              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              {...register("subject")}
-              placeholder="Subject"
-              className="w-full h-12 p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
-            />
-          </div>
-          <div>
-            <textarea
-              {...register("message")}
-              placeholder="Message"
-              rows={8}
-              className="w-full  p-2 bg-[#1c222a] border border-[#6c6a6d] rounded-md focus:outline-none text-[#6c6a6d]"
-            ></textarea>
           </div>
         </div>
-        <Button
-          type="submit"
-          className="bg-[#027bc2] rounded-full text-white w-[50%] mx-[25%] text-xl mt-4"
+
+        <div>
+          <label className="block text-gray-300 mb-2 text-sm font-medium">
+            Message
+          </label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your message here..."
+            rows={13}
+            className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all resize-none"
+            required
+          ></textarea>
+        </div>
+
+        <button
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+          className="bg-gradient-to-r from-[#057cc5] via-[#005a8e] to-[#04376b] shadow-md text-white  h-[50px] w-full rounded overflow-hidden px-4 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Send Message
-        </Button>
-      </form>
+          {isSubmitting ? "Sending..." : "Send Project Request"}
+        </button>
+      </div>
     </div>
   );
 };

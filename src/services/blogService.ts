@@ -26,3 +26,16 @@ export const deleteBlog = async (id: string) => {
   const { data } = await axiosInstance.delete(`/blog/${id}`);
   return data;
 };
+
+export const getLatestsBlogs = async () => {
+  try {
+    const res = await fetch(`http://localhost:5000/api/v1/blog`, {
+      cache: "no-cache",
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.data;
+  } catch (error) {
+    return null;
+  }
+};
