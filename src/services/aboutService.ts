@@ -26,3 +26,16 @@ export const deleteAbout = async (id: string) => {
   const { data } = await axiosInstance.delete(`/about/${id}`);
   return data;
 };
+
+export const getMyBio = async () => {
+  try {
+    const res = await fetch(`http://localhost:5000/api/v1/about`, {
+      cache: "no-cache",
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.data;
+  } catch (error) {
+    return null;
+  }
+};

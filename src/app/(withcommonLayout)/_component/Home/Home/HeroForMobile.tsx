@@ -9,12 +9,12 @@ import {
   Linkedin,
 } from "lucide-react";
 import Link from "next/link";
-import Container from "../ui/Container";
 import HeroMainTittle from "./Hero/HeroMainTittle/HeroMainTittle";
 import HeroHi from "./Hero/HeroHi/HeroHi";
 import HeroImage from "./Hero/HeroImage/HeroImage";
 import HeroDecorative from "./Hero/HeroDecorative/HeroDecorative";
 import Experience from "./Experience";
+import Container from "@/component/ui/Container";
 
 const HeroForMobile = () => {
   return (

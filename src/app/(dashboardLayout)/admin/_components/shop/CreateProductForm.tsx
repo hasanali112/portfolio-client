@@ -43,6 +43,7 @@ const CreateProductForm: React.FC<CreateProductFormProps> = ({ isOpen, onClose, 
       slug: formData.get("slug"),
       metaTitle: formData.get("metaTitle"),
       metaDescription: formData.get("metaDescription"),
+      demoVideoUrl: formData.get("demoVideoUrl"),
       tags: tags.split(",").map(tag => tag.trim()).filter(tag => tag),
       features: features.filter(f => f.trim()),
       specifications: specifications.filter(s => s.key.trim() && s.value.trim()),
@@ -86,12 +87,17 @@ const CreateProductForm: React.FC<CreateProductFormProps> = ({ isOpen, onClose, 
               className="w-full p-3 bg-gray-800 text-white rounded-lg"
               required
             />
-            <input
+            <select
               name="category"
-              placeholder="Category"
               className="w-full p-3 bg-gray-800 text-white rounded-lg"
               required
-            />
+            >
+              <option value="">Select Category</option>
+              <option value="Website">Website</option>
+              <option value="Mobile App">Mobile App</option>
+              <option value="Landing Page">Landing Page</option>
+              <option value="Bot">Bot</option>
+            </select>
           </div>
           
           <textarea
@@ -204,6 +210,12 @@ const CreateProductForm: React.FC<CreateProductFormProps> = ({ isOpen, onClose, 
               className="w-full p-3 bg-gray-800 text-white rounded-lg"
             />
           </div>
+
+          <input
+            name="demoVideoUrl"
+            placeholder="Demo Video URL (YouTube, Vimeo, or direct link)"
+            className="w-full p-3 bg-gray-800 text-white rounded-lg"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input

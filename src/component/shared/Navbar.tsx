@@ -61,10 +61,13 @@ const Navbar = () => {
                 <Link href="#blog" className="navbar-design">
                   Blog
                 </Link>
+                <Link href="/shop" className="navbar-design">
+                  Shop
+                </Link>
                 <Link href="#contact" className="navbar-design">
                   Contact
                 </Link>
-                <ReButton title="Hire me!" />
+                <ReButton title="Hire me!" className="rounded-full" />
               </div>
             </div>
           </div>

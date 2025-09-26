@@ -1,11 +1,13 @@
-import About from "@/component/About/About";
-import Blogs from "@/component/Blog/Blogs";
-import Contact from "@/component/Contact/Contact";
-import DeveloperSkillsCard from "@/component/Experience/DeveloperSkillCards";
+import About from "@/app/(withcommonLayout)/_component/Home/About/About";
+import Blogs from "@/app/(withcommonLayout)/_component/Home/Blog/Blogs";
+
+import DeveloperSkillsCard from "@/app/(withcommonLayout)/_component/Home/Experience/DeveloperSkillCards";
 import Hero from "@/component/Hero";
-import Project from "@/component/Project/Project";
-import Skill from "@/component/Skill/Skill";
-import Testimonials from "@/component/Testimonial/Testimonial";
+import Project from "@/app/(withcommonLayout)/_component/Home/Project/Project";
+import Skill from "@/app/(withcommonLayout)/_component/Home/Skill/Skill";
+import Testimonials from "@/app/(withcommonLayout)/_component/Home/Testimonial/Testimonial";
+import Contact from "./_component/Home/Contact/Contact";
+import Services from "./_component/Home/Services/Services";
 
 const Home = () => {
   return (
@@ -16,6 +18,11 @@ const Home = () => {
       <About />
       <Project />
       <Blogs /> */}
+      <Hero />
+      <Skill />
+      <About />
+      <Services />
+      <Project />
       <Testimonials />
       <Contact />
       <Blogs />

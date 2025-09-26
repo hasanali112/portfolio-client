@@ -9,7 +9,7 @@ import {
   Facebook,
 } from "lucide-react";
 import ContactForm from "./ContactForm";
-import Container from "../ui/Container";
+import Container from "@/component/ui/Container";
 
 async function getContactInfo() {
   try {

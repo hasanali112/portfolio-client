@@ -1,0 +1,350 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import {
+  Star,
+  Heart,
+  Share2,
+  Check,
+  Shield,
+  Truck,
+  RotateCcw,
+  X,
+  Play,
+} from "lucide-react";
+
+interface Product {
+  _id: string;
+  productName: string;
+  description: string;
+  category: string;
+  price: number;
+  discountPrice?: number;
+  rating?: number;
+  totalReviews?: number;
+  features?: string[];
+  productImages?: string[];
+  featured?: boolean;
+  popular?: boolean;
+  specifications?: { key: string; value: string }[];
+  tags?: string[];
+  demoVideoUrl?: string;
+}
+
+interface ProductDetailClientProps {
+  product: Product;
+}
+
+const ProductDetailClient: React.FC<ProductDetailClientProps> = ({
+  product,
+}) => {
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [showVideoModal, setShowVideoModal] = useState(false);
+
+  const getVideoEmbedUrl = (url: string) => {
+    // YouTube
+    const youtubeMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
+    if (youtubeMatch) {
+      return { type: 'iframe', url: `https://www.youtube.com/embed/${youtubeMatch[1]}` };
+    }
+    
+    // Vimeo
+    const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+    if (vimeoMatch) {
+      return { type: 'iframe', url: `https://player.vimeo.com/video/${vimeoMatch[1]}` };
+    }
+    
+    // Direct video URL (mp4, webm, etc.)
+    if (url.match(/\.(mp4|webm|ogg)$/i)) {
+      return { type: 'video', url };
+    }
+    
+    // Default to iframe for other platforms
+    return { type: 'iframe', url };
+  };
+
+  const finalPrice =
+    product.discountPrice && product.discountPrice > 0
+      ? product.price - (product.price * product.discountPrice) / 100
+      : product.price;
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628]">
+      <div className="w-full max-w-[1400px] px-[10px] md:px-[25px] mx-auto py-20">
+        {/* Breadcrumb */}
+        <div className="text-sm text-gray-400 mb-8">
+          <span>Shop</span> / <span>{product.category}</span> /{" "}
+          <span className="text-white">{product.productName}</span>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          {/* Product Images */}
+          <div className="space-y-4">
+            <div className="aspect-square bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-lg overflow-hidden border border-slate-700/50">
+              {product.productImages?.[selectedImage] ? (
+                <Image
+                  src={product.productImages[selectedImage]}
+                  alt={product.productName}
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  No Image Available
+                </div>
+              )}
+            </div>
+
+            {/* Image Thumbnails */}
+            {product.productImages && product.productImages.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto">
+                {product.productImages.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImage(index)}
+                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 ${
+                      selectedImage === index
+                        ? "border-blue-500"
+                        : "border-slate-700/50"
+                    }`}
+                  >
+                    <Image
+                      src={image}
+                      alt={`${product.productName} ${index + 1}`}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Product Info */}
+          <div className="space-y-6">
+            {/* Title & Rating */}
+            <div>
+              <div className="flex gap-2 mb-2">
+                {product.popular && (
+                  <span className="px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-bold rounded-full">
+                    POPULAR
+                  </span>
+                )}
+                {product.featured && (
+                  <span className="px-2 py-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold rounded-full">
+                    FEATURED
+                  </span>
+                )}
+              </div>
+
+              <h1 className="text-3xl font-bold text-white mb-4">
+                {product.productName}
+              </h1>
+
+              {(product.totalReviews ?? 0) > 0 ? (
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`w-5 h-5 ${
+                          i < Math.floor(product.rating || 0)
+                            ? "text-yellow-400 fill-current"
+                            : "text-gray-600"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-gray-400">
+                    ({product.totalReviews} reviews)
+                  </span>
+                </div>
+              ) : (
+                <p className="text-gray-400 mb-4">No reviews yet</p>
+              )}
+            </div>
+
+            {/* Price */}
+            <div className="flex items-center gap-4">
+              {product.discountPrice && product.discountPrice > 0 ? (
+                <>
+                  <span className="text-4xl font-bold text-white">
+                    ${finalPrice}
+                  </span>
+                  <span className="text-xl text-gray-500 line-through">
+                    ${product.price}
+                  </span>
+                  <span className="px-3 py-1 bg-green-600 text-white text-sm font-bold rounded-full">
+                    {product.discountPrice}% OFF
+                  </span>
+                </>
+              ) : (
+                <span className="text-4xl font-bold text-white">
+                  ${product.price}
+                </span>
+              )}
+            </div>
+
+            {/* Description */}
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-2">
+                Description
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                {product.description}
+              </p>
+            </div>
+
+            {/* Features */}
+            {product.features && product.features.length > 0 && (
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  Key Features
+                </h3>
+                <ul className="space-y-2">
+                  {product.features.map((feature, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-2 text-gray-300"
+                    >
+                      <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="space-y-4">
+              <div className="flex gap-4">
+                <button className="flex-1 bg-gradient-to-r from-[#057cc5] via-[#005a8e] to-[#04376b] text-white py-3 px-6 rounded-lg font-medium hover:from-[#0690d4] hover:to-[#04376b] transition-all flex items-center justify-center gap-2">
+                  Contact Me
+                </button>
+                <button
+                  onClick={() => setShowVideoModal(true)}
+                  className="flex-1 border border-slate-700/50 text-white py-3 px-6 rounded-lg font-medium hover:bg-slate-700/50 transition-all flex items-center justify-center gap-2"
+                >
+                  <Play className="w-5 h-5" />
+                  Watch Demo
+                </button>
+                <button className="p-3 border border-slate-700/50 text-gray-400 rounded-lg hover:bg-slate-700/50 transition-all">
+                  <Heart className="w-5 h-5" />
+                </button>
+                <button className="p-3 border border-slate-700/50 text-gray-400 rounded-lg hover:bg-slate-700/50 transition-all">
+                  <Share2 className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Guarantees */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-slate-700/50">
+              <div className="flex items-center gap-2 text-gray-300">
+                <Shield className="w-5 h-5 text-green-400" />
+                <span className="text-sm">Money Back Guarantee</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <Truck className="w-5 h-5 text-blue-400" />
+                <span className="text-sm">Instant Delivery</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <RotateCcw className="w-5 h-5 text-purple-400" />
+                <span className="text-sm">24/7 Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Specifications */}
+        {product.specifications && product.specifications.length > 0 && (
+          <div className="bg-gradient-to-br from-slate-800/30 to-slate-900/30 rounded-lg p-8 border border-slate-700/30 mb-16">
+            <h2 className="text-2xl font-bold text-white mb-6">
+              Specifications
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {product.specifications.map((spec, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between py-2 border-b border-slate-700/30"
+                >
+                  <span className="text-gray-400">{spec.key}:</span>
+                  <span className="text-white font-medium">{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tags */}
+        {product.tags && product.tags.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-lg font-semibold text-white mb-4">Tags</h3>
+            <div className="flex flex-wrap gap-2">
+              {product.tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-slate-700/50 text-gray-300 rounded-lg text-sm border border-slate-600/50"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Video Modal */}
+      {showVideoModal && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 rounded-lg overflow-hidden max-w-4xl w-full">
+            <div className="flex justify-between items-center p-4 border-b border-gray-700">
+              <h3 className="text-xl font-bold text-white">Product Demo</h3>
+              <button
+                onClick={() => setShowVideoModal(false)}
+                className="text-gray-400 hover:text-white"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="aspect-video bg-black">
+              {product.demoVideoUrl ? (
+                (() => {
+                  const videoData = getVideoEmbedUrl(product.demoVideoUrl);
+                  return videoData.type === 'iframe' ? (
+                    <iframe
+                      src={videoData.url}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title="Product Demo Video"
+                    />
+                  ) : (
+                    <video
+                      controls
+                      className="w-full h-full"
+                      src={videoData.url}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  );
+                })()
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  <div className="text-center">
+                    <Play className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                    <p>No demo video available</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProductDetailClient;

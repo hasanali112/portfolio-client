@@ -9,16 +9,16 @@ import {
   PhoneForwarded,
 } from "lucide-react";
 import Link from "next/link";
-import HeroForMobile from "./Home/HeroForMobile";
-import Experience from "./Home/Experience";
-import HeroMainTittle from "./Home/Hero/HeroMainTittle/HeroMainTittle";
-import HeroHi from "./Home/Hero/HeroHi/HeroHi";
-import HeroImage from "./Home/Hero/HeroImage/HeroImage";
-import HeroDecorative from "./Home/Hero/HeroDecorative/HeroDecorative";
-import HeroTitleTypeWriter from "./Home/Hero/HeroMainTittle/HeroTitleTypeWriter";
 import ReButton from "./Button/ReButton";
 import LeetCodeIcon from "./ui/LeetCodeIcon";
 import CodeForcesIcon from "./ui/CodeForcesIcon";
+import HeroMainTittle from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroMainTittle/HeroMainTittle";
+import HeroTitleTypeWriter from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroMainTittle/HeroTitleTypeWriter";
+import HeroHi from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroHi/HeroHi";
+import HeroImage from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroImage/HeroImage";
+import HeroDecorative from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroDecorative/HeroDecorative";
+import Experience from "@/app/(withcommonLayout)/_component/Home/Home/Experience";
+import HeroForMobile from "@/app/(withcommonLayout)/_component/Home/Home/HeroForMobile";
 
 const Hero = () => {
   const socialLinks = [
@@ -121,7 +121,7 @@ const Hero = () => {
             {/* Decorative Elements */}
             <HeroDecorative />
           </div>
-          <Experience />
+          {/* <Experience /> */}
         </Container>
       </div>
       <div className="block md:hidden lg:hidden xl:hidden">

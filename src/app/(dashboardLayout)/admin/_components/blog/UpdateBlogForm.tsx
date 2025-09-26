@@ -24,6 +24,10 @@ const UpdateBlogForm: React.FC<UpdateBlogFormProps> = ({
 }) => {
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
+  const [category, setCategory] = useState("Web Dev");
+  const [recent, setRecent] = useState(false);
+  const [popular, setPopular] = useState(false);
+  const [featured, setFeatured] = useState(false);
 
   const quillModules = {
     toolbar: [
@@ -42,6 +46,10 @@ const UpdateBlogForm: React.FC<UpdateBlogFormProps> = ({
     if (blog) {
       setContent(blog.content || "");
       setTags(blog.tags?.join(", ") || "");
+      setCategory(blog.category || "Web Dev");
+      setRecent(blog.recent || false);
+      setPopular(blog.popular || false);
+      setFeatured(blog.featured || false);
     }
   }, [blog]);
 
@@ -54,6 +62,7 @@ const UpdateBlogForm: React.FC<UpdateBlogFormProps> = ({
       title: formData.get("title"),
       description: formData.get("description"),
       content: content,
+      category: category,
       slug: formData.get("slug"),
       metaTitle: formData.get("metaTitle"),
       metaDescription: formData.get("metaDescription"),
@@ -62,9 +71,9 @@ const UpdateBlogForm: React.FC<UpdateBlogFormProps> = ({
         name: formData.get("authorName"),
         bio: formData.get("authorBio")
       },
-      recent: formData.get("recent") === "on",
-      popular: formData.get("popular") === "on",
-      featured: formData.get("featured") === "on",
+      recent: recent,
+      popular: popular,
+      featured: featured,
       readTime: formData.get("readTime")
     };
 
@@ -92,14 +101,27 @@ const UpdateBlogForm: React.FC<UpdateBlogFormProps> = ({
               className="w-full p-3 bg-gray-800 text-white rounded-lg"
               required
             />
-            <input
-              name="title"
-              defaultValue={blog.title}
-              placeholder="Blog Title"
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               className="w-full p-3 bg-gray-800 text-white rounded-lg"
               required
-            />
+            >
+              <option value="Web Dev">Web Dev</option>
+              <option value="Mobile Dev">Mobile Dev</option>
+              <option value="AI/ML">AI/ML</option>
+              <option value="DevOps">DevOps</option>
+              <option value="UI/UX">UI/UX</option>
+            </select>
           </div>
+          
+          <input
+            name="title"
+            defaultValue={blog.title}
+            placeholder="Blog Title"
+            className="w-full p-3 bg-gray-800 text-white rounded-lg"
+            required
+          />
           
           <textarea
             name="description"
@@ -182,15 +204,33 @@ const UpdateBlogForm: React.FC<UpdateBlogFormProps> = ({
           
           <div className="flex gap-4">
             <label className="flex items-center text-white">
-              <input name="recent" type="checkbox" defaultChecked={blog.recent} className="mr-2" />
+              <input 
+                name="recent" 
+                type="checkbox" 
+                checked={recent}
+                onChange={(e) => setRecent(e.target.checked)}
+                className="mr-2" 
+              />
               Recent
             </label>
             <label className="flex items-center text-white">
-              <input name="popular" type="checkbox" defaultChecked={blog.popular} className="mr-2" />
+              <input 
+                name="popular" 
+                type="checkbox" 
+                checked={popular}
+                onChange={(e) => setPopular(e.target.checked)}
+                className="mr-2" 
+              />
               Popular
             </label>
             <label className="flex items-center text-white">
-              <input name="featured" type="checkbox" defaultChecked={blog.featured} className="mr-2" />
+              <input 
+                name="featured" 
+                type="checkbox" 
+                checked={featured}
+                onChange={(e) => setFeatured(e.target.checked)}
+                className="mr-2" 
+              />
               Featured
             </label>
           </div>
