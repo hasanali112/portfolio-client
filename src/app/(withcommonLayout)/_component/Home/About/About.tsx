@@ -22,7 +22,7 @@ const About = async () => {
   const about: IAbout = aboutData;
 
   return (
-    <section className="bg-[#111122] py-16 px-4">
+    <section id="about" className="bg-[#111122] py-16 px-4">
       <Container>
         {/* Header */}
         <div className="text-center mb-16">

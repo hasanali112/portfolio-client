@@ -17,7 +17,7 @@ const HeroHi = () => {
       }}
       className="absolute top-[20%] left-[30%]  rounded-full "
     >
-      <div className="absolute inset-0 max-w-[400px] md:max-w-[500px] h-[400px] md:h-[500px] bg-blue-500/10 blur-3xl rounded-full animate-pulse" />
+      <div className="absolute inset-0 max-w-[400px] md:max-w-[500px] h-[400px] md:h-[700px] bg-blue-500/10 blur-3xl rounded-full animate-pulse" />
       <Image
         src={hiLogo}
         alt="Hasan Ali"

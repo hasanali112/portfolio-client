@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Container from "./ui/Container";
 import about from "@/assets/ab.png";
@@ -11,20 +13,41 @@ import {
 import Link from "next/link";
 import ReButton from "./Button/ReButton";
 import LeetCodeIcon from "./ui/LeetCodeIcon";
-import CodeForcesIcon from "./ui/CodeForcesIcon";
+import CodeChefIcon from "./ui/CodeChefIcon";
 import HeroMainTittle from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroMainTittle/HeroMainTittle";
 import HeroTitleTypeWriter from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroMainTittle/HeroTitleTypeWriter";
 import HeroHi from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroHi/HeroHi";
 import HeroImage from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroImage/HeroImage";
-import HeroDecorative from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroDecorative/HeroDecorative";
 import Experience from "@/app/(withcommonLayout)/_component/Home/Home/Experience";
 import HeroForMobile from "@/app/(withcommonLayout)/_component/Home/Home/HeroForMobile";
+import { getAllSkills } from "@/services/skillService";
+import { ISkill } from "@/types/skill";
+import { useEffect, useState } from "react";
+import CodeForcesIcon from "./ui/CodeForcesIcon";
 
 const Hero = () => {
+  const [skills, setSkills] = useState<ISkill[]>([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await getAllSkills(1, 50);
+        setSkills(response.data || []);
+      } catch (error) {
+        console.error("Failed to fetch skills:", error);
+      }
+    };
+    fetchSkills();
+  }, []);
+
   const socialLinks = [
     {
       href: "https://leetcode.com/u/Ykcec56m2U/",
       icon: <LeetCodeIcon />,
+    },
+    {
+      href: "https://www.codechef.com/users/hasanali112",
+      icon: <CodeChefIcon />,
     },
     {
       href: "https://codeforces.com/profile/sohagali.ru.ac",
@@ -46,10 +69,10 @@ const Hero = () => {
 
   return (
     <div>
-      <div className="bg-[#0f0715] hidden md:block lg:block xl:block pb-16 md:pt-[60px] lg:pt-[20px] xl:pt-[50px] min-h-screen">
+      <div className="bg-[#0f0715] hidden md:block lg:block xl:block pb-20 md:pb-0 lg:pb-0 md:pt-[60px] lg:pt-[50px] xl:pt-[0px] ">
         <Container>
-          <div className="relative   flex items-center overflow-hidden">
-            <div className=" mx-auto px-4 grid  md:grid-cols-2 gap-8 items-center relative z-10">
+          <div className="relative flex items-center overflow-hidden">
+            <div className="mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10 min-h-screen py-[16px]">
               {/* Text Content */}
               <HeroMainTittle>
                 <div className="space-y-3">
@@ -68,8 +91,8 @@ const Hero = () => {
                   transforming ideas into elegant digital solutions.
                 </p>
 
-                <div className="flex items-center gap-8  pt-6">
-                  <div className="flex items-center space-x-4 ">
+                <div className="flex items-center gap-8 pt-6">
+                  <div className="flex items-center space-x-4">
                     <Link
                       href="https://drive.google.com/file/d/1XoPax6Ms03vpzZTTIH1m8y8-e5Z8gNxi/view?usp=sharing"
                       target="_blank"
@@ -77,7 +100,7 @@ const Hero = () => {
                       <ReButton
                         title="Download CV"
                         icon={<ArrowDownToLine />}
-                        className="w-[180px] h-[45px]"
+                        className="w-[180px] h-[45px] rounded-full"
                       />
                     </Link>
                     <Link href="#contact">
@@ -85,16 +108,16 @@ const Hero = () => {
                         variant="outline"
                         title="Contact Me"
                         icon={<PhoneForwarded className="size-4" />}
-                        className="w-[180px] h-[45px]"
+                        className="w-[180px] h-[45px] rounded-full"
                       />
                     </Link>
                   </div>
                 </div>
                 {/* Social Links */}
-                <div className="flex gap-5">
+                <div className="flex gap-5 mb-8">
                   {socialLinks.map((social, index) => (
                     <Link href={social.href} key={index} target="_blank">
-                      <div className="border border-[#2b3441] bg-[#1f2937] text-white rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-[#027bc2] hover:text-white">
+                      <div className="border border-[#2b3441] bg-[#1f2937] text-white rounded-full w-[50px] h-[50px] inline-flex justify-center items-center hover:bg-[#027bc2] hover:text-white transition-colors duration-300">
                         {social.icon}
                       </div>
                     </Link>
@@ -107,19 +130,37 @@ const Hero = () => {
               {/* Image Section */}
               <HeroImage>
                 <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
+                  {/* Glass morphism background with left to right gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/10 to-transparent backdrop-blur-lg border border-white/20 rounded-lg"></div>
                   <Image
                     src={about}
                     alt="Hasan Ali"
                     width={500}
                     height={500}
-                    className="w-[400px] h-[500px] object-cover"
+                    className="w-[500px] h-[600px] object-cover block relative z-10"
                   />
+                  {/* Bottom area with infinite scrolling skills */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-black/30 backdrop-blur-sm z-20 overflow-hidden">
+                    <div className="flex items-center h-full animate-scroll">
+                      {skills.concat(skills).map((skill, index) => (
+                        <div
+                          key={`${skill._id}-${index}`}
+                          className="flex-shrink-0 mx-3"
+                        >
+                          <Image
+                            src={skill.image}
+                            alt={skill.title}
+                            width={30}
+                            height={30}
+                            className="w-7 h-7 object-contain"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </HeroImage>
             </div>
-
-            {/* Decorative Elements */}
-            <HeroDecorative />
           </div>
           {/* <Experience /> */}
         </Container>
@@ -127,6 +168,20 @@ const Hero = () => {
       <div className="block md:hidden lg:hidden xl:hidden">
         <HeroForMobile />
       </div>
+
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 20s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };

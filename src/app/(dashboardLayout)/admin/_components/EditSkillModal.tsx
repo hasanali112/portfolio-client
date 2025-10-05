@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { X, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
+import { updateSkill } from "@/services/skillService";
+import { toast } from "sonner";
 
 interface Skill {
   _id: string;
@@ -15,9 +17,10 @@ interface EditSkillModalProps {
   isOpen: boolean;
   onClose: () => void;
   skill: Skill | null;
+  onUpdate: () => void;
 }
 
-const EditSkillModal = ({ isOpen, onClose, skill }: EditSkillModalProps) => {
+const EditSkillModal = ({ isOpen, onClose, skill, onUpdate }: EditSkillModalProps) => {
   const [formData, setFormData] = useState({
     title: "",
     skillProficiency: 0,
@@ -25,6 +28,7 @@ const EditSkillModal = ({ isOpen, onClose, skill }: EditSkillModalProps) => {
     image: null as File | null,
   });
   const [imagePreview, setImagePreview] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (skill) {
@@ -50,10 +54,29 @@ const EditSkillModal = ({ isOpen, onClose, skill }: EditSkillModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // TODO: Implement update API call
-    console.log("Update skill:", skill?._id, formData);
-    onClose();
+    if (!skill) return;
+
+    setIsLoading(true);
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("title", formData.title);
+      formDataToSend.append("skillProficiency", formData.skillProficiency.toString());
+      formDataToSend.append("type", formData.type);
+      
+      if (formData.image) {
+        formDataToSend.append("image", formData.image);
+      }
+
+      await updateSkill(skill._id, formDataToSend);
+      toast.success("Skill updated successfully!");
+      onUpdate();
+      onClose();
+    } catch (error) {
+      toast.error("Failed to update skill");
+      console.error("Error updating skill:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (!isOpen || !skill) return null;
@@ -100,7 +123,9 @@ const EditSkillModal = ({ isOpen, onClose, skill }: EditSkillModalProps) => {
               ) : (
                 <div>
                   <ImageIcon className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-400 text-sm">Click to upload new image</p>
+                  <p className="text-gray-400 text-sm">
+                    Click to upload new image
+                  </p>
                 </div>
               )}
               <input
@@ -147,7 +172,10 @@ const EditSkillModal = ({ isOpen, onClose, skill }: EditSkillModalProps) => {
               <option value="Backend">Backend</option>
               <option value="Database">Database</option>
               <option value="Language">Language</option>
-              <option value="Tool">Tool</option>
+              <option value="DevOps">DevOps</option>
+              <option value="App">App</option>
+              <option value="Tools">Tools</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -186,9 +214,10 @@ const EditSkillModal = ({ isOpen, onClose, skill }: EditSkillModalProps) => {
             </button>
             <button
               type="submit"
-              className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 rounded-lg hover:shadow-lg transition-all duration-200"
+              disabled={isLoading}
+              className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 rounded-lg hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Update Skill
+              {isLoading ? "Updating..." : "Update Skill"}
             </button>
           </div>
         </form>

@@ -14,7 +14,7 @@ import Container from "@/component/ui/Container";
 async function getContactInfo() {
   try {
     const res = await fetch(
-      `http://localhost:5000/api/v1/contact/info/details`,
+      `https://portfolio-dashboard-server-sage.vercel.app/api/v1/contact/info/details`,
       {
         cache: "force-cache",
       }

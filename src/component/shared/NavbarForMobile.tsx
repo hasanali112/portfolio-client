@@ -96,13 +96,13 @@ const NavbarForMobile = () => {
               animate={open ? "opened" : "closed"}
               variants={navParent}
               style={{ originY: "top" }}
-              className="bg-[#1c222a] w-[300px] h-[300px] md:w-[600px] md:h-[150px] absolute top-[110%] right-[10%] rounded-lg z-50"
+              className="bg-gradient-to-br from-[#0f0715] via-[#1c222a] to-[#027bc2]/20 backdrop-blur-lg border border-white/10 w-[300px] h-[300px] md:w-[600px] md:h-[150px] absolute top-[110%] right-[10%] rounded-lg z-50 shadow-2xl"
             >
               <ul className="space-y-[17px] md:flex md:space-y-0 md:justify-center pt-[10px] md:pt-7">
                 <li onClick={() => setOpen(false)}>
                   <Link
                     href="/"
-                    className="hover:bg-[#111122] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Home
                   </Link>
@@ -110,7 +110,7 @@ const NavbarForMobile = () => {
                 <li onClick={() => setOpen(false)}>
                   <Link
                     href="#skills"
-                    className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Skills
                   </Link>
@@ -118,7 +118,7 @@ const NavbarForMobile = () => {
                 <li onClick={() => setOpen(false)}>
                   <Link
                     href="#about"
-                    className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     About
                   </Link>
@@ -126,7 +126,7 @@ const NavbarForMobile = () => {
                 <li onClick={() => setOpen(false)}>
                   <Link
                     href="#projects"
-                    className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Projects
                   </Link>
@@ -134,7 +134,7 @@ const NavbarForMobile = () => {
                 <li onClick={() => setOpen(false)}>
                   <Link
                     href="#blog"
-                    className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Blog
                   </Link>
@@ -142,9 +142,17 @@ const NavbarForMobile = () => {
                 <li onClick={() => setOpen(false)}>
                   <Link
                     href="#contact"
-                    className="hover:bg-[#f8b90c] px-3 py-2 rounded-full hover:transition-transform duration-500 hover:ease-in-out"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Contact
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(false)}>
+                  <Link
+                    href="/hire-me"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
+                  >
+                    Hire Me
                   </Link>
                 </li>
               </ul>

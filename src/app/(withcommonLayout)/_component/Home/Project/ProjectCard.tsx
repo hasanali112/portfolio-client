@@ -75,6 +75,18 @@ const ProjectCard = ({ card }: { card: TProps }) => {
           </div>
         </div>
         <div className="mt-3">
+          {/* Technology Tags */}
+          <div className="flex flex-wrap gap-2 mb-3">
+            {card.useTechnology.slice(0, 3).map((tech, idx) => (
+              <span
+                key={idx}
+                className="px-3 py-1 text-xs rounded-full bg-slate-700/50 text-gray-300 border border-slate-600/50"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+          
           <p className="text-white">{card.description.slice(0, 150)}...</p>
           <Link href={`/${card._id}`}>
             <p className="inline-flex gap-3 items-center text-white mt-4 hover:text-[#89c9f4]">

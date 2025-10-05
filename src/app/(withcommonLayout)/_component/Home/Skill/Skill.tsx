@@ -16,16 +16,19 @@ const Skill = async () => {
   const skills: ISkill[] = skillsData?.data || [];
 
   return (
-    <section className="bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] py-20 px-4">
+    <section
+      id="skills"
+      className="bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] py-20 px-4 md:min-h-screen"
+    >
       <Container>
         {/* Header */}
         <div className="text-center mb-16">
-          <button className="inline-flex items-center gap-2 px-6 py-3 mb-8 text-gray-400 border border-gray-400/30 rounded-full hover:bg-gray-400/10 transition-colors">
+          <button className="inline-flex items-center gap-2 px-4 md:px-6 py-3 mb-8 text-gray-400 border border-gray-400/30 rounded-full hover:bg-gray-400/10 transition-colors">
             <span className="text-xs">&lt;/&gt;</span>
-            <span>My Technical Skills</span>
+            <span className="text-xs md:text-sm">My Technical Skills</span>
           </button>
 
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h1 className="text-xl md:text-5xl font-bold text-white mb-6">
             Technologies That Power
             <span className="relative inline-block py-2 ml-2">
               <span className="relative z-10 tracking-wider">Innovation</span>

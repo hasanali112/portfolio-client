@@ -26,7 +26,7 @@ const CommentSection = ({ blogId }: CommentSectionProps) => {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/v1/blog/${blogId}/comments`
+          `https://portfolio-dashboard-server-sage.vercel.app/api/v1/blog/${blogId}/comments`
         );
         if (response.ok) {
           const data = await response.json();
@@ -45,7 +45,7 @@ const CommentSection = ({ blogId }: CommentSectionProps) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/v1/blog/${blogId}/comments`,
+        `https://portfolio-dashboard-server-sage.vercel.app/api/v1/blog/${blogId}/comments`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

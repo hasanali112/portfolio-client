@@ -1,13 +1,13 @@
 "use client";
 import { Suspense } from "react";
-import BlogsContent from "./BlogsContent";
+import ProjectsContent from "./ProjectsContent";
 
-const Blog = () => {
+const Projects = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <BlogsContent />
+      <ProjectsContent />
     </Suspense>
   );
 };
 
-export default Blog;
+export default Projects;

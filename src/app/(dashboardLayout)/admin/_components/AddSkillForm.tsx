@@ -156,7 +156,10 @@ const AddSkillForm = ({ isOpen, onClose }: AddSkillFormProps) => {
               <option value="Backend">Backend</option>
               <option value="Database">Database</option>
               <option value="Language">Language</option>
-              <option value="Tool">Tool</option>
+              <option value="DevOps">DevOps</option>
+              <option value="App">App</option>
+              <option value="Tools">Tools</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 

@@ -17,6 +17,7 @@ const SkillsManagement = () => {
   const [isAddFormOpen, setIsAddFormOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingSkill, setEditingSkill] = useState<Skill | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const handleEdit = (skill: Skill) => {
     setEditingSkill(skill);
@@ -33,6 +34,10 @@ const SkillsManagement = () => {
   const handleCloseEdit = () => {
     setIsEditModalOpen(false);
     setEditingSkill(null);
+  };
+
+  const handleRefresh = () => {
+    setRefreshKey(prev => prev + 1);
   };
 
   return (
@@ -63,6 +68,7 @@ const SkillsManagement = () => {
         isOpen={isEditModalOpen}
         onClose={handleCloseEdit}
         skill={editingSkill}
+        onUpdate={handleRefresh}
       />
     </div>
   );

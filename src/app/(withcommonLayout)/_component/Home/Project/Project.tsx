@@ -74,12 +74,19 @@ const Project = async () => {
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technology.slice(0, 3).map((tech, idx) => (
-                    <span
+                    <div
                       key={idx}
-                      className="px-3 py-1 text-xs rounded-full bg-slate-700/50 text-gray-300 border border-slate-600/50"
+                      className="flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-slate-700/50 text-gray-300 border border-slate-600/50"
                     >
-                      {tech.technologyName}
-                    </span>
+                      <Image
+                        src={tech.technologyImage}
+                        alt={tech.technologyName}
+                        width={16}
+                        height={16}
+                        className="w-4 h-4"
+                      />
+                      <span>{tech.technologyName}</span>
+                    </div>
                   ))}
                 </div>
 
@@ -110,7 +117,7 @@ const Project = async () => {
         {/* see more button */}
         <div className="flex justify-center mt-12">
           <Link
-            href="#"
+            href="/projects"
             className="px-6 py-3 rounded-full border border-gray-500/30 text-gray-400 text-sm flex items-center gap-2 hover:border-gray-400/50 hover:bg-gray-500/5 transition-all"
           >
             <Sparkles className="w-4 h-4" />

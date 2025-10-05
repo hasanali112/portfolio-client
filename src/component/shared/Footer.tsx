@@ -4,7 +4,7 @@ import logo from "@/assets/hasan.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0f1a] border-t border-gray-800 text-white py-8">
+    <footer className="hidden md:block bg-[#0a0f1a] border-t border-gray-800 text-white py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo and Name */}

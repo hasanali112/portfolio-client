@@ -1,6 +1,12 @@
 "use client";
 
-import { ShoppingCart, Users, Award, CheckCircle, Sparkles } from "lucide-react";
+import {
+  ShoppingCart,
+  Users,
+  Award,
+  CheckCircle,
+  Sparkles,
+} from "lucide-react";
 
 const ShopHeader = () => {
   return (
@@ -15,14 +21,17 @@ const ShopHeader = () => {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready-to-Launch
             <span className="relative inline-block py-2 ml-2">
-              <span className="relative z-10 tracking-wider">Digital Solutions</span>
+              <span className="relative z-10 tracking-wider">
+                Digital Solutions
+              </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#F5F5DC]/20 to-transparent rounded-lg transform -skew-x-12"></div>
             </span>
           </h1>
 
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed mb-8">
-            Skip months of development time. Get professional websites, mobile apps, 
-            and digital solutions that are ready to deploy and start generating revenue immediately.
+            Skip months of development time. Get professional websites, mobile
+            apps, and digital solutions that are ready to deploy and start
+            generating revenue immediately.
           </p>
 
           <button className="px-6 py-3 rounded-full border border-gray-500/30 text-gray-400 text-sm flex items-center gap-2 mx-auto hover:border-gray-400/50 hover:bg-gray-500/5 transition-all">
@@ -35,11 +44,14 @@ const ShopHeader = () => {
           <div>
             <div className="mb-12">
               <p className="text-gray-300 text-lg mb-6">
-                Professional <span className="text-white font-semibold">digital products</span> designed 
-                to help your business succeed online.
+                Professional{" "}
+                <span className="text-white font-semibold">
+                  digital products
+                </span>{" "}
+                designed to help your business succeed online.
               </p>
               <p className="text-gray-300 mb-8">
-                Here's what makes our solutions different:
+                Here&apos;s what makes our solutions different:
               </p>
             </div>
 
@@ -73,17 +85,21 @@ const ShopHeader = () => {
               <div className="text-2xl font-bold text-white mb-2">5+</div>
               <div className="text-sm text-gray-400">Happy Customers</div>
             </div>
-            
+
             <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 p-6 rounded-lg border border-gray-700/30">
               <Award className="w-8 h-8 text-gray-400 mb-4" />
               <div className="text-2xl font-bold text-white mb-2">5+</div>
               <div className="text-sm text-gray-400">Products Available</div>
             </div>
-            
+
             <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 p-6 rounded-lg border border-gray-700/30 col-span-2">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">99% Success Rate</div>
-                <div className="text-sm text-gray-400">Customer satisfaction guaranteed</div>
+                <div className="text-3xl font-bold text-white mb-2">
+                  99% Success Rate
+                </div>
+                <div className="text-sm text-gray-400">
+                  Customer satisfaction guaranteed
+                </div>
               </div>
             </div>
           </div>

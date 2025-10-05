@@ -32,9 +32,12 @@ export const deleteTestimonial = async (id: string) => {
 
 export const getTestimonialsForHome = async () => {
   try {
-    const res = await fetch(`http://localhost:5000/api/v1/testimonial`, {
-      cache: "force-cache",
-    });
+    const res = await fetch(
+      `https://portfolio-dashboard-server-sage.vercel.app/api/v1/testimonial`,
+      {
+        cache: "force-cache",
+      }
+    );
     if (!res.ok) return null;
     const data = await res.json();
     return data.data;

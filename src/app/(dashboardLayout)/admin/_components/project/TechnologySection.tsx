@@ -6,18 +6,31 @@ interface TechnologySectionProps {
   setTechnologies: (technologies: any[]) => void;
 }
 
-const TechnologySection: React.FC<TechnologySectionProps> = ({ technologies, setTechnologies }) => {
+const TechnologySection: React.FC<TechnologySectionProps> = ({
+  technologies,
+  setTechnologies,
+}) => {
   const addTechnology = () => {
-    setTechnologies([...technologies, { technologyName: "", technologyImage: null }]);
+    setTechnologies([
+      ...technologies,
+      { technologyName: "", technologyImage: null },
+    ]);
   };
 
   const removeTechnology = (index: number) => {
     setTechnologies(technologies.filter((_, i) => i !== index));
   };
 
-  const updateTechnology = (index: number, field: string, value: any) => {
+  const updateTechnology = (
+    index: number,
+    field: "technologyName" | "technologyImage",
+    value: string | File | null
+  ) => {
     const updated = [...technologies];
-    updated[index][field] = value;
+    updated[index] = {
+      ...updated[index],
+      [field]: value,
+    };
     setTechnologies(updated);
   };
 
@@ -34,7 +47,10 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ technologies, set
         </button>
       </div>
       {technologies.map((tech, index) => (
-        <div key={index} className="bg-gray-800 p-3 rounded-lg mb-3 border border-gray-700">
+        <div
+          key={index}
+          className="bg-gray-800 p-3 rounded-lg mb-3 border border-gray-700"
+        >
           <div className="flex justify-between items-center mb-2">
             <span className="text-white text-sm">Technology #{index + 1}</span>
             <button
@@ -49,16 +65,26 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ technologies, set
             <input
               placeholder="Technology Name (e.g., React)"
               value={tech.technologyName}
-              onChange={(e) => updateTechnology(index, 'technologyName', e.target.value)}
+              onChange={(e) =>
+                updateTechnology(index, "technologyName", e.target.value)
+              }
               className="w-full p-2 bg-gray-700 text-white rounded"
               required
             />
             <div>
-              <label className="block text-gray-300 text-xs mb-1">Technology Icon</label>
+              <label className="block text-gray-300 text-xs mb-1">
+                Technology Icon
+              </label>
               <input
                 type="file"
                 accept="image/*"
-                onChange={(e) => updateTechnology(index, 'technologyImage', e.target.files?.[0])}
+                onChange={(e) =>
+                  updateTechnology(
+                    index,
+                    "technologyImage",
+                    e.target.files?.[0] ?? null
+                  )
+                }
                 className="w-full p-2 bg-gray-700 text-white rounded text-sm"
               />
             </div>

@@ -29,9 +29,12 @@ export const deleteBlog = async (id: string) => {
 
 export const getLatestsBlogs = async () => {
   try {
-    const res = await fetch(`http://localhost:5000/api/v1/blog`, {
-      cache: "no-cache",
-    });
+    const res = await fetch(
+      `https://portfolio-dashboard-server-sage.vercel.app/api/v1/blog`,
+      {
+        cache: "no-cache",
+      }
+    );
     if (!res.ok) return null;
     const data = await res.json();
     return data.data;

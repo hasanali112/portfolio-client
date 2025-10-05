@@ -17,6 +17,23 @@ export const createSkill = async (formData: FormData) => {
   }
 };
 
+export const updateSkill = async (id: string, formData: FormData) => {
+  try {
+    const { data } = await axiosInstance.put(
+      `/skills/update-skill/${id}`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return data;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
 export const getAllSkills = async (page = 1, limit = 10) => {
   try {
     const url = `/skills?page=${page}&limit=${limit}`;
