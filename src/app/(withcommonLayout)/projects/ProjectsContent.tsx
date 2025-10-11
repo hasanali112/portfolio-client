@@ -1,8 +1,8 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import AllProjects from "@/app/(withcommonLayout)/_component/Home/Projects/allProjects/AllProjects";
-import ProjectsClient from "@/app/(withcommonLayout)/_component/Home/Projects/allProjects/ProjectsClient";
+import AllProjects from "@/app/(withcommonLayout)/_component/Projects/allProjects/AllProjects";
+import ProjectsClient from "@/app/(withcommonLayout)/_component/Projects/allProjects/ProjectsClient";
 import Container from "@/component/ui/Container";
 import { Sparkles } from "lucide-react";
 

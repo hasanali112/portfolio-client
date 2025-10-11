@@ -20,7 +20,7 @@ const parent = {
 
 const Navbar = () => {
   return (
-    <header className="bg-[#000000]  text-white  w-full pt-5 pb-5 shadow-sm z-50">
+    <header className="fixed top-0 left-0 right-0 bg-[#000000] text-white w-full pt-5 pb-5 shadow-sm z-50">
       <motion.nav
         initial="hidden"
         animate="visible"
@@ -61,14 +61,22 @@ const Navbar = () => {
                 <Link href="#blog" className="navbar-design">
                   Blog
                 </Link>
-                <Link href="/shop" className="navbar-design">
-                  Shop
-                </Link>
+
                 <Link href="#contact" className="navbar-design">
                   Contact
                 </Link>
-                <Link href="/schedule" className="navbar-design">
-                  Schedule
+                <Link
+                  href="/shop"
+                  className="navbar-design animated-border px-4 py-2 rounded-full"
+                >
+                  Shop
+                </Link>
+                <Link href="/schedule">
+                  <ReButton
+                    variant="outline"
+                    title="Schedule"
+                    className="rounded-full"
+                  />
                 </Link>
                 <Link href="/hire-me">
                   <ReButton title="Hire me!" className="rounded-full" />

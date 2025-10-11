@@ -96,7 +96,7 @@ const NavbarForMobile = () => {
               animate={open ? "opened" : "closed"}
               variants={navParent}
               style={{ originY: "top" }}
-              className="bg-gradient-to-br from-[#0f0715] via-[#1c222a] to-[#027bc2]/20 backdrop-blur-lg border border-white/10 w-[300px] h-[300px] md:w-[600px] md:h-[150px] absolute top-[110%] right-[10%] rounded-lg z-50 shadow-2xl"
+              className="bg-gradient-to-br from-[#0f0715] via-[#1c222a] to-[#027bc2]/20 backdrop-blur-lg border border-white/10 w-[300px] h-[400px] md:w-[600px] md:h-[150px] absolute top-[110%] right-[10%] rounded-lg z-50 shadow-2xl"
             >
               <ul className="space-y-[17px] md:flex md:space-y-0 md:justify-center pt-[10px] md:pt-7">
                 <li onClick={() => setOpen(false)}>
@@ -137,6 +137,22 @@ const NavbarForMobile = () => {
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Blog
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(false)}>
+                  <Link
+                    href="/shop"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
+                  >
+                    Shop
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(false)}>
+                  <Link
+                    href="/schedule"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
+                  >
+                    Schedule
                   </Link>
                 </li>
                 <li onClick={() => setOpen(false)}>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function Feature({ text }: { text: string }) {
   return (
     <li className="flex items-center gap-3">
@@ -110,10 +112,12 @@ export default function InfoSidebar() {
           </div>
         </div>
 
-        <button className="w-full bg-slate-800/50 border border-slate-700/50 text-white font-medium py-3 px-6 rounded-xl hover:bg-slate-800/70 transition-all duration-300 flex items-center justify-center gap-2">
-          <span>📅</span>
-          <span>Schedule a Call</span>
-        </button>
+        <Link href="/schedule">
+          <button className="w-full bg-slate-800/50 border border-slate-700/50 text-white font-medium py-3 px-6 rounded-xl hover:bg-slate-800/70 transition-all duration-300 flex items-center justify-center gap-2">
+            <span>📅</span>
+            <span>Schedule a Call</span>
+          </button>
+        </Link>
       </div>
     </div>
   );

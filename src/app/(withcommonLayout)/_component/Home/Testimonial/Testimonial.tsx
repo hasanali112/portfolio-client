@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageCircleMore } from "lucide-react";
 import Image from "next/image";
 import { getTestimonialsForHome } from "@/services/testimonialService";
+import ReButton from "@/component/Button/ReButton";
 
 export type TTestimonial = {
   // Client Info
@@ -78,25 +79,15 @@ const Testimonials = () => {
     <section className="bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] min-h-screen py-20 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <button className="inline-flex items-center gap-2 px-6 py-3 mb-8 text-gray-400 border border-gray-400/30 rounded-full hover:bg-gray-400/10 transition-colors">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-              />
-            </svg>
-            Client Love Letters
-          </button>
+        <div className="text-center flex flex-col items-center justify-center md-10 md:mb-16">
+          <ReButton
+            title=" Client Love Letters"
+            variant="outline"
+            icon={<MessageCircleMore className="w-5 h-5" />}
+            className="h-[45px] rounded-full mb-8"
+          />
 
-          <h1 className="text-4xl md:text-5xl  font-bold text-white mb-6">
+          <h1 className="text-xl md:text-5xl font-bold text-white mb-6">
             Real Stories from
             <span className="relative inline-block py-2 ml-2">
               <span className="relative z-10 tracking-wider">Real People</span>
@@ -104,7 +95,7 @@ const Testimonials = () => {
             </span>
           </h1>
 
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-md md:text-xl max-w-3xl mx-auto leading-relaxed">
             These aren&#39;t just testimonials—they&#39;re stories from amazing
             people who trusted me with their dreams. Here&#39;s what happened
             when we turned their &quot;what if&quot; into &quot;wow, it actually
@@ -113,7 +104,7 @@ const Testimonials = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 mb-20 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 gap-8 mb-20 mt-4 max-w-3xl mx-auto">
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-white mb-2">
               {testimonials.length}+

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import VisitorTracker from "@/component/VisitorTracker";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mdhasanalikhan.vercel.app'),
@@ -91,6 +92,7 @@ export default function RootLayout({
     <html lang="en">
       <body style={{ fontFamily: 'system-ui, sans-serif' }}>
         <Providers>
+          <VisitorTracker />
           {children}
           <SpeedInsights />
         </Providers>

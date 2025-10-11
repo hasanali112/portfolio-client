@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import ContactForm from "./ContactForm";
 import Container from "@/component/ui/Container";
+import ReButton from "@/component/Button/ReButton";
 
 async function getContactInfo() {
   try {
@@ -31,27 +32,17 @@ const Contact = async () => {
   const contactInfo = await getContactInfo();
 
   return (
-    <div id="contact" className="min-h-screen bg-[#111122] py-20 ">
+    <div id="contact" className="min-h-screen bg-[#111122] py-10 md:py-20 ">
       <Container>
-        <div className="text-center mb-16">
-          <button className="inline-flex items-center gap-2 px-6 py-3 mb-8 text-gray-300 border border-gray-400/50 rounded-full hover:bg-emerald-400/10 transition-colors">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-            Let&apos;s Connect
-          </button>
+        <div className="text-center flex flex-col items-center justify-center md-10 md:mb-16">
+          <ReButton
+            title="Let's Connect"
+            variant="outline"
+            icon={<Mail className="w-5 h-5" />}
+            className="h-[45px] rounded-full mb-8"
+          />
 
-          <h1 className="text-4xl md:text-5xl  font-bold text-white mb-6">
+          <h1 className="text-xl md:text-5xl font-bold text-white mb-6">
             Have a Project in Mind?
             <span className="relative inline-block py-2 ">
               <span className="relative z-10 tracking-wider ml-1">
@@ -61,7 +52,7 @@ const Contact = async () => {
             </span>
           </h1>
 
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-gray-400 text-lg hidden md:block max-w-3xl mx-auto leading-relaxed">
             I&apos;m always open to discussing new projects, creative ideas, or
             opportunities.
           </p>

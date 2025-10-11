@@ -4,6 +4,9 @@ const axiosInstance = axios.create({
   baseURL: "https://portfolio-dashboard-server-sage.vercel.app/api/v1",
 });
 
+//https://portfolio-dashboard-server-sage.vercel.app/api/v1
+//http://localhost:5000/api/v1
+
 // Add a request interceptor
 axios.interceptors.request.use(
   function (config) {

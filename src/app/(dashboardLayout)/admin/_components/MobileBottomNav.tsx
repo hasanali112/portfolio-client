@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Code, FolderOpen, BookOpen, User, Phone } from "lucide-react";
+import { LayoutDashboard, Code, FolderOpen, BookOpen, User, Eye } from "lucide-react";
 
 const MobileBottomNav = () => {
   const pathname = usePathname();
@@ -12,7 +12,7 @@ const MobileBottomNav = () => {
     { name: "Skills", href: "/admin/skills", icon: Code },
     { name: "Projects", href: "/admin/projects", icon: FolderOpen },
     { name: "About", href: "/admin/about", icon: User },
-    { name: "Contact", href: "/admin/contact", icon: Phone },
+    { name: "Visitors", href: "/admin/visitors", icon: Eye },
   ];
 
   return (

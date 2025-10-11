@@ -28,6 +28,11 @@ const SkillClient = ({ skills }: SkillClientProps) => {
 
   const filteredSkills = skills.filter((skill) => skill.type === activeFilter);
 
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    setCardScrollPosition(0); // Reset scroll position when filter changes
+  };
+
   const slideNext = () => {
     setScrollPosition(prev => Math.min(prev + 200, (filters.length - 3) * 100));
   };
@@ -73,7 +78,7 @@ const SkillClient = ({ skills }: SkillClientProps) => {
         {filters.map((filter) => (
           <button
             key={filter}
-            onClick={() => setActiveFilter(filter)}
+            onClick={() => handleFilterChange(filter)}
             className={`px-6 py-2.5 rounded-full font-medium transition-all ${
               activeFilter === filter
                 ? "bg-white text-gray-950"
@@ -102,7 +107,7 @@ const SkillClient = ({ skills }: SkillClientProps) => {
             {filters.map((filter) => (
               <button
                 key={filter}
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => handleFilterChange(filter)}
                 className={`px-4 py-2 md:px-6 md:py-2.5 rounded-full font-medium transition-all whitespace-nowrap flex-shrink-0 text-sm ${
                   activeFilter === filter
                     ? "bg-white text-gray-950"

@@ -129,9 +129,9 @@ const Hero = () => {
 
               {/* Image Section */}
               <HeroImage>
-                <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
+                <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
                   {/* Glass morphism background with left to right gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/10 to-transparent backdrop-blur-lg border border-white/20 rounded-lg"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/10 to-transparent backdrop-blur-lg border border-white/20 rounded-2xl"></div>
                   <Image
                     src={about}
                     alt="Hasan Ali"
@@ -140,7 +140,7 @@ const Hero = () => {
                     className="w-[500px] h-[600px] object-cover block relative z-10"
                   />
                   {/* Bottom area with infinite scrolling skills */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-black/30 backdrop-blur-sm z-20 overflow-hidden">
+                  <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-white/50 backdrop-blur-sm z-20 overflow-hidden">
                     <div className="flex items-center h-full animate-scroll">
                       {skills.concat(skills).map((skill, index) => (
                         <div

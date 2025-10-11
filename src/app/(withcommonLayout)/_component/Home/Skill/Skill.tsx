@@ -1,9 +1,10 @@
 import React from "react";
-import { Sparkles } from "lucide-react";
+import { Lightbulb, Sparkles } from "lucide-react";
 import Container from "@/component/ui/Container";
 import { getAllSkills } from "@/services/skillService";
 import { ISkill } from "@/types/skill";
 import SkillClient from "./SkillClient";
+import ReButton from "@/component/Button/ReButton";
 
 const Skill = async () => {
   let skillsData;
@@ -22,11 +23,13 @@ const Skill = async () => {
     >
       <Container>
         {/* Header */}
-        <div className="text-center mb-16">
-          <button className="inline-flex items-center gap-2 px-4 md:px-6 py-3 mb-8 text-gray-400 border border-gray-400/30 rounded-full hover:bg-gray-400/10 transition-colors">
-            <span className="text-xs">&lt;/&gt;</span>
-            <span className="text-xs md:text-sm">My Technical Skills</span>
-          </button>
+        <div className="text-center flex flex-col items-center justify-center mb-16">
+          <ReButton
+            title="My Technical Skills"
+            variant="outline"
+            icon={<Lightbulb className="w-5 h-5" />}
+            className="h-[45px] rounded-full mb-8"
+          />
 
           <h1 className="text-xl md:text-5xl font-bold text-white mb-6">
             Technologies That Power

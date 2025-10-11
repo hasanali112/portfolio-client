@@ -15,6 +15,7 @@ import {
   Settings,
   Phone,
   LogOut,
+  Eye,
 } from "lucide-react";
 import Image from "next/image";
 import logo from "@/assets/hasan.png";
@@ -33,6 +34,7 @@ const Sidebar = () => {
     { name: "Testimonial", href: "/admin/testimonial", icon: MessageSquare },
     { name: "Services", href: "/admin/services", icon: Settings },
     { name: "Contact", href: "/admin/contact", icon: Phone },
+    { name: "Visitors", href: "/admin/visitors", icon: Eye },
   ];
 
   const handleLogout = async () => {

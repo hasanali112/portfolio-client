@@ -8,7 +8,7 @@ const WithCommonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Navbar />
-      <div className="pb-16 md:pb-0">
+      <div className="pb-16 md:pb-0 pt-20">
         {children}
       </div>
       <Footer />
