@@ -1,7 +1,7 @@
 import About from "@/app/(withcommonLayout)/_component/Home/About/About";
 import Blogs from "@/app/(withcommonLayout)/_component/Home/Blog/Blogs";
 
-import DeveloperSkillsCard from "@/app/(withcommonLayout)/_component/Home/Experience/DeveloperSkillCards";
+import Experience from "@/app/(withcommonLayout)/_component/Home/Experience/Experience";
 import Hero from "@/component/Hero";
 import Project from "@/app/(withcommonLayout)/_component/Home/Project/Project";
 import Skill from "@/app/(withcommonLayout)/_component/Home/Skill/Skill";
@@ -20,6 +20,7 @@ const Home = () => {
       <Blogs /> */}
       <Hero />
       <Skill />
+      <Experience />
       <About />
       <Services />
       <Project />

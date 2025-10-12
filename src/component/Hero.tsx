@@ -18,7 +18,6 @@ import HeroMainTittle from "@/app/(withcommonLayout)/_component/Home/Home/Hero/H
 import HeroTitleTypeWriter from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroMainTittle/HeroTitleTypeWriter";
 import HeroHi from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroHi/HeroHi";
 import HeroImage from "@/app/(withcommonLayout)/_component/Home/Home/Hero/HeroImage/HeroImage";
-import Experience from "@/app/(withcommonLayout)/_component/Home/Home/Experience";
 import HeroForMobile from "@/app/(withcommonLayout)/_component/Home/Home/HeroForMobile";
 import { getAllSkills } from "@/services/skillService";
 import { ISkill } from "@/types/skill";
@@ -29,10 +28,19 @@ const Hero = () => {
   const [skills, setSkills] = useState<ISkill[]>([]);
 
   useEffect(() => {
-    const fetchSkills = async () => {
+    interface SkillResponse {
+      data?: ISkill[];
+    }
+
+    const fetchSkills = async (): Promise<void> => {
       try {
-        const response = await getAllSkills(1, 50);
-        setSkills(response.data || []);
+        const response: SkillResponse = await getAllSkills(1, 50);
+        const uniqueSkills: ISkill[] =
+          response.data?.filter(
+            (skill: ISkill, index: number, self: ISkill[]) =>
+              index === self.findIndex((s: ISkill) => s.title === skill.title)
+          ) || [];
+        setSkills(uniqueSkills);
       } catch (error) {
         console.error("Failed to fetch skills:", error);
       }
@@ -131,7 +139,7 @@ const Hero = () => {
               <HeroImage>
                 <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
                   {/* Glass morphism background with left to right gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/10 to-transparent backdrop-blur-lg border border-white/20 rounded-2xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/10 to-transparent backdrop-blur-lg border border-[#8ac9f4]/40 rounded-2xl"></div>
                   <Image
                     src={about}
                     alt="Hasan Ali"
@@ -140,11 +148,11 @@ const Hero = () => {
                     className="w-[500px] h-[600px] object-cover block relative z-10"
                   />
                   {/* Bottom area with infinite scrolling skills */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-white/50 backdrop-blur-sm z-20 overflow-hidden">
+                  <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-white  z-20 overflow-hidden">
                     <div className="flex items-center h-full animate-scroll">
                       {skills.concat(skills).map((skill, index) => (
                         <div
-                          key={`${skill._id}-${index}`}
+                          key={`${skill.title}-${index}`}
                           className="flex-shrink-0 mx-3"
                         >
                           <Image

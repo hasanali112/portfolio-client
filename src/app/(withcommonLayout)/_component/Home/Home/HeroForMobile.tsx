@@ -70,7 +70,7 @@ const HeroForMobile = () => {
               <HeroImage>
                 <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
                   {/* Glass morphism background with left to right gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent backdrop-blur-lg border border-white/20 rounded-lg"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent backdrop-blur-lg border border-[#8ac9f4]/40 rounded-lg"></div>
                   <Image
                     src={about}
                     alt="Hasan Ali"

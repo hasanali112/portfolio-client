@@ -128,7 +128,7 @@ const About = async () => {
           <div>
             {/* Feature Cards */}
             <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-4 mb-12">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-xl p-2 md:p-6 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group relative overflow-hidden">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-xl p-2 md:p-6 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group relative overflow-hidden">
                 {/* Hover overlay effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
                 <div className="relative z-10 flex flex-col items-center md:items-start justify-center">
@@ -142,7 +142,7 @@ const About = async () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-xl p-2 md:p-6 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group relative overflow-hidden">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-xl p-2 md:p-6 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group relative overflow-hidden">
                 {/* Hover overlay effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
                 <div className="relative z-10 flex flex-col items-center md:items-start justify-center">
@@ -156,7 +156,7 @@ const About = async () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-xl p-2 md:p-6 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group relative overflow-hidden">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-xl p-2 md:p-6 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group relative overflow-hidden">
                 {/* Hover overlay effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
                 <div className="relative z-10 flex flex-col items-center md:items-start justify-center">
@@ -175,7 +175,7 @@ const About = async () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-1 mb-12 justify-center items-center">
-          <Link href="/">
+          <Link href="/schedule">
             <ReButton
               title="Consultation"
               icon={<Users className="w-5 h-5" />}

@@ -79,22 +79,58 @@ export default function SchedulePage() {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg w-full max-w-4xl h-[80vh] relative">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10"
-            >
-              ×
-            </button>
-            <iframe
-              src="https://calendly.com/mdhasan-alikhan68/30min"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              className="rounded-lg"
-              title="Schedule a meeting"
-            ></iframe>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] relative overflow-hidden shadow-2xl">
+            {/* Modal Header */}
+            <div className="bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] text-white px-6 py-4 flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold">
+                  Schedule Your Free Consultation
+                </h2>
+                <p className="text-sm text-gray-300 mt-1">
+                  Select your preferred time slot
+                </p>
+              </div>
+              <button
+                onClick={closeModal}
+                className="text-white hover:text-gray-200 text-3xl font-light leading-none transition-colors"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Info Bar */}
+            <div className="bg-[#fdfdfc]/5 px-6 py-3 flex items-center justify-center gap-6 text-sm text-gray-700 border-b border-gray-200">
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>30 minutes</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>Free</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>Google Meet</span>
+              </div>
+            </div>
+
+            {/* Calendly Iframe */}
+            <div className="h-[calc(90vh-200px)] overflow-y-auto">
+              <iframe
+                src="https://calendly.com/mdhasan-alikhan68/30min"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Schedule a meeting"
+              ></iframe>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-[#f5f4ed]/5 px-6 py-3 text-center text-sm text-gray-600 border-t border-gray-200">
+              You&apos;ll receive a Google Meet link via email • Timezone:
+              Asia/Dhaka
+            </div>
           </div>
         </div>
       )}

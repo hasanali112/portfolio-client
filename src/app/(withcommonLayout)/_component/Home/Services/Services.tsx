@@ -59,7 +59,7 @@ const Services = async () => {
           {services.map((service) => (
             <div
               key={service._id}
-              className="bg-gradient-to-br from-white/5 to-white/5 backdrop-blur-md border border-white/20 rounded-lg p-8 relative overflow-hidden hover:bg-gradient-to-br hover:from-white/10 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group"
+              className="bg-gradient-to-br from-white/5 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg p-8 relative overflow-hidden hover:bg-gradient-to-br hover:from-white/10 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group"
             >
               {/* Hover overlay effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>

@@ -139,7 +139,7 @@ const Testimonials = () => {
         {/* Testimonial Card */}
         <div className="relative max-w-4xl mx-auto">
           {loading ? (
-            <div className="bg-gradient-to-br from-gray-500/20 to-transparent border border-gray-300/20 rounded-2xl p-8 md:p-12 relative overflow-hidden cursor-pointer group animate-pulse">
+            <div className="bg-gradient-to-br from-gray-500/20 to-transparent border border-[#8ac9f4]/40 rounded-2xl p-8 md:p-12 relative overflow-hidden cursor-pointer group animate-pulse">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-16 h-16 bg-gray-400/30 rounded-full"></div>
                 <div>
@@ -167,7 +167,7 @@ const Testimonials = () => {
             </div>
           ) : currentTestimonial ? (
             <>
-              <div className="bg-gradient-to-br from-gray-500/20 to-transparent border border-gray-300/20 rounded-lg p-8 md:p-12 relative overflow-hidden hover:shadow-xl hover:border-gray-300/40 transition-all duration-300 cursor-pointer group">
+              <div className="bg-gradient-to-br from-gray-500/20 to-transparent border border-[#8ac9f4]/40 rounded-lg p-8 md:p-12 relative overflow-hidden hover:shadow-xl hover:border-gray-300/40 transition-all duration-300 cursor-pointer group">
                 {/* Hover overlay effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-400/20 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
                 <div className="relative z-10">
@@ -267,14 +267,14 @@ const Testimonials = () => {
               {/* Navigation Buttons */}
               <button
                 onClick={handlePrev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 w-12 h-12 bg-gray-500/10 hover:bg-gray-500/20 border border-gray-500/30 rounded-full flex items-center justify-center text-gray-400 transition-all"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 w-12 h-12 bg-gray-500/10 hover:bg-gray-500/20 border border-[#8ac9f4]/40 rounded-full flex items-center justify-center text-gray-400 transition-all"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
               <button
                 onClick={handleNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 w-12 h-12 bg-gray-500/10 hover:bg-gray-500/20 border border-gray-500/30 rounded-full flex items-center justify-center text-gray-400 transition-all"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 w-12 h-12 bg-gray-500/10 hover:bg-gray-500/20 border border-[#8ac9f4]/40 rounded-full flex items-center justify-center text-gray-400 transition-all"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>

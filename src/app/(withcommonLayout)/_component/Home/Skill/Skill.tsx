@@ -17,10 +17,7 @@ const Skill = async () => {
   const skills: ISkill[] = skillsData?.data || [];
 
   return (
-    <section
-      id="skills"
-      className="bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] py-20 px-4 md:min-h-screen"
-    >
+    <section id="skills" className="bg-[#111122] py-10 md:py-16 px-4">
       <Container>
         {/* Header */}
         <div className="text-center flex flex-col items-center justify-center mb-16">

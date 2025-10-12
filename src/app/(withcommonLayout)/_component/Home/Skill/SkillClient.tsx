@@ -133,10 +133,10 @@ const SkillClient = ({ skills }: SkillClientProps) => {
         {filteredSkills.map((skill) => (
           <div
             key={skill._id}
-            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-lg px-6 py-[15px] hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 hover:scale-105 cursor-pointer group"
+            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg px-6 py-[15px] hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 hover:scale-105 cursor-pointer group"
           >
             <div className="flex lg:flex-row flex-col items-center gap-3">
-              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden flex-shrink-0">
+              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-[#8ac9f4]/40 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden flex-shrink-0">
                 <Image
                   src={skill.image}
                   alt={skill.title}
@@ -165,10 +165,10 @@ const SkillClient = ({ skills }: SkillClientProps) => {
           {filteredSkills.map((skill) => (
             <div
               key={skill._id}
-              className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-lg px-4 py-3 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group flex-shrink-0 w-[140px]"
+              className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg px-4 py-3 hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 cursor-pointer group flex-shrink-0 w-[140px]"
             >
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                <div className="w-10 h-10 bg-white/10 backdrop-blur-sm border border-[#8ac9f4]/40 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
                   <Image
                     src={skill.image}
                     alt={skill.title}
