@@ -16,6 +16,7 @@ import {
   Phone,
   LogOut,
   Eye,
+  Clock,
 } from "lucide-react";
 import Image from "next/image";
 import logo from "@/assets/hasan.png";
@@ -25,6 +26,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Overview", href: "/admin", icon: LayoutDashboard },
+    { name: "Time Management", href: "/admin/time-management", icon: Clock },
     { name: "Skills", href: "/admin/skills", icon: Code },
     { name: "Projects", href: "/admin/projects", icon: FolderOpen },
     { name: "Blogs", href: "/admin/blogs", icon: BookOpen },
