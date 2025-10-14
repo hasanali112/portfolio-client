@@ -17,6 +17,7 @@ import {
   LogOut,
   Eye,
   Clock,
+  Linkedin,
 } from "lucide-react";
 import Image from "next/image";
 import logo from "@/assets/hasan.png";
@@ -36,6 +37,7 @@ const Sidebar = () => {
     { name: "Testimonial", href: "/admin/testimonial", icon: MessageSquare },
     { name: "Services", href: "/admin/services", icon: Settings },
     { name: "Contact", href: "/admin/contact", icon: Phone },
+    { name: "LinkedIn", href: "/admin/linkedin", icon: Linkedin },
     { name: "Visitors", href: "/admin/visitors", icon: Eye },
   ];
 
@@ -47,7 +49,7 @@ const Sidebar = () => {
 
   return (
     <aside className="fixed left-0 top-0 z-40 w-64 h-screen bg-gray-900 border-r border-gray-800 hidden lg:block overflow-hidden">
-      <div className="h-full px-3 py-4 overflow-y-auto flex flex-col">
+      <div className="h-full px-3 py-4 flex flex-col">
         {/* Logo */}
         <div className="mb-5 px-4 py-2 border-b border-gray-800">
           <Link href="/">
@@ -76,7 +78,7 @@ const Sidebar = () => {
         </div>
 
         {/* Navigation */}
-        <ul className="space-y-2 flex-1">
+        <ul className="space-y-2 flex-1 overflow-y-auto scrollbar-hide">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;

@@ -6,13 +6,13 @@ import DashboardHeader from "./_components/DashboardHeader";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="min-h-screen bg-black overflow-x-hidden">
+    <div className="min-h-screen bg-black overflow-x-hidden overflow-y-hidden">
       <div className="flex w-full">
         {/* Desktop Sidebar */}
         <Sidebar />
 
         {/* Main Content */}
-        <main className="flex-1 w-full lg:ml-64 pb-16 lg:pb-0 min-w-0">
+        <main className="flex-1 w-full lg:ml-64 pb-16 lg:pb-0 min-w-0 overflow-y-auto scrollbar-hide">
           <DashboardHeader title="Dashboard" />
           <div className="p-4 sm:p-6 w-full">{children}</div>
         </main>

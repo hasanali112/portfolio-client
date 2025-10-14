@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 //http://localhost:5000/api/v1
 
 // Add a request interceptor
-axios.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   function (config) {
     return config;
   },
@@ -18,7 +18,7 @@ axios.interceptors.request.use(
 );
 
 // Add a response interceptor
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   function onFulfilled(response) {
     return response;
   },
