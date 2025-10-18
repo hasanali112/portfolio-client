@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useGetProjects } from "@/hooks/useProjects";
 import { IProject, ITechnology } from "@/types/project";
@@ -22,24 +22,20 @@ const ProjectDetail = () => {
   const { data: projectData, isLoading } = useGetProjects();
   const [selectedImage, setSelectedImage] = useState(0);
   const [showGallery, setShowGallery] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const project = projectData?.data?.find((p: IProject) => p._id === id);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-400"></div>
-      </div>
-    );
-  }
+  // Auto-play carousel
+  useEffect(() => {
+    if (!project || project.projectImage.length <= 1 || !isPlaying) return;
 
-  if (!project) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] flex items-center justify-center">
-        <p className="text-gray-400 text-lg">Project not found</p>
-      </div>
-    );
-  }
+    const interval = setInterval(() => {
+      setSelectedImage((prev) => (prev + 1) % project.projectImage.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [project, isPlaying]);
 
   const nextImage = () => {
     setSelectedImage((prev) => (prev + 1) % project.projectImage.length);
@@ -54,194 +50,242 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] py-10">
-      <Container>
-        {/* Back Button */}
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors"
-        >
-          <ChevronLeft className="w-4 h-4" />
-          Back to Projects
-        </Link>
+      {isLoading ? (
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-400"></div>
+        </div>
+      ) : !project ? (
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <p className="text-gray-400 text-lg">Project not found</p>
+        </div>
+      ) : (
+        <Container>
+          {/* Back Button */}
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors lg:px-10"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Back to Projects
+          </Link>
 
-        <div className="w-full mx-auto space-y-8">
-          {/* Image Gallery */}
-          <div className="space-y-4">
-            <div
-              className="relative aspect-video rounded-lg overflow-hidden bg-gray-800 cursor-pointer"
-              onClick={() => setShowGallery(true)}
-            >
-              <Image
-                src={project.projectImage[selectedImage]}
-                alt={project.projectTitle}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute top-3 right-3 bg-black/50 rounded-full p-2">
-                <ImageIcon className="w-4 h-4 text-white" />
-              </div>
-            </div>
-
-            {project.projectImage.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto justify-center">
-                {project.projectImage.map((img: string, idx: number) => (
+          <div className="lg:my-10 my-5 lg:px-10">
+            <h1 className="lg:text-5xl text-3xl font-bold text-white mb-4">
+              {project.projectTitle}
+            </h1>
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {project.technology.map((tech: ITechnology, idx: number) => (
                   <div
                     key={idx}
-                    className={`relative w-20 h-20 rounded-md overflow-hidden cursor-pointer border-2 transition-all flex-shrink-0 ${
-                      selectedImage === idx
-                        ? "border-[#057cc5]"
-                        : "border-gray-600"
-                    }`}
-                    onClick={() => setSelectedImage(idx)}
+                    className="flex items-center gap-3 px-4 py-2 bg-slate-800/50 rounded-full border border-slate-700 hover:border-[#057cc5]/50 transition-colors"
                   >
                     <Image
-                      src={img}
-                      alt={`${project.projectTitle} ${idx + 1}`}
-                      fill
-                      className="object-cover"
+                      src={tech.technologyImage}
+                      alt={tech.technologyName}
+                      width={24}
+                      height={24}
                     />
+                    <span className="text-gray-300">{tech.technologyName}</span>
                   </div>
                 ))}
               </div>
-            )}
+            </div>
           </div>
 
-          {/* Project Info */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Column - Basic Info */}
-            <div className="space-y-6">
-              <div>
-                <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                  {project.projectTitle}
-                </h1>
-                <p className="text-gray-400 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Project Stats */}
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-slate-800/30 rounded-lg p-4 border border-slate-700/50 text-center">
-                  <Code className="w-6 h-6 text-[#057cc5] mx-auto mb-2" />
-                  <p className="text-white font-semibold">
-                    {project.technology.length}
-                  </p>
-                  <p className="text-xs text-gray-500">Technologies</p>
+          <div className="w-full lg:px-10 space-y-8">
+            {/* Image Gallery */}
+            <div className="space-y-4">
+              <div
+                className="relative aspect-video rounded-lg overflow-hidden bg-gray-800 cursor-pointer"
+                onClick={() => setShowGallery(true)}
+                onMouseEnter={() => setIsPlaying(false)}
+                onMouseLeave={() => setIsPlaying(true)}
+              >
+                <Image
+                  src={project.projectImage[selectedImage]}
+                  alt={project.projectTitle}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute top-3 right-3 bg-black/50 rounded-full p-2">
+                  <ImageIcon className="w-4 h-4 text-white" />
                 </div>
-                <div className="bg-slate-800/30 rounded-lg p-4 border border-slate-700/50 text-center">
-                  <ImageIcon className="w-6 h-6 text-[#057cc5] mx-auto mb-2" />
-                  <p className="text-white font-semibold">
-                    {project.projectImage.length}
-                  </p>
-                  <p className="text-xs text-gray-500">Screenshots</p>
-                </div>
-                <div className="bg-slate-800/30 rounded-lg p-4 border border-slate-700/50 text-center">
-                  <Calendar className="w-6 h-6 text-[#057cc5] mx-auto mb-2" />
-                  <p className="text-white font-semibold">
-                    {new Date(project.createdAt).getFullYear()}
-                  </p>
-                  <p className="text-xs text-gray-500">Year</p>
-                </div>
-              </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-3">
-                <Link
-                  href={project.liveLink}
-                  target="_blank"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-[#057cc5] via-[#005a8e] to-[#04376b] text-white rounded transition-all font-medium shadow-lg relative overflow-hidden group"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                  <ExternalLink className="w-5 h-5 relative z-10" />
-                  <span className="relative z-10">View Live Demo</span>
-                </Link>
-
-                <div className="grid grid-cols-2 gap-3">
-                  {project.gitRepoLinkFrontend && (
-                    <Link
-                      href={project.gitRepoLinkFrontend}
-                      target="_blank"
-                      className="flex items-center justify-center gap-2 px-4 py-3 border border-[#1f2937] bg-[#1f2937] text-white rounded-lg hover:bg-[#374151] transition-all"
+                {/* Carousel Navigation */}
+                {project.projectImage.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        prevImage();
+                      }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full p-2 transition-all"
                     >
-                      <Github className="w-4 h-4" />
-                      Frontend Code
-                    </Link>
-                  )}
-
-                  {project.gitRepoLinkBackend && (
-                    <Link
-                      href={project.gitRepoLinkBackend}
-                      target="_blank"
-                      className="flex items-center justify-center gap-2 px-4 py-3 border border-[#1f2937] bg-[#1f2937] text-white rounded-lg hover:bg-[#374151] transition-all"
+                      <ChevronLeft className="w-5 h-5 text-white" />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        nextImage();
+                      }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full p-2 transition-all"
                     >
-                      <Github className="w-4 h-4" />
-                      Backend Code
-                    </Link>
-                  )}
-                </div>
+                      <ChevronRight className="w-5 h-5 text-white" />
+                    </button>
+
+                    {/* Dots indicator */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {project.projectImage.map((_: any, idx: number) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedImage(idx);
+                          }}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            selectedImage === idx ? "bg-white" : "bg-white/50"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 
-            {/* Right Column - Technical Details */}
-            <div className="space-y-6">
-              {/* Technologies */}
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-                  <Code className="w-5 h-5 text-[#057cc5]" />
-                  Technologies Used
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {project.technology.map((tech: ITechnology, idx: number) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-3 px-4 py-2 bg-slate-800/50 rounded-full border border-slate-700 hover:border-[#057cc5]/50 transition-colors"
+            {/* Project Info */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Left Column - Basic Info */}
+              <div className="space-y-6 lg:col-span-8">
+                {/* About Section */}
+                <div className="relative bg-gradient-to-br from-[#057cc5]/10 via-transparent to-[#04376b]/10 backdrop-blur-md rounded-xl p-8 border border-[#8ac9f4]/40 shadow-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#057cc5]/5 to-transparent opacity-50"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#057cc5]/10 rounded-full blur-3xl"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-1 h-8 bg-gradient-to-b from-[#057cc5] to-[#04376b] rounded-full"></div>
+                      <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                        About
+                      </h2>
+                    </div>
+                    <p className="text-gray-200 leading-relaxed text-lg font-light">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Features Section */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-1 h-8 bg-gradient-to-b from-[#057cc5] to-[#04376b] rounded-full"></div>
+                    <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                      Features
+                    </h2>
+                  </div>
+                  <div className="space-y-3">
+                    {project.features?.map((feature: string, idx: number) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 px-4 py-3 bg-slate-800/30 rounded-lg border border-slate-700/50 hover:border-[#057cc5]/30 transition-colors"
+                      >
+                        <div className="w-2 h-2 bg-[#057cc5] rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-300 leading-relaxed">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Technical Details */}
+              <div className="flex flex-col gap-6 lg:col-span-4">
+                {/* Project Links Card */}
+                <div className="bg-slate-800/30 rounded-lg p-6 border border-[#8ac9f4]/40 hover:border-[#057cc5]/30 transition-all">
+                  <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                    <ExternalLink className="w-5 h-5 text-[#057cc5]" />
+                    Project Links
+                  </h3>
+                  <div className="space-y-3">
+                    <Link
+                      href={project.liveLink}
+                      target="_blank"
+                      className="flex items-center justify-between px-4 py-3 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-[#057cc5]/50 transition-colors group"
                     >
-                      <Image
-                        src={tech.technologyImage}
-                        alt={tech.technologyName}
-                        width={24}
-                        height={24}
-                      />
-                      <span className="text-gray-300">
-                        {tech.technologyName}
+                      <span className="text-gray-300 group-hover:text-white">
+                        Live Demo
+                      </span>
+                      <ExternalLink className="w-5 h-5 text-[#057cc5]" />
+                    </Link>
+
+                    {project.gitRepoLinkFrontend && (
+                      <Link
+                        href={project.gitRepoLinkFrontend}
+                        target="_blank"
+                        className="flex items-center gap-3 px-4 py-3 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-[#057cc5]/50 transition-colors group"
+                      >
+                        <Github className="w-5 h-5 text-[#057cc5]" />
+                        <span className="text-gray-300 group-hover:text-white">
+                          Frontend Code
+                        </span>
+                      </Link>
+                    )}
+
+                    {project.gitRepoLinkBackend && (
+                      <Link
+                        href={project.gitRepoLinkBackend}
+                        target="_blank"
+                        className="flex items-center gap-3 px-4 py-3 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-[#057cc5]/50 transition-colors group"
+                      >
+                        <Github className="w-5 h-5 text-[#057cc5]" />
+                        <span className="text-gray-300 group-hover:text-white">
+                          Backend Code
+                        </span>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+
+                {/* Project Stats Card */}
+                <div className="bg-slate-800/30 rounded-lg p-6 border border-[#8ac9f4]/40 hover:border-[#057cc5]/30 transition-all">
+                  <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-[#057cc5]" />
+                    Project Stats
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center py-3 border-b border-slate-700/50">
+                      <span className="text-gray-400">Technologies</span>
+                      <span className="text-white font-medium">
+                        {project.technology.length}
                       </span>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Project Timeline */}
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-[#057cc5]" />
-                  Project Timeline
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-3 border-b border-slate-700/50">
-                    <span className="text-gray-400">Started</span>
-                    <span className="text-white font-medium">
-                      {new Date(project.createdAt).toLocaleDateString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-slate-700/50">
-                    <span className="text-gray-400">Last Updated</span>
-                    <span className="text-white font-medium">
-                      {new Date(project.updatedAt).toLocaleDateString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center py-3">
-                    <span className="text-gray-400">Status</span>
-                    <span className="text-green-400 font-medium flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      Live & Active
-                    </span>
+                    <div className="flex justify-between items-center py-3 border-b border-slate-700/50">
+                      <span className="text-gray-400">Features</span>
+                      <span className="text-white font-medium">
+                        {project.features?.length || 0}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-slate-700/50">
+                      <span className="text-gray-400">Images</span>
+                      <span className="text-white font-medium">
+                        {project.projectImage.length}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center py-3">
+                      <span className="text-gray-400">Status</span>
+                      <span className="text-green-400 font-medium flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                        Live & Active
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      )}
 
       {/* Full Screen Gallery Modal */}
       {showGallery && (

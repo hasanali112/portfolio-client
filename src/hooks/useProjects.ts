@@ -11,7 +11,6 @@ export const useCreateProject = () => {
     onSuccess: (data) => {
       toast.success(data.message || "Project created successfully!");
       queryClient.invalidateQueries({ queryKey: ["GET_PROJECTS"] });
-      queryClient.refetchQueries({ queryKey: ["GET_PROJECTS"] });
     },
     onError: (error: any) => {
       toast.error(error?.response?.data?.message || error.message || "Failed to create project");
@@ -23,8 +22,8 @@ export const useGetProjects = () => {
   return useQuery({
     queryKey: ["GET_PROJECTS"],
     queryFn: getAllProjects,
-    staleTime: 0,
-    refetchOnWindowFocus: true,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
   });
 };
 
@@ -37,7 +36,6 @@ export const useUpdateProject = () => {
     onSuccess: (data) => {
       toast.success(data.message || "Project updated successfully!");
       queryClient.invalidateQueries({ queryKey: ["GET_PROJECTS"] });
-      queryClient.refetchQueries({ queryKey: ["GET_PROJECTS"] });
     },
     onError: (error: any) => {
       toast.error(error?.response?.data?.message || error.message || "Failed to update project");
@@ -54,7 +52,6 @@ export const useDeleteProject = () => {
     onSuccess: (data) => {
       toast.success(data.message || "Project deleted successfully!");
       queryClient.invalidateQueries({ queryKey: ["GET_PROJECTS"] });
-      queryClient.refetchQueries({ queryKey: ["GET_PROJECTS"] });
     },
     onError: (error: any) => {
       toast.error(error?.response?.data?.message || error.message || "Failed to delete project");

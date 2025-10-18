@@ -6,6 +6,7 @@ export interface IProject {
   liveLink: string;
   gitRepoLinkFrontend: string;
   gitRepoLinkBackend: string;
+  features?: string[];
   technology: ITechnology[];
   createdAt: string;
   updatedAt: string;

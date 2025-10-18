@@ -62,7 +62,7 @@ const AllProjects = ({ category = "All", page = 1 }: AllProjectsProps) => {
                   </h3>
 
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technology.slice(0, 3).map((tech, idx) => (
+                    {project.technology.slice(0, 4).map((tech, idx) => (
                       <div
                         key={idx}
                         className="flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-slate-700/50 text-gray-300 border border-slate-600/50"

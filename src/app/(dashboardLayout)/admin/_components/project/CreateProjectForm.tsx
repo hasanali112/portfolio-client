@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X } from "lucide-react";
+import { X, Plus, Minus } from "lucide-react";
 import TechnologySection from "./TechnologySection";
 
 interface CreateProjectFormProps {
@@ -11,6 +11,15 @@ interface CreateProjectFormProps {
 
 const CreateProjectForm: React.FC<CreateProjectFormProps> = ({ isOpen, onClose, onSubmit, isLoading }) => {
   const [technologies, setTechnologies] = useState([{ technologyName: "", technologyImage: null }]);
+  const [features, setFeatures] = useState([""]);
+
+  const addFeature = () => setFeatures([...features, ""]);
+  const removeFeature = (index: number) => setFeatures(features.filter((_, i) => i !== index));
+  const updateFeature = (index: number, value: string) => {
+    const updated = [...features];
+    updated[index] = value;
+    setFeatures(updated);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,6 +31,7 @@ const CreateProjectForm: React.FC<CreateProjectFormProps> = ({ isOpen, onClose, 
       liveLink: formData.get("liveLink"),
       gitRepoLinkFrontend: formData.get("gitRepoLinkFrontend"),
       gitRepoLinkBackend: formData.get("gitRepoLinkBackend"),
+      features: features.filter(f => f.trim()),
       technology: technologies.map(tech => ({ technologyName: tech.technologyName, technologyImage: "" }))
     };
 
@@ -37,7 +47,6 @@ const CreateProjectForm: React.FC<CreateProjectFormProps> = ({ isOpen, onClose, 
       }
     });
 
-    // Create a custom event with the finalFormData
     const customEvent = {
       ...e,
       currentTarget: {
@@ -48,6 +57,7 @@ const CreateProjectForm: React.FC<CreateProjectFormProps> = ({ isOpen, onClose, 
     
     onSubmit(customEvent as any);
     setTechnologies([{ technologyName: "", technologyImage: null }]);
+    setFeatures([""]);
   };
 
   if (!isOpen) return null;
@@ -74,6 +84,40 @@ const CreateProjectForm: React.FC<CreateProjectFormProps> = ({ isOpen, onClose, 
             className="w-full p-3 bg-gray-800 text-white rounded-lg h-24"
             required
           />
+          
+          {/* Features Section */}
+          <div>
+            <div className="flex justify-between items-center mb-2">
+              <label className="block text-white">Features</label>
+              <button
+                type="button"
+                onClick={addFeature}
+                className="text-blue-400 hover:text-blue-300 flex items-center gap-1"
+              >
+                <Plus className="w-4 h-4" /> Add Feature
+              </button>
+            </div>
+            {features.map((feature, index) => (
+              <div key={index} className="flex gap-2 mb-2">
+                <input
+                  value={feature}
+                  onChange={(e) => updateFeature(index, e.target.value)}
+                  placeholder={`Feature ${index + 1}`}
+                  className="flex-1 p-3 bg-gray-800 text-white rounded-lg"
+                />
+                {features.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeFeature(index)}
+                    className="text-red-400 hover:text-red-300 p-3"
+                  >
+                    <Minus className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+
           <input
             name="liveLink"
             placeholder="Live Link"
