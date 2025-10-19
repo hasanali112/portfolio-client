@@ -18,6 +18,8 @@ import {
   Eye,
   Clock,
   Linkedin,
+  UserCheck,
+  Terminal,
 } from "lucide-react";
 import Image from "next/image";
 import logo from "@/assets/hasan.png";
@@ -32,6 +34,8 @@ const Sidebar = () => {
     { name: "Projects", href: "/admin/projects", icon: FolderOpen },
     { name: "Blogs", href: "/admin/blogs", icon: BookOpen },
     { name: "Shop", href: "/admin/shop", icon: ShoppingBag },
+    { name: "Freelancing", href: "/admin/freelancing", icon: UserCheck },
+    { name: "CP", href: "/admin/cp", icon: Terminal },
     { name: "Experience", href: "/admin/experience", icon: Briefcase },
     { name: "About", href: "/admin/about", icon: User },
     { name: "Testimonial", href: "/admin/testimonial", icon: MessageSquare },

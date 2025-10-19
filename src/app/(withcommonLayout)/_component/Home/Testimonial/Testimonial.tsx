@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, MessageCircleMore } from "lucide-react";
 import Image from "next/image";
-import { getTestimonialsForHome } from "@/services/testimonialService";
+import { useGetTestimonialsForHome } from "@/hooks/useTestimonials";
 import ReButton from "@/component/Button/ReButton";
 
 export type TTestimonial = {
@@ -42,24 +42,23 @@ export type TTestimonial = {
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [testimonials, setTestimonials] = useState<TTestimonial[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
+  const { data: testimonials = [], isLoading: loading } =
+    useGetTestimonialsForHome();
+
+  // Auto-play functionality
   useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const data = await getTestimonialsForHome();
-        console.log(data);
-        setTestimonials(data);
-      } catch (error) {
-        console.error("Error loading testimonials:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (testimonials.length <= 1 || isPaused) return;
 
-    fetchTestimonials();
-  }, []);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) =>
+        prev === testimonials.length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length, isPaused]);
 
   const handlePrev = () => {
     setCurrentIndex((prev) =>
@@ -117,8 +116,10 @@ const Testimonials = () => {
             <div className="text-4xl md:text-5xl font-bold text-white mb-2">
               {testimonials.length > 0
                 ? (
-                    testimonials.reduce((acc, t) => acc + t.rating, 0) /
-                    testimonials.length
+                    testimonials.reduce(
+                      (acc: number, t: TTestimonial) => acc + t.rating,
+                      0
+                    ) / testimonials.length
                   ).toFixed(1)
                 : "5.0"}
             </div>
@@ -139,7 +140,7 @@ const Testimonials = () => {
         {/* Testimonial Card */}
         <div className="relative max-w-4xl mx-auto">
           {loading ? (
-            <div className="bg-gradient-to-br from-gray-500/20 to-transparent border border-[#8ac9f4]/40 rounded-2xl p-8 md:p-12 relative overflow-hidden cursor-pointer group animate-pulse">
+            <div className="bg-gradient-to-br from-gray-500/20 to-transparent border border-[#8ac9f4]/40 rounded-2xl p-8 md:p-12 relative overflow-hidden cursor-pointer group animate-pulse lg:h-[340px]">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-16 h-16 bg-gray-400/30 rounded-full"></div>
                 <div>
@@ -167,7 +168,11 @@ const Testimonials = () => {
             </div>
           ) : currentTestimonial ? (
             <>
-              <div className="bg-gradient-to-br from-gray-500/20 to-transparent border border-[#8ac9f4]/40 rounded-lg p-8 md:p-12 relative overflow-hidden hover:shadow-xl hover:border-gray-300/40 transition-all duration-300 cursor-pointer group">
+              <div
+                className="bg-gradient-to-br from-gray-500/20 to-transparent border border-[#8ac9f4]/40 rounded-lg p-8 md:p-12 relative overflow-hidden hover:shadow-xl hover:border-gray-300/40 transition-all duration-300 cursor-pointer group lg:h-[340px] flex flex-col"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
                 {/* Hover overlay effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-400/20 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
                 <div className="relative z-10">
@@ -233,12 +238,14 @@ const Testimonials = () => {
                   </div>
 
                   {/* Review Text */}
-                  <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                    &quot;{currentTestimonial?.testimonialText}&quot;
-                  </p>
+                  <div className="flex-1 flex items-center">
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      &quot;{currentTestimonial?.testimonialText}&quot;
+                    </p>
+                  </div>
 
                   {/* Footer */}
-                  <div className="flex justify-between items-center text-sm">
+                  <div className="flex justify-between items-center text-sm mt-8">
                     <span className="text-gray-400 flex items-center gap-2">
                       <svg
                         className="w-4 h-4"
@@ -284,7 +291,7 @@ const Testimonials = () => {
 
         {/* Dots Navigation */}
         <div className="flex justify-center gap-2 mt-8">
-          {testimonials?.map((_, index) => (
+          {testimonials?.map((_: any, index: number) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}

@@ -67,11 +67,12 @@ const Blogs = () => {
           {blogs.map((blog: IBlog) => (
             <div
               key={blog._id}
-              className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg overflow-hidden relative hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300"
+              className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg overflow-hidden relative hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 flex flex-col h-[450px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out pointer-events-none"></div>
+
               {/* Blog Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden flex-shrink-0">
                 <Image
                   src={blog.blogImage}
                   alt={blog.title}
@@ -83,14 +84,14 @@ const Blogs = () => {
               </div>
 
               {/* Blog Info */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-400 transition-colors">
                   {blog.title.slice(0, 20)}..
                 </h3>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {blog.tags.slice(0, 3).map((tag, idx) => (
+                  {blog.tags.slice(0, 2).map((tag, idx) => (
                     <span
                       key={idx}
                       className="px-2 py-1 text-xs rounded-full bg-slate-700/50 text-gray-300 border border-slate-600/50"
@@ -104,8 +105,8 @@ const Blogs = () => {
                   {blog.description}
                 </p>
 
-                {/* Action Button */}
-                <div className="flex gap-3 relative z-10">
+                {/* Action Button - Pushed to bottom */}
+                <div className="flex gap-3 mt-auto">
                   <Link
                     href={`/blogs/${blog._id}`}
                     className="flex-1 px-4 py-2 rounded-full bg-slate-700/50 text-white text-sm font-medium hover:bg-slate-700 transition-colors text-center inline-block"

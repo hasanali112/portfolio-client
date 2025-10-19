@@ -32,7 +32,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
 }) => {
   return (
     <>
-      <div className={`${showSidebar ? 'translate-x-0' : '-translate-x-full'} fixed md:relative md:translate-x-0 top-0 left-0 w-80 h-screen md:h-auto bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-r border-slate-700/50 p-6 transition-transform duration-300 z-50 overflow-y-auto`}>
+      <div className={`${showSidebar ? 'translate-x-0' : '-translate-x-full'} fixed md:relative md:translate-x-0 top-0 left-0 w-80 h-screen md:h-auto bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-r border-slate-700/50 p-6 transition-transform duration-300 z-30 overflow-y-auto`}>
         <button
           onClick={() => setShowSidebar(false)}
           className="md:hidden absolute top-4 right-4 p-2 text-gray-400 hover:text-white"
@@ -105,7 +105,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
 
       {showSidebar && (
         <div
-          className="md:hidden fixed inset-0 bg-black/50 z-40"
+          className="md:hidden fixed inset-0 bg-black/50 z-20"
           onClick={() => setShowSidebar(false)}
         />
       )}

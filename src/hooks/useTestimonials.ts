@@ -1,4 +1,4 @@
-import { createTestimonial, getAllTestimonials, updateTestimonial, deleteTestimonial } from "@/services/testimonialService";
+import { createTestimonial, getAllTestimonials, updateTestimonial, deleteTestimonial, getTestimonialsForHome } from "@/services/testimonialService";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -47,6 +47,13 @@ export const useUpdateTestimonial = () => {
     onError: (error: any) => {
       toast.error(error?.response?.data?.message || error.message || "Failed to update testimonial");
     },
+  });
+};
+
+export const useGetTestimonialsForHome = () => {
+  return useQuery({
+    queryKey: ["GET_TESTIMONIALS_FOR_HOME"],
+    queryFn: getTestimonialsForHome,
   });
 };
 

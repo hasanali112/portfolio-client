@@ -73,11 +73,12 @@ const Project = () => {
           {projectGet?.map((project: IProject) => (
             <div
               key={project._id}
-              className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg overflow-hidden relative hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300"
+              className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg overflow-hidden relative hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 flex flex-col h-[480px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out pointer-events-none"></div>
+
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-[190px] overflow-hidden flex-shrink-0">
                 <Image
                   src={project.projectImage[0]}
                   alt={project.projectTitle}
@@ -89,7 +90,7 @@ const Project = () => {
               </div>
 
               {/* Project Info */}
-              <div className="p-6">
+              <div className="p-6 relative flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-400 transition-colors">
                   {project.projectTitle.slice(0, 20)}..
                 </h3>
@@ -113,12 +114,12 @@ const Project = () => {
                   ))}
                 </div>
 
-                <p className="text-gray-400 text-sm mb-6 line-clamp-2">
+                <p className="text-gray-400 text-sm mb-6 line-clamp-3">
                   {project.description}
                 </p>
 
-                {/* Action Buttons */}
-                <div className="flex gap-3 relative z-10">
+                {/* Action Buttons - Pushed to bottom */}
+                <div className="flex gap-3 mt-auto">
                   <a
                     href={project.liveLink}
                     target="_blank"
@@ -145,8 +146,8 @@ const Project = () => {
             {/* Prev Button */}
             <button
               onClick={() => {
-                const carousel = document.getElementById('projects-carousel');
-                carousel?.scrollBy({ left: -256, behavior: 'smooth' });
+                const carousel = document.getElementById("projects-carousel");
+                carousel?.scrollBy({ left: -256, behavior: "smooth" });
               }}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-slate-800/80 hover:bg-slate-700 text-white rounded-full flex items-center justify-center backdrop-blur-sm border border-slate-600/50"
             >
@@ -156,8 +157,8 @@ const Project = () => {
             {/* Next Button */}
             <button
               onClick={() => {
-                const carousel = document.getElementById('projects-carousel');
-                carousel?.scrollBy({ left: 256, behavior: 'smooth' });
+                const carousel = document.getElementById("projects-carousel");
+                carousel?.scrollBy({ left: 256, behavior: "smooth" });
               }}
               className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-slate-800/80 hover:bg-slate-700 text-white rounded-full flex items-center justify-center backdrop-blur-sm border border-slate-600/50"
             >
