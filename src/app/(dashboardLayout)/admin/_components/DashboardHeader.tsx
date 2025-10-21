@@ -7,7 +7,7 @@ interface DashboardHeaderProps {
 
 const DashboardHeader = ({ title }: DashboardHeaderProps) => {
   return (
-    <header className="bg-gray-900 border-b border-gray-800 px-4 sm:px-6 py-5 mb-6">
+    <header className="fixed top-0 left-0 right-0 lg:left-64 z-40 bg-gray-900 border-b border-gray-800 px-4 sm:px-6 py-5 mb-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <button className="lg:hidden text-gray-400 hover:text-white">
