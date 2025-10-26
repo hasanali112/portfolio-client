@@ -2,6 +2,7 @@ import Footer from "@/component/shared/Footer";
 import Navbar from "@/component/shared/Navbar";
 import BottomNav from "@/component/shared/BottomNav";
 import ScrollToTop from "@/component/ui/ScrollToTop";
+import Chatbot from "./_component/Chatbot";
 import React from "react";
 
 const WithCommonLayout = ({ children }: { children: React.ReactNode }) => {
@@ -14,6 +15,7 @@ const WithCommonLayout = ({ children }: { children: React.ReactNode }) => {
       <Footer />
       <BottomNav />
       <ScrollToTop />
+      <Chatbot />
     </div>
   );
 };
