@@ -1,6 +1,6 @@
 "use client";
 
-import { Star, ExternalLink, Smartphone, Bot, Globe } from "lucide-react";
+import { Star, ExternalLink, Smartphone, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,13 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             className={`${iconProps.className} text-purple-400`}
           />
         );
-      case "Bot":
-        return (
-          <Bot
-            {...iconProps}
-            className={`${iconProps.className} text-orange-400`}
-          />
-        );
+
       default:
         return (
           <Globe

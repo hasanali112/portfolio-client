@@ -10,9 +10,32 @@ import {
   Sparkles,
   ClipboardList,
   Code,
+  CreditCard,
 } from "lucide-react";
-
+import axios from "axios";
 const ShopHeader = () => {
+  const handlePayment = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/payment/initialize-payment-method",
+        {
+          phone: "01770618575",
+          amount: 749,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const dataUrl = `data:text/html;charset=utf-8,${encodeURIComponent(res.data.data)}`;
+      window.open(dataUrl, '_blank');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <section className="py-20">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -49,6 +72,15 @@ const ShopHeader = () => {
                 className="h-[45px] rounded-full"
               />
             </Link>
+
+            <div>
+              <ReButton
+                title="Payment"
+                onClick={handlePayment}
+                icon={<CreditCard className="w-5 h-5" />}
+                className="h-[45px] rounded-full"
+              />
+            </div>
           </div>
 
           {/* Stats */}

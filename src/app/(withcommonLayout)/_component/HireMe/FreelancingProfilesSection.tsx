@@ -53,75 +53,77 @@ const FreelancingProfilesSection = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#0d1b2a] to-[#0a1628] py-20 px-6 md:px-12">
+    <div className="bg-[#111122] py-20 px-6 md:px-12">
       <Container>
-        <div className="text-center flex flex-col items-center justify-center px-6 md:px-12">
+        <div className="text-center flex flex-col items-center justify-center px-6 md:px-12 mb-10 md:mb-16">
           <ReButton
-            title="Let's Work Together"
+            title="Ready-to-Order Services"
             variant="outline"
             icon={<BriefcaseBusiness className="w-5 h-5" />}
             className="h-[45px] rounded-full mb-8"
           />
-        </div>
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Ready-to-Order{" "}
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Services That{" "}
             <span className="bg-gradient-to-r from-[#057cc5] via-[#005a8e] to-[#04376b] bg-clip-text text-transparent">
-              Services
+              Deliver Results
             </span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
             Skip the consultation and get started immediately with these
-            pre-packaged services
+            pre-packaged, high-quality services tailored for your success.
           </p>
         </div>
 
         {profiles.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-5 md:px-0">
             {profiles.map((profile: any) => (
               <div
                 key={profile._id}
-                className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-lg overflow-hidden relative hover:border-white/30 transition-all duration-300 cursor-pointer"
+                className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg overflow-hidden relative hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 flex flex-col h-[480px] cursor-pointer"
                 onClick={() => handleViewDetails(profile)}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out pointer-events-none"></div>
 
-                <div className="relative h-48 overflow-hidden">
+                {/* Service Image */}
+                <div className="relative h-[190px] overflow-hidden flex-shrink-0">
                   <Image
                     src={profile.gigImage}
-                    alt={profile.serviceName}
+                    alt={profile.serviceName || "Service Image"}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60"></div>
                 </div>
 
-                <div className="p-6">
+                {/* Service Info */}
+                <div className="p-6 relative flex flex-col flex-grow">
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-400 transition-colors">
-                    {profile.serviceName}
+                    {profile.serviceName?.slice(0, 40) || "Service Title"}{profile.serviceName?.length > 40 ? ".." : ""}
                   </h3>
 
-                  <p className="text-gray-400 text-sm mb-6 line-clamp-2">
+                  <p className="text-gray-400 text-sm mb-6 line-clamp-3">
                     {profile.description}
                   </p>
 
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="w-10 h-10 rounded-full overflow-hidden">
-                      <Image
-                        src={profile.platformLogo}
-                        alt={profile.name}
-                        width={40}
-                        height={40}
-                        className="object-cover"
-                      />
+                  <div className="mt-auto">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-10 h-10 rounded-full overflow-hidden border border-slate-600/50">
+                        <Image
+                          src={profile.platformLogo}
+                          alt={profile.name || "Platform"}
+                          width={40}
+                          height={40}
+                          className="object-cover"
+                        />
+                      </div>
+                      <span className="text-sm font-medium text-gray-300">{profile.name}</span>
                     </div>
-                  </div>
 
-                  <div className="flex gap-3">
-                    <button className="flex-1 px-4 py-2 rounded-full bg-slate-700/50 text-white text-sm font-medium hover:bg-slate-700 transition-colors text-center flex items-center justify-center gap-2">
-                      <span>View Details</span>
-                      <ExternalLink className="w-4 h-4" />
-                    </button>
+                    <div className="flex gap-3">
+                      <button className="flex-1 px-4 py-2 rounded-full bg-slate-700/50 text-white text-sm font-medium hover:bg-slate-700 transition-colors text-center flex items-center justify-center gap-2">
+                        <span>View Details →</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

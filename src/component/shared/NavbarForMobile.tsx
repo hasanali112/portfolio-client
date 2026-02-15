@@ -141,6 +141,14 @@ const NavbarForMobile = () => {
                 </li>
                 <li onClick={() => setOpen(false)}>
                   <Link
+                    href="/pricing"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
+                  >
+                    Pricing
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(false)}>
+                  <Link
                     href="/shop"
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >

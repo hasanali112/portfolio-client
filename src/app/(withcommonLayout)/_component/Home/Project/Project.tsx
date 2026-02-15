@@ -81,7 +81,7 @@ const Project = () => {
               <div className="relative h-[190px] overflow-hidden flex-shrink-0">
                 <Image
                   src={project.projectImage[0]}
-                  alt={project.projectTitle}
+                  alt={project.projectTitle || "Project Image"}
                   width={500}
                   height={500}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -92,7 +92,7 @@ const Project = () => {
               {/* Project Info */}
               <div className="p-6 relative flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-400 transition-colors">
-                  {project.projectTitle.slice(0, 20)}..
+                  {project.projectTitle?.slice(0, 20) || "Project Title"}..
                 </h3>
 
                 {/* Tech Tags */}
@@ -104,7 +104,7 @@ const Project = () => {
                     >
                       <Image
                         src={tech.technologyImage}
-                        alt={tech.technologyName}
+                        alt={tech.technologyName || "Technology"}
                         width={16}
                         height={16}
                         className="w-4 h-4"
@@ -180,7 +180,7 @@ const Project = () => {
                   <div className="relative h-32 overflow-hidden">
                     <Image
                       src={project.projectImage[0]}
-                      alt={project.projectTitle}
+                      alt={project.projectTitle || "Project Image"}
                       width={500}
                       height={500}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -191,7 +191,7 @@ const Project = () => {
                   {/* Project Info */}
                   <div className="p-4">
                     <h3 className="text-lg font-bold text-white mb-2 group-hover:text-gray-400 transition-colors">
-                      {project.projectTitle.slice(0, 18)}..
+                      {project.projectTitle?.slice(0, 18) || "Project Title"}..
                     </h3>
 
                     {/* Tech Tags */}
@@ -203,7 +203,7 @@ const Project = () => {
                         >
                           <Image
                             src={tech.technologyImage}
-                            alt={tech.technologyName}
+                            alt={tech.technologyName || "Technology"}
                             width={12}
                             height={12}
                             className="w-3 h-3"

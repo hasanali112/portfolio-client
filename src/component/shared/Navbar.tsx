@@ -108,6 +108,12 @@ const Navbar = () => {
 
                 {/* Regular Page Navigation Items */}
                 <Link
+                  href="/pricing"
+                  className="navbar-design px-4 py-2 rounded-full"
+                >
+                  Pricing
+                </Link>
+                <Link
                   href="/shop"
                   className="navbar-design animated-border px-4 py-2 rounded-full"
                 >

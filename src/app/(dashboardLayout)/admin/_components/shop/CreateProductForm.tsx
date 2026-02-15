@@ -96,7 +96,6 @@ const CreateProductForm: React.FC<CreateProductFormProps> = ({ isOpen, onClose, 
               <option value="Website">Website</option>
               <option value="Mobile App">Mobile App</option>
               <option value="Landing Page">Landing Page</option>
-              <option value="Bot">Bot</option>
             </select>
           </div>
           

@@ -1,4 +1,5 @@
 import axiosInstance from "@/app/lib/AxiosInstance";
+import { API_BASE_URL } from "@/config/env";
 
 export const createTestimonial = async (formData: FormData) => {
   const { data } = await axiosInstance.post("/testimonial", formData, {
@@ -20,7 +21,7 @@ export const getTestimonialById = async (id: string) => {
 export const updateTestimonial = async (id: string, testimonialData: any) => {
   const { data } = await axiosInstance.put(
     `/testimonial/${id}`,
-    testimonialData
+    testimonialData,
   );
   return data;
 };
@@ -32,12 +33,9 @@ export const deleteTestimonial = async (id: string) => {
 
 export const getTestimonialsForHome = async () => {
   try {
-    const res = await fetch(
-      `https://portfolio-dashboard-server-sage.vercel.app/api/v1/testimonial`,
-      {
-        cache: "force-cache",
-      }
-    );
+    const res = await fetch(`${API_BASE_URL}/testimonial`, {
+      cache: "force-cache",
+    });
     if (!res.ok) return null;
     const data = await res.json();
     return data.data;

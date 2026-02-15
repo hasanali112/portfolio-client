@@ -11,11 +11,12 @@ import {
 import ContactForm from "./ContactForm";
 import Container from "@/component/ui/Container";
 import ReButton from "@/component/Button/ReButton";
+import { API_BASE_URL } from "@/config/env";
 
 async function getContactInfo() {
   try {
     const res = await fetch(
-      `https://portfolio-dashboard-server-sage.vercel.app/api/v1/contact/info/details`,
+        `${API_BASE_URL}/contact/info/details`,
       {
         cache: "force-cache",
       }

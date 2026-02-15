@@ -1,4 +1,5 @@
 import axiosInstance from "@/app/lib/AxiosInstance";
+import { API_BASE_URL } from "@/config/env";
 
 export const createBlog = async (formData: FormData) => {
   const { data } = await axiosInstance.post("/blog", formData, {
@@ -29,12 +30,9 @@ export const deleteBlog = async (id: string) => {
 
 export const getLatestsBlogs = async () => {
   try {
-    const res = await fetch(
-      `https://portfolio-dashboard-server-sage.vercel.app/api/v1/blog`,
-      {
-        cache: "no-cache",
-      }
-    );
+    const res = await fetch(`${API_BASE_URL}/blog`, {
+      cache: "no-cache",
+    });
     if (!res.ok) return null;
     const data = await res.json();
     return data.data;

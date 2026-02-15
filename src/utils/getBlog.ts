@@ -1,11 +1,10 @@
+import { API_BASE_URL } from "@/config/env";
+
 export const getBlogData = async () => {
   try {
-    const res = await fetch(
-      "https://portfolio-dashboard-server-sage.vercel.app/api/v1/blog",
-      {
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`${API_BASE_URL}/blog`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       console.error(`HTTP error! status: ${res.status}`);

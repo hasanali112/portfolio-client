@@ -12,7 +12,7 @@ const roleBasedRoutes: Record<Role, string[]> = {
   superAdmin: adminRoutes,
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const accessToken = request.cookies.get("accessToken")?.value;
 
@@ -28,7 +28,7 @@ export function middleware(request: NextRequest) {
   // 2. All other routes in the matcher are protected, so an access token is required.
   if (!accessToken) {
     return NextResponse.redirect(
-      new URL(`/login?redirect=${pathname}`, request.url)
+      new URL(`/login?redirect=${pathname}`, request.url),
     );
   }
 
@@ -43,7 +43,7 @@ export function middleware(request: NextRequest) {
 
     const allowedRoutes = roleBasedRoutes[role];
     const hasAccess = allowedRoutes?.some((route) =>
-      pathname.startsWith(route)
+      pathname.startsWith(route),
     );
 
     if (hasAccess) {

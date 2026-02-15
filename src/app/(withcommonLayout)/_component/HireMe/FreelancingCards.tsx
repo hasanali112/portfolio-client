@@ -67,7 +67,7 @@ const FreelancingCards = () => {
             <div className="relative h-48 overflow-hidden">
               <Image
                 src={profile.gigImage}
-                alt={profile.serviceName}
+                alt={profile.serviceName || "Service Image"}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />

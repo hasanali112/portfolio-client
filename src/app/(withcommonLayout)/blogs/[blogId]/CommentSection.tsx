@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { API_BASE_URL } from "@/config/env";
 
 interface Comment {
   _id: string;
@@ -26,7 +27,7 @@ const CommentSection = ({ blogId }: CommentSectionProps) => {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `https://portfolio-dashboard-server-sage.vercel.app/api/v1/blog/${blogId}/comments`
+          `${API_BASE_URL}/blog/${blogId}/comments`
         );
         if (response.ok) {
           const data = await response.json();
@@ -45,7 +46,7 @@ const CommentSection = ({ blogId }: CommentSectionProps) => {
 
     try {
       const response = await fetch(
-        `https://portfolio-dashboard-server-sage.vercel.app/api/v1/blog/${blogId}/comments`,
+        `${API_BASE_URL}/blog/${blogId}/comments`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

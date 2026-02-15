@@ -1,11 +1,10 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
-  baseURL: "https://portfolio-dashboard-server-sage.vercel.app/api/v1",
-});
+import { API_BASE_URL } from "@/config/env";
 
-//https://portfolio-dashboard-server-sage.vercel.app/api/v1
-//http://localhost:5000/api/v1
+const axiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+});
 
 // Add a request interceptor
 axiosInstance.interceptors.request.use(
@@ -14,7 +13,7 @@ axiosInstance.interceptors.request.use(
   },
   function (error) {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Add a response interceptor
@@ -24,7 +23,7 @@ axiosInstance.interceptors.response.use(
   },
   function onRejected(error) {
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

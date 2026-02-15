@@ -1,4 +1,5 @@
 import axiosInstance from "@/app/lib/AxiosInstance";
+import { API_BASE_URL } from "@/config/env";
 
 export const createAbout = async (formData: FormData) => {
   const { data } = await axiosInstance.post("/about", formData, {
@@ -29,12 +30,9 @@ export const deleteAbout = async (id: string) => {
 
 export const getMyBio = async () => {
   try {
-    const res = await fetch(
-      `https://portfolio-dashboard-server-sage.vercel.app/api/v1/about`,
-      {
-        cache: "no-cache",
-      }
-    );
+    const res = await fetch(`${API_BASE_URL}/about`, {
+      cache: "no-cache",
+    });
     if (!res.ok) return null;
     const data = await res.json();
     return data.data;

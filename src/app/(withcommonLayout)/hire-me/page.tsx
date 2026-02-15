@@ -1,30 +1,11 @@
 "use client";
 import { useState } from "react";
 import { useCreateClientMessage } from "@/hooks/useClientMessages";
-import ServicesSection from "../_component/HireMe/ServicesSection";
-import BudgetSection from "../_component/HireMe/BudgetSection";
 import ProjectDetailsForm from "../_component/HireMe/ProjectDetailsForm";
-import InfoSidebar from "../_component/HireMe/InfoSidebar";
 import FreelancingProfilesSection from "../_component/HireMe/FreelancingProfilesSection";
 import Container from "@/component/ui/Container";
 
 export default function ProjectConsultationForm() {
-  const [selectedServices, setSelectedServices] = useState({
-    multiVendorEcommerce: false,
-    singleVendorEcommerce: false,
-    landingPage: false,
-    aiIntegratedWebsite: false,
-    realEstateWebsite: false,
-    portfolioWebsite: false,
-    businessWebsite: false,
-    blogCmsWebsite: false,
-    iosApp: false,
-    androidApp: false,
-    crossPlatformApp: false,
-    progressiveWebApp: false,
-  });
-
-  const [selectedBudget, setSelectedBudget] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -35,13 +16,6 @@ export default function ProjectConsultationForm() {
   });
 
   const { mutate: createMessage, isPending } = useCreateClientMessage();
-
-  const toggleService = (service: keyof typeof selectedServices) => {
-    setSelectedServices((prev) => ({
-      ...prev,
-      [service]: !prev[service],
-    }));
-  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -59,16 +33,13 @@ export default function ProjectConsultationForm() {
     if (
       !formData.fullName ||
       !formData.email ||
-      !formData.description ||
-      !selectedBudget
+      !formData.description
     ) {
       return;
     }
 
     const messageData = {
       ...formData,
-      selectedServices,
-      selectedBudget,
     };
 
     createMessage(messageData, {
@@ -82,29 +53,12 @@ export default function ProjectConsultationForm() {
           timeline: "",
           description: "",
         });
-        setSelectedServices({
-          multiVendorEcommerce: false,
-          singleVendorEcommerce: false,
-          landingPage: false,
-          aiIntegratedWebsite: false,
-          realEstateWebsite: false,
-          portfolioWebsite: false,
-          businessWebsite: false,
-          blogCmsWebsite: false,
-          iosApp: false,
-          androidApp: false,
-          crossPlatformApp: false,
-          progressiveWebApp: false,
-        });
-        setSelectedBudget("");
       },
     });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] text-white">
-      {/* Header */}
-
       {/* Freelancing Profiles Section */}
       <FreelancingProfilesSection />
 
@@ -118,36 +72,23 @@ export default function ProjectConsultationForm() {
                 Consultation
               </span>
             </h2>
-            <p className="text-gray-400 text-lg">
-              Need something unique? Let&apos;s discuss your custom requirements
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Need something unique? Let&apos;s discuss your custom requirements and build something amazing together.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Left Column - Form */}
-            <div className="lg:col-span-2 space-y-8">
-              <ServicesSection
-                selectedServices={selectedServices}
-                toggleService={toggleService}
-              />
-
-              <BudgetSection
-                selectedBudget={selectedBudget}
-                setSelectedBudget={setSelectedBudget}
-              />
-
-              <ProjectDetailsForm
-                formData={formData}
-                handleInputChange={handleInputChange}
-                handleSubmit={handleSubmit}
-                isLoading={isPending}
-              />
-            </div>
-
-            {/* Right Column - Info Sidebar */}
-            <div className="space-y-6">
-              <InfoSidebar />
-            </div>
+          <div className="max-w-4xl mx-auto relative group">
+             {/* Decorative element like on home page */}
+             <div className="absolute -inset-1 bg-gradient-to-r from-[#057cc5] to-[#04376b] rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+             
+             <div className="relative">
+                <ProjectDetailsForm
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                  handleSubmit={handleSubmit}
+                  isLoading={isPending}
+                />
+             </div>
           </div>
         </Container>
       </div>
