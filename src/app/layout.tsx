@@ -6,7 +6,7 @@ import VisitorTracker from "@/component/VisitorTracker";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mdhasanalikhan.vercel.app'),
-  title: "Hasan Ali | Real Estate Website Developer & MERN Stack Expert",
+  title: "Hasan Ali | Full-Stack Developer & MERN Stack Expert",
   description:
     "Professional portfolio showcasing expertise in modern web/app development, responsive UI/UX design, and scalable full-stack solutions built with React, Node.js, and MongoDB.",
   keywords: [

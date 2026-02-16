@@ -95,12 +95,9 @@ const AllBlog = ({ category = "All", page = 1 }: AllBlogProps) => {
                 {blog.description}
               </p>
 
-              <a
-                href={`/blogs/${blog.slug}`}
-                className="inline-block w-full px-4 py-2 rounded-lg bg-slate-700/50 text-white text-sm font-medium hover:bg-slate-700 transition-colors text-center"
-              >
+              <span className="inline-block w-full px-4 py-2 rounded-lg bg-slate-700/50 text-white text-sm font-medium hover:bg-slate-700 transition-colors text-center">
                 Read More →
-              </a>
+              </span>
             </div>
           </article>
         </Link>

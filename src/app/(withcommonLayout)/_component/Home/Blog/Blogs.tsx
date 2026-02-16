@@ -65,8 +65,9 @@ const Blogs = () => {
         {/* Blogs Grid - Desktop */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {blogs.map((blog: IBlog) => (
-            <div
+            <Link
               key={blog._id}
+              href={`/blogs/${blog._id}`}
               className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg overflow-hidden relative hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 flex flex-col h-[450px]"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out pointer-events-none"></div>
@@ -107,15 +108,14 @@ const Blogs = () => {
 
                 {/* Action Button - Pushed to bottom */}
                 <div className="flex gap-3 mt-auto">
-                  <Link
-                    href={`/blogs/${blog._id}`}
+                  <span
                     className="flex-1 px-4 py-2 rounded-full bg-slate-700/50 text-white text-sm font-medium hover:bg-slate-700 transition-colors text-center inline-block"
                   >
                     Details →
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -150,8 +150,9 @@ const Blogs = () => {
               className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 mt-8 px-12 snap-x snap-mandatory"
             >
               {blogs.map((blog: IBlog) => (
-                <div
+                <Link
                   key={blog._id}
+                  href={`/blogs/${blog._id}`}
                   className="flex-shrink-0 w-full max-w-sm mx-auto group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-[#8ac9f4]/40 rounded-lg overflow-hidden relative hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-white/10 transition-all duration-300 snap-center"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
@@ -191,15 +192,14 @@ const Blogs = () => {
 
                     {/* Action Button */}
                     <div className="flex gap-2 relative z-10">
-                      <Link
-                        href={`/blogs/${blog._id}`}
+                      <span
                         className="flex-1 px-3 py-1.5 rounded-full bg-slate-700/50 text-white text-xs font-medium hover:bg-slate-700 transition-colors text-center inline-block"
                       >
                         Details →
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

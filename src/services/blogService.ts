@@ -14,8 +14,15 @@ export const getAllBlogs = async () => {
 };
 
 export const getBlogById = async (id: string) => {
-  const { data } = await axiosInstance.get(`/blog/${id}`);
-  return data;
+  try {
+    const res = await fetch(`${API_BASE_URL}/blog/${id}`, {
+      cache: "no-cache",
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (error) {
+    return null;
+  }
 };
 
 export const updateBlog = async (id: string, blogData: any) => {

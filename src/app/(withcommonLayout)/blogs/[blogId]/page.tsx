@@ -20,10 +20,11 @@ interface TDynamic {
 }
 
 const DynamicBlogDetail = async ({ params }: TDynamic) => {
+  const { blogId } = await params;
   let blog = null;
 
   try {
-    const singleBlogById = await getBlogById(params.blogId);
+    const singleBlogById = await getBlogById(blogId);
     blog = singleBlogById?.data;
   } catch (error) {
     console.error("Error fetching blog:", error);
