@@ -5,6 +5,25 @@ import { locations } from "@/data/locations";
 const baseUrl = "https://mdhasanalikhan.vercel.app";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
+// Helper to fetch with a timeout to prevent build hangs
+async function fetchWithTimeout(
+  url: string,
+  options: RequestInit = {},
+  timeout = 8000,
+) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+    return response;
+  } finally {
+    clearTimeout(id);
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ─── Static routes ────────────────────────────────────────────────────────
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -44,8 +63,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-
-    // pSEO hub pages
     {
       url: `${baseUrl}/services`,
       lastModified: new Date(),
@@ -60,89 +77,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // ─── pSEO: Industry spoke pages ───────────────────────────────────────────
+  // ─── pSEO: Industry & Location routes ─────────────────────────────────────
   const industryRoutes: MetadataRoute.Sitemap = industries.map((industry) => ({
     url: `${baseUrl}/services/${industry.slug}`,
     lastModified: new Date(),
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  // ─── pSEO: Location spoke pages ───────────────────────────────────────────
   const locationRoutes: MetadataRoute.Sitemap = locations.map((loc) => ({
     url: `${baseUrl}/hire/${loc.slug}`,
     lastModified: new Date(),
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  // ─── Dynamic content routes ───────────────────────────────────────────────
-  const dynamicRoutes: MetadataRoute.Sitemap = [];
-
-  try {
-    const projectsRes = await fetch(`${apiUrl}/project`, {
-      next: { revalidate: 3600 },
-    });
-    if (projectsRes.ok) {
-      const projectsData = await projectsRes.json();
-      const projects: { _id: string; updatedAt?: string }[] =
-        projectsData?.data || [];
-      projects.forEach((p) => {
-        dynamicRoutes.push({
-          url: `${baseUrl}/projects/${p._id}`,
-          lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
-          changeFrequency: "monthly",
-          priority: 0.7,
-        });
-      });
-    }
-  } catch (_) {}
-
-  try {
-    const blogsRes = await fetch(`${apiUrl}/blog`, {
-      next: { revalidate: 3600 },
-    });
-    if (blogsRes.ok) {
-      const blogsData = await blogsRes.json();
-      const blogs: { _id: string; updatedAt?: string }[] =
-        blogsData?.data || [];
-      blogs.forEach((b) => {
-        dynamicRoutes.push({
-          url: `${baseUrl}/blogs/${b._id}`,
-          lastModified: b.updatedAt ? new Date(b.updatedAt) : new Date(),
-          changeFrequency: "monthly",
-          priority: 0.7,
-        });
-      });
-    }
-  } catch (_) {}
-
-  try {
-    const shopRes = await fetch(`${apiUrl}/product`, {
-      next: { revalidate: 3600 },
-    });
-    if (shopRes.ok) {
-      const shopData = await shopRes.json();
-      const products: { _id: string; updatedAt?: string }[] =
-        shopData?.data || [];
-      products.forEach((p) => {
-        dynamicRoutes.push({
-          url: `${baseUrl}/shop/${p._id}`,
-          lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
-          changeFrequency: "monthly",
-          priority: 0.6,
-        });
-      });
-    }
-  } catch (_) {}
-
-  // Case Study Routes
+  // ─── Case Study Routes ────────────────────────────────────────────────────
   const caseStudySlugs = [
     "roofing-seo-success",
     "ecommerce-transformation",
     "dental-booking-system",
   ];
-
   const caseStudyRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/case-study`,
@@ -157,6 +112,63 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     })),
   ];
+
+  // ─── Dynamic content routes (Parallel Fetch) ──────────────────────────────
+  const dynamicRoutes: MetadataRoute.Sitemap = [];
+
+  if (apiUrl) {
+    const fetchPromises = [
+      fetchWithTimeout(`${apiUrl}/project`, {
+        next: { revalidate: 3600 },
+      }).then(async (r) => (r.ok ? (await r.json()).data : [])),
+      fetchWithTimeout(`${apiUrl}/blog`, { next: { revalidate: 3600 } }).then(
+        async (r) => (r.ok ? (await r.json()).data : []),
+      ),
+      fetchWithTimeout(`${apiUrl}/product`, {
+        next: { revalidate: 3600 },
+      }).then(async (r) => (r.ok ? (await r.json()).data : [])),
+    ];
+
+    try {
+      const [projects, blogs, products] =
+        await Promise.allSettled(fetchPromises);
+
+      if (projects.status === "fulfilled") {
+        projects.value.forEach((p: any) => {
+          dynamicRoutes.push({
+            url: `${baseUrl}/projects/${p._id}`,
+            lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
+            changeFrequency: "monthly",
+            priority: 0.7,
+          });
+        });
+      }
+
+      if (blogs.status === "fulfilled") {
+        blogs.value.forEach((b: any) => {
+          dynamicRoutes.push({
+            url: `${baseUrl}/blogs/${b._id}`,
+            lastModified: b.updatedAt ? new Date(b.updatedAt) : new Date(),
+            changeFrequency: "monthly",
+            priority: 0.7,
+          });
+        });
+      }
+
+      if (products.status === "fulfilled") {
+        products.value.forEach((p: any) => {
+          dynamicRoutes.push({
+            url: `${baseUrl}/shop/${p._id}`,
+            lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
+            changeFrequency: "monthly",
+            priority: 0.6,
+          });
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching dynamic routes for sitemap:", error);
+    }
+  }
 
   return [
     ...staticRoutes,
