@@ -112,7 +112,7 @@ export default function InfoSidebar() {
           </div>
         </div>
 
-        <Link href="/schedule">
+        <Link href="#book-a-call">
           <button className="w-full bg-slate-800/50 border border-slate-700/50 text-white font-medium py-3 px-6 rounded-xl hover:bg-slate-800/70 transition-all duration-300 flex items-center justify-center gap-2">
             <span>📅</span>
             <span>Schedule a Call</span>

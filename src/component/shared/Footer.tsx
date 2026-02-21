@@ -81,7 +81,7 @@ const Footer = () => {
               <Mail size={18} className="text-[#057cc5]" />
               <span>mdhasan.alikhan67@gmail.com</span>
             </div>
-            <Link href="/schedule" className="inline-block">
+            <Link href="/hire-me" className="inline-block">
               <ReButton
                 title="Book a Call"
                 icon={<Calendar size={18} />}

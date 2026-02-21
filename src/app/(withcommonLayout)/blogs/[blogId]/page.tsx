@@ -13,10 +13,78 @@ import Container from "@/component/ui/Container";
 import CommentSection from "./CommentSection";
 import { getBlogById } from "@/services/blogService";
 
+import { Metadata } from "next";
+
 interface TDynamic {
   params: {
     blogId: string;
   };
+}
+
+export async function generateMetadata({ params }: TDynamic): Promise<Metadata> {
+  const { blogId } = await params;
+  try {
+    const singleBlogById = await getBlogById(blogId);
+    const blog = singleBlogById?.data;
+
+    const description = blog?.description
+      ? blog.description.substring(0, 155)
+      : "Read insights from Hasan Ali, an expert freelance web developer specializing in service business websites.";
+
+    return {
+      title: blog?.title
+        ? `${blog.title} | Hasan Ali Blog`
+        : "Blog | Hasan Ali - Freelance Web Developer",
+      description,
+      keywords: [
+        "freelancer web developer",
+        "hotlancer",
+        "web development blog",
+        "web development tips",
+        blog?.category || "web development",
+      ],
+      openGraph: {
+        title: blog?.title || "Blog | Hasan Ali",
+        description,
+        url: `https://mdhasanalikhan.vercel.app/blogs/${blogId}`,
+        images: [
+          {
+            url: blog?.blogImage || "/og-cover.jpg",
+            width: 1200,
+            height: 628,
+            alt: blog?.title || "Hasan Ali Blog",
+          },
+        ],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: blog?.title || "Blog | Hasan Ali",
+        description,
+        images: [blog?.blogImage || "/og-cover.jpg"],
+        creator: "@hasan_ali_dev",
+      },
+      alternates: {
+        canonical: `https://mdhasanalikhan.vercel.app/blogs/${blogId}`,
+      },
+    };
+  } catch (error) {
+    return {
+      title: "Blog | Hasan Ali - Freelance Web Developer",
+      description:
+        "Read web development insights and tips from Hasan Ali, a freelance web developer for service businesses.",
+      keywords: [
+        "freelancer web developer",
+        "hotlancer",
+        "web development blog",
+      ],
+      openGraph: {
+        title: "Blog | Hasan Ali - Freelance Web Developer",
+        description: "Web development insights from a freelance developer.",
+        images: [{ url: "/og-cover.jpg", width: 1200, height: 628, alt: "Hasan Ali Blog" }],
+      },
+    };
+  }
 }
 
 const DynamicBlogDetail = async ({ params }: TDynamic) => {

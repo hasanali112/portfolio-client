@@ -1,97 +1,115 @@
-"use client";
-import { useState } from "react";
-import { useCreateClientMessage } from "@/hooks/useClientMessages";
-import ProjectDetailsForm from "../_component/HireMe/ProjectDetailsForm";
-import FreelancingProfilesSection from "../_component/HireMe/FreelancingProfilesSection";
-import Container from "@/component/ui/Container";
+import { Metadata } from "next";
+import HireMeClientWrapper from "./components/HireMeClientWrapper";
+
+export const metadata: Metadata = {
+  title: "Hire Me | Freelance Web Developer for Service Businesses",
+  description:
+    "Ready to grow your service business online? Hire Hasan Ali — a freelance web developer who builds fast, lead-generating, SEO-optimized websites for plumbers, roofers, dentists, restaurants, and contractors.",
+  keywords: [
+    // Primary hire intent
+    "hire web developer",
+    "hire freelance web developer",
+    "freelancer web developer",
+    "hotlancer",
+    "hire Next.js developer",
+    "hire React developer",
+    "hire MERN stack developer",
+
+    // Niche service business
+    "web developer for plumbers",
+    "web developer for roofers",
+    "web developer for dentists",
+    "web developer for restaurants",
+    "web developer for contractors",
+    "custom website for service business",
+    "lead generation website for local business",
+
+    // Value + offering
+    "affordable freelance web developer",
+    "custom web development",
+    "freelance Next.js developer",
+    "web developer for small business",
+    "professional website developer",
+    "hire full-stack developer",
+    "schedule meeting with web developer",
+    "book consultation freelance developer",
+    "free web development consultation",
+    "hire web developer consultation",
+    "book web developer",
+    "get website quote",
+    "web design consultation",
+    "website project consultation",
+  ],
+  openGraph: {
+    title: "Hire Me | Hasan Ali - Freelance Web Developer",
+    description:
+      "Looking for a skilled web developer? Hire Hasan Ali to build a custom, high-converting website for your service business.",
+    url: "https://mdhasanalikhan.vercel.app/hire-me",
+    images: [
+      {
+        url: "/og-cover.jpg",
+        width: 1200,
+        height: 628,
+        alt: "Hire Hasan Ali - Freelance Web Developer",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hire Me | Hasan Ali - Freelance Web Developer",
+    description:
+      "Hire a freelance web developer to build a lead-generating website for your service business.",
+    images: ["/og-cover.jpg"],
+    creator: "@hasan_ali_dev",
+  },
+  alternates: {
+    canonical: "https://mdhasanalikhan.vercel.app/hire-me",
+  },
+};
+
+const hireMeFaqs = [
+  {
+    q: "What is your typical project timeline?",
+    a: "Most service business websites take between 2 to 4 weeks from strategy to launch. More complex custom applications or extensive pSEO projects may take 6+ weeks."
+  },
+  {
+    q: "Do you require a deposit?",
+    a: "Yes, I require a 40% upfront deposit to secure your project on my calendar. The remaining balance is typically split across major milestones."
+  },
+  {
+    q: "Will my website be mobile-friendly and SEO-optimized?",
+    a: "Absolutely. Mobile-first design and technical SEO (including AI search optimization) are core parts of my process, not add-ons."
+  },
+  {
+    q: "How do we communicate during the project?",
+    a: "I provide daily updates via Slack or WhatsApp (whichever you prefer) and we'll have weekly strategy calls to review milestones and gather feedback."
+  }
+];
+
+const hireMeSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: hireMeFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
 
 export default function ProjectConsultationForm() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    company: "",
-    phone: "",
-    timeline: "",
-    description: "",
-  });
-
-  const { mutate: createMessage, isPending } = useCreateClientMessage();
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (
-      !formData.fullName ||
-      !formData.email ||
-      !formData.description
-    ) {
-      return;
-    }
-
-    const messageData = {
-      ...formData,
-    };
-
-    createMessage(messageData, {
-      onSuccess: () => {
-        // Reset form
-        setFormData({
-          fullName: "",
-          email: "",
-          company: "",
-          phone: "",
-          timeline: "",
-          description: "",
-        });
-      },
-    });
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] text-white">
-      {/* Freelancing Profiles Section */}
-      <FreelancingProfilesSection />
-
-      {/* Contact Section */}
-      <div className="px-6 md:px-12 py-20">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Custom Project{" "}
-              <span className="bg-gradient-to-r from-[#057cc5] via-[#005a8e] to-[#04376b] bg-clip-text text-transparent">
-                Consultation
-              </span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Need something unique? Let&apos;s discuss your custom requirements and build something amazing together.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto relative group">
-             {/* Decorative element like on home page */}
-             <div className="absolute -inset-1 bg-gradient-to-r from-[#057cc5] to-[#04376b] rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-             
-             <div className="relative">
-                <ProjectDetailsForm
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                  handleSubmit={handleSubmit}
-                  isLoading={isPending}
-                />
-             </div>
-          </div>
-        </Container>
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(hireMeSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <HireMeClientWrapper />
+    </>
   );
 }

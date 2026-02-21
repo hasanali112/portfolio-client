@@ -93,12 +93,7 @@ const Navbar = () => {
                 >
                   Projects
                 </button>
-                <button
-                  onClick={() => handleHashClick("#blog")}
-                  className="navbar-design"
-                >
-                  Blog
-                </button>
+
                 <button
                   onClick={() => handleHashClick("#contact")}
                   className="navbar-design"
@@ -107,6 +102,18 @@ const Navbar = () => {
                 </button>
 
                 {/* Regular Page Navigation Items */}
+                <Link
+                  href="/services"
+                  className="navbar-design px-4 py-2 rounded-full"
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/case-study"
+                  className="navbar-design px-4 py-2 rounded-full"
+                >
+                  Case Study
+                </Link>
                 <Link
                   href="/pricing"
                   className="navbar-design px-4 py-2 rounded-full"
@@ -118,13 +125,6 @@ const Navbar = () => {
                   className="navbar-design animated-border px-4 py-2 rounded-full"
                 >
                   Shop
-                </Link>
-                <Link href="/schedule">
-                  <ReButton
-                    variant="outline"
-                    title="Schedule"
-                    className="rounded-full"
-                  />
                 </Link>
                 <Link href="/hire-me">
                   <ReButton title="Hire me!" className="rounded-full" />

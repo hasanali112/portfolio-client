@@ -131,12 +131,21 @@ const NavbarForMobile = () => {
                     Projects
                   </Link>
                 </li>
+
                 <li onClick={() => setOpen(false)}>
                   <Link
-                    href="#blog"
+                    href="/services"
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
-                    Blog
+                    Services
+                  </Link>
+                </li>
+                <li onClick={() => setOpen(false)}>
+                  <Link
+                    href="/case-study"
+                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
+                  >
+                    Case Study
                   </Link>
                 </li>
                 <li onClick={() => setOpen(false)}>
@@ -153,14 +162,6 @@ const NavbarForMobile = () => {
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Shop
-                  </Link>
-                </li>
-                <li onClick={() => setOpen(false)}>
-                  <Link
-                    href="/schedule"
-                    className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
-                  >
-                    Schedule
                   </Link>
                 </li>
                 <li onClick={() => setOpen(false)}>

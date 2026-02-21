@@ -175,7 +175,7 @@ const About = async () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-1 mb-12 justify-center items-center">
-          <Link href="/schedule">
+          <Link href="/hire-me#book-a-call">
             <ReButton
               title="Consultation"
               icon={<Users className="w-5 h-5" />}
