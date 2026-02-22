@@ -1,5 +1,6 @@
 import About from "@/app/(withcommonLayout)/_component/Home/About/About";
 import Blogs from "@/app/(withcommonLayout)/_component/Home/Blog/Blogs";
+import CaseStudies from "@/app/(withcommonLayout)/_component/Home/CaseStudies/CaseStudies";
 
 import Experience from "@/app/(withcommonLayout)/_component/Home/Experience/Experience";
 import Hero from "@/component/Hero";
@@ -26,6 +27,7 @@ const Home = () => {
       <Project />
       <Testimonials />
       <Contact />
+      <CaseStudies />
       <Blogs />
     </div>
   );

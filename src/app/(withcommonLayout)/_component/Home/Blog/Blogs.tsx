@@ -29,7 +29,7 @@ const Blogs = () => {
   return (
     <div
       id="blog"
-      className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1b2a] to-[#0a1628] py-20 lg:px-4"
+      className="min-h-screen bg-[#111122] py-20 lg:px-4"
     >
       <Container>
         {/* Header */}

@@ -20,6 +20,7 @@ import {
   Linkedin,
   UserCheck,
   Terminal,
+  FileText,
 } from "lucide-react";
 import Image from "next/image";
 import logo from "@/assets/hasan.png";
@@ -32,6 +33,7 @@ const Sidebar = () => {
     { name: "Time Management", href: "/admin/time-management", icon: Clock },
     { name: "Skills", href: "/admin/skills", icon: Code },
     { name: "Projects", href: "/admin/projects", icon: FolderOpen },
+    { name: "Case Studies", href: "/admin/case-studies", icon: FileText },
     { name: "Blogs", href: "/admin/blogs", icon: BookOpen },
     { name: "Shop", href: "/admin/shop", icon: ShoppingBag },
     { name: "Freelancing", href: "/admin/freelancing", icon: UserCheck },

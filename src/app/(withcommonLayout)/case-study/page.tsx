@@ -1,55 +1,35 @@
 import Container from "@/component/ui/Container";
 import ReButton from "@/component/Button/ReButton";
-import { Sparkles, BarChart3, Globe } from "lucide-react";
+import { Sparkles, BarChart3, Globe, FileText } from "lucide-react";
 import CaseStudyCard from "./_component/CaseStudyCard";
+import { getAllPublishedCaseStudies } from "@/services/publicCaseStudyService";
 
 export const metadata = {
   title: "Case Studies | Hasan Ali - Transforming Business with Code",
   description: "Detailed analysis and results of web development and SEO projects for service businesses.",
 };
 
-const caseStudies = [
-  {
-    title: "Roofing Business SEO Transformation",
-    category: "SEO & Digital Marketing",
-    description: "Complete digital overhaul for a local roofing contractor, focusing on local SEO and high-conversion landing pages.",
-    results: [
-      "215% increase in monthly phone leads",
-      "Ranked #1 for 'Roofing Contractors [City]'",
-      "40% reduction in customer acquisition cost"
-    ],
-    slug: "roofing-seo-success",
-  },
-  {
-    title: "E-commerce Performance Optimization",
-    category: "Web Development",
-    description: "Rebuilding a legacy storefront with Next.js and Headless CMS to improve core web vitals and user experience.",
-    results: [
-      "45% faster page load speed",
-      "12% increase in checkout conversion",
-      "Perfect 100/100 Lighthouse performance score"
-    ],
-    slug: "ecommerce-transformation",
-  },
-  {
-    title: "Dental Clinic Booking System",
-    category: "Full Stack Development",
-    description: "Custom automated booking and patient management system integrated with existing healthcare CRM.",
-    results: [
-      "50% increase in online appointments",
-      "Automated 80% of patient follow-ups",
-      "Zero double-booking errors in first 12 months"
-    ],
-    slug: "dental-booking-system",
-  },
-];
+// Revalidate page every 5 minutes
+export const revalidate = 300;
 
-const CaseStudyPage = () => {
+const CaseStudyPage = async () => {
+  const caseStudies = await getAllPublishedCaseStudies();
+
+  // Map API data to card format
+  const mappedStudies = caseStudies.map((study) => ({
+    title: study.title,
+    category: study.category,
+    description: study.description,
+    results: study.outcome ? study.outcome.split(". ").filter(s => s.trim()).slice(0, 3) : [],
+    imageUrl: study.thumbnail,
+    slug: study._id,
+  }));
+
   return (
     <div className="min-h-screen bg-[#0f0715] text-white selection:bg-blue-500/30 pb-20">
       <Container>
         <div className="pt-32 pb-20">
-          {/* Header Section - Google Style */}
+          {/* Header Section */}
           <div className="text-center max-w-4xl mx-auto mb-20 relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
             
@@ -76,11 +56,19 @@ const CaseStudyPage = () => {
           </div>
 
           {/* Grid Section */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.map((study, index) => (
-              <CaseStudyCard key={index} {...study} />
-            ))}
-          </div>
+          {mappedStudies.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {mappedStudies.map((study, index) => (
+                <CaseStudyCard key={index} {...study} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20">
+              <FileText className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+              <h3 className="text-2xl font-semibold text-white mb-2">No case studies yet</h3>
+              <p className="text-gray-400">Check back soon for new case studies.</p>
+            </div>
+          )}
 
           {/* Bottom Call to Action */}
           <div className="mt-24 p-12 relative overflow-hidden bg-gradient-to-r from-blue-600/10 via-transparent to-blue-600/5 border border-white/10 rounded-[3rem] text-center">
