@@ -44,7 +44,7 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ experiences, onEdit, on
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-800">
-            {experiences.map((experience: any) => (
+            {experiences.filter(Boolean).map((experience: any) => (
               <tr key={experience._id} className="hover:bg-gray-800/50 transition-colors">
                 <td className="px-6 py-4">
                   <div className="flex items-center space-x-3">

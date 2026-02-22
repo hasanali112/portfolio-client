@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import VisitorTracker from "@/component/VisitorTracker";
+import { Suspense } from "react";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -21,7 +22,11 @@ export const metadata: Metadata = {
     "Expert freelance web developer helping service businesses generate more leads with 95% faster, SEO-optimized websites. 100% custom designs built for high ROI and local ranking using React & Next.js.",
   // ... (rest of metadata stays the same)
   keywords: [
+    "MD Hasan Ali Khan",
     "Hasan Ali",
+    "Hasan Ali Khan",
+    "MD Hasan Ali",
+    "hasanali112",
     "Hasan Ali portfolio",
     "freelance web developer",
     "freelancer web developer",
@@ -113,7 +118,8 @@ const jsonLd = {
     {
       "@type": "Person",
       "@id": "https://mdhasanalikhan.vercel.app/#person",
-      name: "Hasan Ali",
+      name: "MD Hasan Ali Khan",
+      alternateName: ["Hasan Ali", "Hasan Ali Khan", "MD Hasan Ali"],
       url: "https://mdhasanalikhan.vercel.app",
       image: "https://mdhasanalikhan.vercel.app/og-cover.jpg",
       jobTitle: "Freelance Web Developer",
@@ -227,7 +233,9 @@ export default function RootLayout({
       </head>
       <body className={outfit.className}>
         <Providers>
-          {process.env.NODE_ENV === "production" ? <VisitorTracker /> : null}
+          <Suspense fallback={null}>
+            {process.env.NODE_ENV === "production" ? <VisitorTracker /> : null}
+          </Suspense>
           {children}
           {process.env.NODE_ENV === "production" ? <SpeedInsights /> : null}
         </Providers>

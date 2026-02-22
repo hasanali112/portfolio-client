@@ -2,10 +2,11 @@ import { Metadata } from "next";
 import ProjectDetailClientWrapper from "./components/ProjectDetailClientWrapper";
 import { IProject } from "@/types/project";
 
+
 interface TDynamic {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: TDynamic): Promise<Metadata> {

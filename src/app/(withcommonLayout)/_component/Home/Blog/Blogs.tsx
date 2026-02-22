@@ -12,7 +12,6 @@ import { IBlog } from "@/types/blog";
 import ReButton from "@/component/Button/ReButton";
 
 const Blogs = async () => {
-  "use cache";
   let blogs: IBlog[] = [];
   try {
     blogs = await getLatestsBlogs();

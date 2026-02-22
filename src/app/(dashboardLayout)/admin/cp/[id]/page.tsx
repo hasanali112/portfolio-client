@@ -11,10 +11,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useGetSingleCP } from "@/hooks/useCP";
-import { useState } from "react";
+import { useState, use } from "react";
 
-const CPDetail = ({ params }: { params: { id: string } }) => {
-  const { data: cpData, isLoading } = useGetSingleCP(params.id);
+const CPDetail = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = use(params);
+  const { data: cpData, isLoading } = useGetSingleCP(id);
   const solution = cpData?.data;
   const [copied, setCopied] = useState(false);
 

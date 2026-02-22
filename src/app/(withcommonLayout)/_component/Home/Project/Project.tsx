@@ -15,7 +15,6 @@ import ReButton from "@/component/Button/ReButton";
 // However, the prompt asked to refactor the main component. 
 
 const Project = async () => {
-  "use cache";
   let projectGet: IProject[] = [];
   try {
     projectGet = await getLatestsProjects();

@@ -6,7 +6,6 @@ import SkillClient from "./SkillClient";
 import ReButton from "@/component/Button/ReButton";
 
 const Skill = async () => {
-  "use cache";
   let skills = [];
   try {
     const skillsData = await getAllSkills(1, 100);

@@ -1,7 +1,7 @@
 "use client";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import dynamic from "next/dynamic";
 import { useGetSingleCP, useUpdateCP } from "@/hooks/useCP";
 import { useRouter } from "next/navigation";
@@ -10,7 +10,8 @@ import { useRouter } from "next/navigation";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
-const EditCP = ({ params }: { params: { id: string } }) => {
+const EditCP = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = use(params);
   const [method, setMethod] = useState("");
   const [code, setCode] = useState("");
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const EditCP = ({ params }: { params: { id: string } }) => {
     revisionDate: ""
   });
 
-  const { data: cpData, isLoading } = useGetSingleCP(params.id);
+  const { data: cpData, isLoading } = useGetSingleCP(id);
   const { mutate: updateCP, isPending } = useUpdateCP();
   const router = useRouter();
 
@@ -57,9 +58,9 @@ const EditCP = ({ params }: { params: { id: string } }) => {
       revisionDate: formData.revisionDate || undefined
     };
     
-    updateCP({ id: params.id, data: submitData }, {
+    updateCP({ id: id, data: submitData }, {
       onSuccess: () => {
-        router.push(`/admin/cp/${params.id}`);
+        router.push(`/admin/cp/${id}`);
       },
       onError: (error) => {
         console.error('Error updating CP solution:', error);
@@ -99,7 +100,7 @@ const EditCP = ({ params }: { params: { id: string } }) => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <Link href={`/admin/cp/${params.id}`}>
+        <Link href={`/admin/cp/${id}`}>
           <button className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-700/50 transition-colors">
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -212,7 +213,7 @@ const EditCP = ({ params }: { params: { id: string } }) => {
             >
               {isPending ? 'Updating...' : 'Update Solution'}
             </button>
-            <Link href={`/admin/cp/${params.id}`}>
+            <Link href={`/admin/cp/${id}`}>
               <button
                 type="button"
                 className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"

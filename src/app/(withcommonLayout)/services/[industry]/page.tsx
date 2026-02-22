@@ -4,7 +4,7 @@ import { industries, getIndustryBySlug } from "@/data/industries";
 import IndustryPageClient from "./IndustryPageClient";
 
 interface Props {
-  params: { industry: string };
+  params: Promise<{ industry: string }>;
 }
 
 export function generateStaticParams() {
@@ -81,7 +81,7 @@ export default async function IndustryPage({ params }: Props) {
             text: faq.answer,
           },
         })),
-        dateModified: new Date().toISOString().split("T")[0],
+        dateModified: "2024-03-24",
       },
     ],
   };

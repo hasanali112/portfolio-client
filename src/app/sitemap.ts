@@ -29,65 +29,71 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/hire-me`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/blogs`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/shop`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/hire`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: "2024-03-24",
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 
   // ─── pSEO: Industry & Location routes ─────────────────────────────────────
   const industryRoutes: MetadataRoute.Sitemap = industries.map((industry) => ({
     url: `${baseUrl}/services/${industry.slug}`,
-    lastModified: new Date(),
+    lastModified: "2024-03-24",
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   const locationRoutes: MetadataRoute.Sitemap = locations.map((loc) => ({
     url: `${baseUrl}/hire/${loc.slug}`,
-    lastModified: new Date(),
+    lastModified: "2024-03-24",
     changeFrequency: "monthly",
     priority: 0.8,
   }));
@@ -101,13 +107,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const caseStudyRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/case-study`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     ...caseStudySlugs.map((slug) => ({
       url: `${baseUrl}/case-study/${slug}`,
-      lastModified: new Date(),
+      lastModified: "2024-03-24",
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
@@ -137,7 +143,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         projects.value.forEach((p: any) => {
           dynamicRoutes.push({
             url: `${baseUrl}/projects/${p._id}`,
-            lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
+            lastModified: p.updatedAt ? new Date(p.updatedAt) : "2024-03-24",
             changeFrequency: "monthly",
             priority: 0.7,
           });
@@ -148,7 +154,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         blogs.value.forEach((b: any) => {
           dynamicRoutes.push({
             url: `${baseUrl}/blogs/${b._id}`,
-            lastModified: b.updatedAt ? new Date(b.updatedAt) : new Date(),
+            lastModified: b.updatedAt ? new Date(b.updatedAt) : "2024-03-24",
             changeFrequency: "monthly",
             priority: 0.7,
           });
@@ -159,7 +165,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         products.value.forEach((p: any) => {
           dynamicRoutes.push({
             url: `${baseUrl}/shop/${p._id}`,
-            lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
+            lastModified: p.updatedAt ? new Date(p.updatedAt) : "2024-03-24",
             changeFrequency: "monthly",
             priority: 0.6,
           });

@@ -49,7 +49,7 @@ const Navbar = () => {
                 <Link href="/" className="navbar-design">
                   Home
                 </Link>
-                <Link href="/#about" className="navbar-design">
+                <Link href="/about" className="navbar-design">
                   About
                 </Link>
                 <Link href="/#skills" className="navbar-design">

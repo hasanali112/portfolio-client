@@ -15,10 +15,11 @@ import { getBlogById } from "@/services/blogService";
 
 import { Metadata } from "next";
 
+
 interface TDynamic {
-  params: {
+  params: Promise<{
     blogId: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: TDynamic): Promise<Metadata> {
@@ -169,7 +170,7 @@ const DynamicBlogDetail = async ({ params }: TDynamic) => {
                 <div className="flex items-center gap-2">
                   <CalendarDays className="w-5 h-5 text-green-400" />
                   <span>
-                    {formatDate(blog?.createdAt || new Date().toISOString())}
+                    {formatDate(blog?.createdAt || "2024-03-24")}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -275,7 +276,7 @@ const DynamicBlogDetail = async ({ params }: TDynamic) => {
             </div>
 
             {/* Dynamic Comments Section */}
-            <CommentSection blogId={params.blogId} />
+            <CommentSection blogId={blogId} />
           </article>
         </div>
       </Container>

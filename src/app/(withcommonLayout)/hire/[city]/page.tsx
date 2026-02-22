@@ -6,7 +6,7 @@ import LocationPageClient from "./LocationPageClient";
 
 
 interface Props {
-  params: { city: string };
+  params: Promise<{ city: string }>;
 }
 
 export function generateStaticParams() {
@@ -100,7 +100,7 @@ export default async function LocationPage({ params }: Props) {
         },
       },
     ],
-    dateModified: new Date().toISOString().split("T")[0],
+    dateModified: "2024-03-24",
   };
 
   return (

@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-  cacheComponents: true,
   reactCompiler: true,
   images: {
     formats: ["image/avif", "image/webp"],

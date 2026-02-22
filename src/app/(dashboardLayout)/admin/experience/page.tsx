@@ -28,6 +28,7 @@ const ExperiencePage = () => {
   };
 
   const handleUpdate = (experienceData: any) => {
+    if (!selectedExperience?._id) return;
     updateMutation.mutate({ id: selectedExperience._id, data: experienceData }, {
       onSuccess: () => {
         setShowUpdateForm(false);

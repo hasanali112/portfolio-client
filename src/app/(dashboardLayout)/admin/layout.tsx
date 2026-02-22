@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import Sidebar from "./_components/Sidebar";
 import MobileBottomNav from "./_components/MobileBottomNav";
 import DashboardHeader from "./_components/DashboardHeader";
@@ -9,7 +9,9 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen bg-black overflow-x-hidden overflow-y-hidden">
       <div className="flex w-full">
         {/* Desktop Sidebar */}
-        <Sidebar />
+        <Suspense fallback={<div className="w-64 bg-gray-900 h-screen" />}>
+          <Sidebar />
+        </Suspense>
 
         {/* Main Content */}
         <main className="flex-1 w-full lg:ml-64 pb-16 lg:pb-0 min-w-0 overflow-y-auto scrollbar-hide pt-20">
@@ -19,7 +21,9 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <MobileBottomNav />
+      <Suspense fallback={null}>
+        <MobileBottomNav />
+      </Suspense>
     </div>
   );
 };

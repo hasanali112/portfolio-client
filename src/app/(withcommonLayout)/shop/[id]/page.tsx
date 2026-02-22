@@ -3,13 +3,15 @@ import { getProductById } from "@/services/shopService";
 
 import { Metadata } from "next";
 
+
 interface ProductDetailPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
   try {
-    const productData = await getProductById(params.id);
+    const productData = await getProductById(id);
     const product = productData?.data;
 
     const description = product?.description
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       openGraph: {
         title: product?.name || "Premium Web Templates | Hasan Ali",
         description,
-        url: `https://mdhasanalikhan.vercel.app/shop/${params.id}`,
+        url: `https://mdhasanalikhan.vercel.app/shop/${id}`,
         images: [
           {
             url: "/og-cover.jpg",
@@ -51,7 +53,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
         creator: "@hasan_ali_dev",
       },
       alternates: {
-        canonical: `https://mdhasanalikhan.vercel.app/shop/${params.id}`,
+        canonical: `https://mdhasanalikhan.vercel.app/shop/${id}`,
       },
     };
   } catch (error) {
@@ -75,9 +77,10 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 }
 
 const ProductDetailPage = async ({ params }: ProductDetailPageProps) => {
+  const { id } = await params;
   let productData;
   try {
-    productData = await getProductById(params.id);
+    productData = await getProductById(id);
   } catch (error) {
     console.error("Error fetching product:", error);
   }
