@@ -9,45 +9,45 @@ export const useVisitorTracking = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    const trackVisitor = async () => {
+    if (process.env.NODE_ENV !== "production") {
+      return;
+    }
+
+    const trackVisitor = () => {
       try {
-        // Get real IP from external service with fallbacks
-        let realIP = "unknown";
+        const payload = JSON.stringify({ page: pathname, clientIP: "unknown" });
+        const endpoint = `${API_BASE_URL}/visitors/track`;
 
-        // Try multiple IP services for reliability
-        const ipServices = [
-          "https://api.ipify.org?format=json",
-          "https://httpbin.org/ip",
-          "https://api64.ipify.org?format=json",
-        ];
-
-        for (const service of ipServices) {
-          try {
-            const ipResponse = await fetch(service);
-            const ipData = await ipResponse.json();
-            realIP = ipData.ip || ipData.origin || "unknown";
-            if (realIP !== "unknown") break;
-          } catch (error) {
-            continue; // Try next service
-          }
+        if (navigator.sendBeacon) {
+          const blob = new Blob([payload], { type: "application/json" });
+          navigator.sendBeacon(endpoint, blob);
+          return;
         }
 
-        await fetch(`${API_BASE_URL}/visitors/track`, {
+        fetch(endpoint, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            page: pathname,
-            clientIP: realIP,
-          }),
+          headers: { "Content-Type": "application/json" },
+          body: payload,
+          keepalive: true,
+        }).catch(() => {
+          // Silently fail for visitor tracking.
         });
       } catch (error) {
-        // Silently fail for visitor tracking to avoid console noise if the server is unreachable
+        // Silently fail for visitor tracking.
       }
     };
 
-    trackVisitor();
+    const id = window.requestIdleCallback
+      ? window.requestIdleCallback(() => trackVisitor())
+      : window.setTimeout(trackVisitor, 500);
+
+    return () => {
+      if (typeof id === "number") {
+        window.clearTimeout(id);
+      } else {
+        window.cancelIdleCallback(id);
+      }
+    };
   }, [pathname]);
 };
 

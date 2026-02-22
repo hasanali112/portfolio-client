@@ -17,6 +17,7 @@
     "@types/react-scroll": "^1.8.10",
     "@vercel/speed-insights": "^1.0.12",
     "axios": "^1.12.2",
+    "babel-plugin-react-compiler": "^1.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.21",
     "jwt-decode": "^4.0.0",

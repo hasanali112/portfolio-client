@@ -4,6 +4,7 @@ import logo from "@/assets/hasan.png";
 import Container from "../ui/Container";
 import { Github, Linkedin, Mail, Twitter, Calendar } from "lucide-react";
 import ReButton from "../Button/ReButton";
+import CopyrightDate from "./CopyrightDate";
 
 const Footer = () => {
   return (
@@ -29,6 +30,8 @@ const Footer = () => {
               <Link
                 href="https://github.com/hasanali112"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hasan Ali on GitHub"
                 className="p-2 bg-gray-900 rounded-full hover:bg-[#057cc5] transition-colors duration-300"
               >
                 <Github size={18} />
@@ -36,6 +39,8 @@ const Footer = () => {
               <Link
                 href="https://x.com/mdali401932"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hasan Ali on X"
                 className="p-2 bg-gray-900 rounded-full hover:bg-[#057cc5] transition-colors duration-300"
               >
                 <Twitter size={18} />
@@ -43,6 +48,8 @@ const Footer = () => {
               <Link
                 href="https://www.linkedin.com/in/md-hasan-ali-khan"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hasan Ali on LinkedIn"
                 className="p-2 bg-gray-900 rounded-full hover:bg-[#057cc5] transition-colors duration-300"
               >
                 <Linkedin size={18} />
@@ -54,11 +61,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6">Navigation</h4>
             <ul className="space-y-4 text-gray-400 text-sm">
-              <li><Link href="#home" className="hover:text-[#057cc5] transition-colors">Home</Link></li>
-              <li><Link href="#skills" className="hover:text-[#057cc5] transition-colors">Skills</Link></li>
-              <li><Link href="#services" className="hover:text-[#057cc5] transition-colors">Services</Link></li>
-              <li><Link href="#projects" className="hover:text-[#057cc5] transition-colors">Projects</Link></li>
-              <li><Link href="#contact" className="hover:text-[#057cc5] transition-colors">Contact</Link></li>
+              <li><Link href="/" className="hover:text-[#057cc5] transition-colors">Home</Link></li>
+              <li><Link href="/#skills" className="hover:text-[#057cc5] transition-colors">Skills</Link></li>
+              <li><Link href="/#services" className="hover:text-[#057cc5] transition-colors">Services</Link></li>
+              <li><Link href="/#projects" className="hover:text-[#057cc5] transition-colors">Projects</Link></li>
+              <li><Link href="/#contact" className="hover:text-[#057cc5] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -93,10 +100,10 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-xs">
-          <p>© {new Date().getFullYear()} Hasan. All rights reserved.</p>
+          <p>© <CopyrightDate /> Hasan. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-gray-300">Privacy Policy</Link>
-            <Link href="#" className="hover:text-gray-300">Terms of Service</Link>
+            <Link href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-gray-300">Terms of Service</Link>
           </div>
         </div>
       </Container>
@@ -105,3 +112,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

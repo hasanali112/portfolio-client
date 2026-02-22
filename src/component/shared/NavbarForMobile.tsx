@@ -76,7 +76,7 @@ const NavbarForMobile = () => {
             <div className="flex items-center gap-3">
               <Image
                 src={logo}
-                alt="logo"
+                alt="Hasan Ali logo"
                 width={140}
                 height={140}
                 className="w-[50px] h-[50px] rounded-full"
@@ -88,10 +88,16 @@ const NavbarForMobile = () => {
             </div>
           </Link>
           <motion.div className="relative" ref={menuRef}>
-            <button onClick={() => setOpen((pv) => !pv)}>
+            <button
+              aria-label="Toggle navigation menu"
+              aria-expanded={open}
+              aria-controls="mobile-nav-menu"
+              onClick={() => setOpen((pv) => !pv)}
+            >
               <Menu className="text-white" />
             </button>
             <motion.div
+              id="mobile-nav-menu"
               initial="closed"
               animate={open ? "opened" : "closed"}
               variants={navParent}
@@ -109,7 +115,7 @@ const NavbarForMobile = () => {
                 </li>
                 <li onClick={() => setOpen(false)}>
                   <Link
-                    href="#skills"
+                    href="/#skills"
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Skills
@@ -117,7 +123,7 @@ const NavbarForMobile = () => {
                 </li>
                 <li onClick={() => setOpen(false)}>
                   <Link
-                    href="#about"
+                    href="/#about"
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     About
@@ -125,7 +131,7 @@ const NavbarForMobile = () => {
                 </li>
                 <li onClick={() => setOpen(false)}>
                   <Link
-                    href="#projects"
+                    href="/#projects"
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Projects
@@ -166,7 +172,7 @@ const NavbarForMobile = () => {
                 </li>
                 <li onClick={() => setOpen(false)}>
                   <Link
-                    href="#contact"
+                    href="/#contact"
                     className="hover:bg-gradient-to-r hover:from-[#72c4f2] hover:to-[#027bc2] px-3 py-2 rounded-full hover:transition-all duration-500 hover:ease-in-out text-white hover:text-white"
                   >
                     Contact

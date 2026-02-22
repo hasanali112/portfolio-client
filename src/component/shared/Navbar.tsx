@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
 import logo from "@/assets/hasan.png";
-import { Button } from "@nextui-org/react";
 import NavbarForMobile from "./NavbarForMobile";
 import { motion } from "framer-motion";
 import ReButton from "../Button/ReButton";
@@ -20,27 +18,6 @@ const parent = {
 };
 
 const Navbar = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const handleHashClick = (hash: string) => {
-    if (hash === "") {
-      router.push("/");
-      return;
-    }
-
-    if (hash.startsWith("#")) {
-      if (pathname !== "/") {
-        router.push(`/${hash}`);
-      } else {
-        const element = document.getElementById(hash.replace("#", ""));
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    }
-  };
-
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#000000] text-white w-full pt-5 pb-5 shadow-sm z-50">
       <motion.nav
@@ -55,7 +32,7 @@ const Navbar = () => {
               <div className="flex items-center gap-3">
                 <Image
                   src={logo}
-                  alt="logo"
+                  alt="Hasan Ali logo"
                   width={140}
                   height={140}
                   className="w-[50px] h-[50px] rounded-full"
@@ -69,37 +46,22 @@ const Navbar = () => {
             <div>
               <div className="flex justify-around items-center lg:space-x-4">
                 {/* Hash Navigation Items */}
-                <button
-                  onClick={() => handleHashClick("")}
-                  className="navbar-design"
-                >
+                <Link href="/" className="navbar-design">
                   Home
-                </button>
-                <button
-                  onClick={() => handleHashClick("#about")}
-                  className="navbar-design"
-                >
+                </Link>
+                <Link href="/#about" className="navbar-design">
                   About
-                </button>
-                <button
-                  onClick={() => handleHashClick("#skills")}
-                  className="navbar-design"
-                >
+                </Link>
+                <Link href="/#skills" className="navbar-design">
                   Skills
-                </button>
-                <button
-                  onClick={() => handleHashClick("#projects")}
-                  className="navbar-design"
-                >
+                </Link>
+                <Link href="/#projects" className="navbar-design">
                   Projects
-                </button>
+                </Link>
 
-                <button
-                  onClick={() => handleHashClick("#contact")}
-                  className="navbar-design"
-                >
+                <Link href="/#contact" className="navbar-design">
                   Contact
-                </button>
+                </Link>
 
                 {/* Regular Page Navigation Items */}
                 <Link

@@ -1,7 +1,5 @@
-"use client";
 import React from "react";
 import {
-  ExternalLink,
   NotebookPen,
   NotebookText,
   Sparkles,
@@ -11,20 +9,16 @@ import Container from "../../../../../component/ui/Container";
 import Link from "next/link";
 import { getLatestsBlogs } from "@/services/blogService";
 import { IBlog } from "@/types/blog";
-import { useRouter } from "next/navigation";
 import ReButton from "@/component/Button/ReButton";
 
-const Blogs = () => {
-  const router = useRouter();
-  const [blogs, setBlogs] = React.useState<IBlog[]>([]);
-
-  React.useEffect(() => {
-    const fetchBlogs = async () => {
-      const getLatBlogs = await getLatestsBlogs();
-      setBlogs(getLatBlogs);
-    };
-    fetchBlogs();
-  }, []);
+const Blogs = async () => {
+  "use cache";
+  let blogs: IBlog[] = [];
+  try {
+    blogs = await getLatestsBlogs();
+  } catch (error) {
+    console.error("Failed to fetch blogs:", error);
+  }
 
   return (
     <div
@@ -122,32 +116,10 @@ const Blogs = () => {
         {/* Blogs Carousel - Mobile */}
         <div className="md:hidden">
           <div className="relative">
-            {/* Prev Button */}
-            <button
-              onClick={() => {
-                const carousel = document.getElementById("blogs-carousel");
-                carousel?.scrollBy({ left: -256, behavior: "smooth" });
-              }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-slate-800/80 hover:bg-slate-700 text-white rounded-full flex items-center justify-center backdrop-blur-sm border border-slate-600/50"
-            >
-              ←
-            </button>
-
-            {/* Next Button */}
-            <button
-              onClick={() => {
-                const carousel = document.getElementById("blogs-carousel");
-                carousel?.scrollBy({ left: 256, behavior: "smooth" });
-              }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-slate-800/80 hover:bg-slate-700 text-white rounded-full flex items-center justify-center backdrop-blur-sm border border-slate-600/50"
-            >
-              →
-            </button>
-
             {/* Carousel */}
             <div
               id="blogs-carousel"
-              className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 mt-8 px-12 snap-x snap-mandatory"
+              className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 mt-8 px-4 snap-x snap-mandatory"
             >
               {blogs.map((blog: IBlog) => (
                 <Link

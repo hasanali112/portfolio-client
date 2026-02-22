@@ -31,7 +31,7 @@ export const deleteProject = async (id: string) => {
 export const getLatestsProjects = async () => {
   try {
     const res = await fetch(`${API_BASE_URL}/projects`, {
-      cache: "no-cache",
+      cache: "force-cache",
     });
     if (!res.ok) return null;
     const data = await res.json();

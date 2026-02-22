@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useGetCaseStudies, useCreateCaseStudy, useUpdateCaseStudy, useDeleteCaseStudy } from "@/hooks/useCaseStudies";
 import { Plus, Edit, Trash2, Eye, FileText } from "lucide-react";
 import ConfirmationModal from "../_components/ConfirmationModal";
+import Image from "next/image";
 
 const CaseStudiesPage = () => {
   const [showCreateForm, setShowCreateForm] = useState(false);
@@ -133,9 +134,11 @@ const CaseStudiesPage = () => {
           <div key={caseStudy._id} className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:border-gray-700 transition-all">
             <div className="aspect-video bg-gray-800 relative overflow-hidden">
               {caseStudy.thumbnail ? (
-                <img 
+                <Image 
                   src={caseStudy.thumbnail} 
                   alt={caseStudy.title}
+                  width={400}
+                  height={225}
                   className="w-full h-full object-cover"
                 />
               ) : (

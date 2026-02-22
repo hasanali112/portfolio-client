@@ -16,7 +16,7 @@ export const getAllBlogs = async () => {
 export const getBlogById = async (id: string) => {
   try {
     const res = await fetch(`${API_BASE_URL}/blog/${id}`, {
-      cache: "no-cache",
+      cache: "force-cache",
     });
     if (!res.ok) return null;
     return await res.json();
@@ -38,7 +38,7 @@ export const deleteBlog = async (id: string) => {
 export const getLatestsBlogs = async () => {
   try {
     const res = await fetch(`${API_BASE_URL}/blog`, {
-      cache: "no-cache",
+      cache: "force-cache",
     });
     if (!res.ok) return null;
     const data = await res.json();

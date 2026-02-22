@@ -10,7 +10,6 @@ export const metadata = {
 };
 
 // Revalidate page every 5 minutes
-export const revalidate = 300;
 
 const CaseStudyPage = async () => {
   const caseStudies = await getAllPublishedCaseStudies();

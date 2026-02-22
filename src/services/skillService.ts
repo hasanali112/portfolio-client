@@ -37,7 +37,6 @@ export const updateSkill = async (id: string, formData: FormData) => {
 export const getAllSkills = async (page = 1, limit = 10) => {
   try {
     const url = `/skills?page=${page}&limit=${limit}`;
-    console.log("Fetching skills with URL:", url); // Debug log
     const { data } = await axiosInstance.get(url);
     return data;
   } catch (error: any) {

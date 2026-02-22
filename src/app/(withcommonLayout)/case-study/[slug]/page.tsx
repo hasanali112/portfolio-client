@@ -8,7 +8,6 @@ import Script from "next/script";
 import { getCaseStudyById, getAllPublishedCaseStudies } from "@/services/publicCaseStudyService";
 
 // Revalidate every 5 minutes
-export const revalidate = 300;
 
 // Generate static params for all published case studies
 export async function generateStaticParams() {

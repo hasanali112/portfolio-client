@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import VisitorTracker from "@/component/VisitorTracker";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mdhasanalikhan.vercel.app"),
@@ -12,8 +19,8 @@ export const metadata: Metadata = {
   },
   description:
     "Expert freelance web developer helping service businesses generate more leads with 95% faster, SEO-optimized websites. 100% custom designs built for high ROI and local ranking using React & Next.js.",
+  // ... (rest of metadata stays the same)
   keywords: [
-    // Core identity
     "Hasan Ali",
     "Hasan Ali portfolio",
     "freelance web developer",
@@ -21,8 +28,6 @@ export const metadata: Metadata = {
     "hotlancer",
     "hire web developer",
     "hire freelance web developer",
-
-    // Tech stack
     "MERN stack developer",
     "full-stack developer",
     "React developer",
@@ -30,8 +35,6 @@ export const metadata: Metadata = {
     "TypeScript developer",
     "Node.js developer",
     "MongoDB developer",
-
-    // Service niche (High-Demand Categories)
     "web developer for service businesses",
     "website for plumbers",
     "website for roofers",
@@ -51,23 +54,17 @@ export const metadata: Metadata = {
     "local service business website",
     "local business website design",
     "high-converting service websites",
-
-    // Value proposition
     "lead generating website",
     "SEO optimized website",
     "high-converting website",
     "custom website development",
     "affordable web developer",
     "web developer for small business",
-
-    // Specialized services
     "service industry web development",
     "contractor website developer",
     "affordable website for small business",
     "responsive website design",
   ],
-
-  // Core SEO
   robots: {
     index: true,
     follow: true,
@@ -79,8 +76,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
-  // OpenGraph
   openGraph: {
     title: "Hasan Ali | Freelance Web Developer for Service Businesses",
     description:
@@ -98,8 +93,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-
-  // Twitter Cards
   twitter: {
     card: "summary_large_image",
     title: "Hasan Ali | Freelance Web Developer for Service Businesses",
@@ -109,19 +102,11 @@ export const metadata: Metadata = {
     site: "@hasan_ali_dev",
     creator: "@hasan_ali_dev",
   },
-
-  // Technical SEO
   alternates: {
     canonical: "https://mdhasanalikhan.vercel.app",
   },
-
-  // Google Search Console (add your real token when ready)
-  // verification: {
-  //   google: "YOUR_GOOGLE_VERIFICATION_TOKEN",
-  // },
 };
 
-// JSON-LD structured data (Person + Service schema)
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -143,7 +128,7 @@ const jsonLd = {
         "@type": "CollegeOrUniversity",
         name: "Rajshahi University",
       },
-      dateModified: new Date().toISOString().split("T")[0],
+      dateModified: "2024-03-24",
       sameAs: [
         "https://github.com/hasanali112",
         "https://linkedin.com/in/hasanali112",
@@ -231,7 +216,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={outfit.variable}>
       <head>
         <script
           type="application/ld+json"
@@ -240,11 +225,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body style={{ fontFamily: "system-ui, sans-serif" }}>
+      <body className={outfit.className}>
         <Providers>
-          <VisitorTracker />
+          {process.env.NODE_ENV === "production" ? <VisitorTracker /> : null}
           {children}
-          <SpeedInsights />
+          {process.env.NODE_ENV === "production" ? <SpeedInsights /> : null}
         </Providers>
       </body>
     </html>

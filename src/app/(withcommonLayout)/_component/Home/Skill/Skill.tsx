@@ -1,20 +1,19 @@
 import React from "react";
-import { Lightbulb, Sparkles } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import Container from "@/component/ui/Container";
 import { getAllSkills } from "@/services/skillService";
-import { ISkill } from "@/types/skill";
 import SkillClient from "./SkillClient";
 import ReButton from "@/component/Button/ReButton";
 
 const Skill = async () => {
-  let skillsData;
+  "use cache";
+  let skills = [];
   try {
-    skillsData = await getAllSkills(1, 100);
-  } catch (error: any) {
-    console.log(error.message);
+    const skillsData = await getAllSkills(1, 100);
+    skills = skillsData?.data || [];
+  } catch (error) {
+    console.error("Failed to fetch skills:", error);
   }
-
-  const skills: ISkill[] = skillsData?.data || [];
 
   return (
     <section id="skills" className="bg-[#111122] py-10 md:py-16 px-4 h-[850px]">
