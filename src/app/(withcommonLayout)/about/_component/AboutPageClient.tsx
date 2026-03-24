@@ -470,7 +470,7 @@ const AboutPageClient = ({ about, skills, experiences }: Props) => {
           <div className="max-w-3xl mx-auto space-y-6">
             {[
               {
-                year: "2020–2024",
+                year: "2019–2024",
                 title: "BSc in Rajshahi University",
                 org: "Rajshahi University",
                 desc:"",
